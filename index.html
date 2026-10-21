@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ComtIQ reads the full public comment record on federal rules, verifies every key finding and shows how the agency answered.">
+<title>ComtIQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@700&display=swap">
+<style>
+/* Layout: a navy instrument panel up top (radar + thesis), then a docket-like paper record below,
+   with docket IDs and counts set in mono as the subject's own vernacular. */
+:root {
+  --navy: #0A1B2B;
+  --navy-2: #12293D;
+  --cyan: #00C2FF;
+  --cyan-ink: #0077A3;
+  --amber: #F5B324;
+  --paper: #F5F7FA;
+  --surface: #FFFFFF;
+  --ink: #0B1C2C;
+  --muted: #5B6676;
+  --rule: #D6DEE5;
+  --on-navy: #E8F1F7;
+  --on-navy-muted: #9FB3C4;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --wrap: 1120px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--body); font-size: 17px; line-height: 1.6;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--navy); }
+.wrap {
+  max-width: var(--wrap); margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: var(--cyan-ink); }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); font-variation-settings: "wdth" 112; line-height: 1.08; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 750; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cyan-ink); }
+.mono { font-family: var(--mono); }
+
+/* ---------- header ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--navy); border-bottom: 1px solid #1d3550; }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 8px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand img { height: 56px; width: 56px; display: block; }
+@media (max-width: 760px) { .brand img { height: 44px; width: 44px; } .word { font-size: 1.6rem; } }
+.word { font-family: "Montserrat", var(--display); font-weight: 700; font-size: 2rem; line-height: 1; color: #FFFFFF; letter-spacing: -0.01em; }
+.word b { color: var(--cyan); font-weight: 800; }
+.nav { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.nav a { color: var(--on-navy-muted); text-decoration: none; font-size: 0.92rem; }
+.nav a:hover { color: #FFFFFF; }
+.nav .pill { color: var(--navy); background: var(--cyan); padding: 7px 14px; border-radius: 999px; font-weight: 600; }
+.nav .pill:hover { color: var(--navy); background: #5AD8FF; }
+@media (max-width: 760px) { .nav a:not(.pill) { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { background: var(--navy); color: var(--on-navy); overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 40px; align-items: center; padding-block: 64px 72px; }
+.hero h1 { font-size: clamp(2.2rem, 4.4vw, 3.75rem); line-height: 1.08; font-weight: 800; color: #FFFFFF; font-variation-settings: "wdth" 112; }
+.hero h1 em { font-style: normal; color: var(--cyan); }
+.hero .lede { font-size: 1.15rem; color: var(--on-navy); max-width: 34em; margin-top: 22px; }
+.tag { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.32em; color: var(--on-navy-muted); margin-top: 26px; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 20px; border-radius: 8px; font-weight: 600; text-decoration: none; font-size: 1rem; }
+.btn.primary { background: var(--cyan); color: var(--navy); }
+.btn.primary:hover { background: #5AD8FF; }
+.btn.ghost { color: #FFFFFF; border: 1px solid #2E4C68; }
+.btn.ghost:hover { border-color: var(--cyan); }
+.radar-box { position: relative; aspect-ratio: 1 / 1; width: 100%; max-width: 440px; justify-self: end; }
+#radar { width: 100%; height: 100%; display: block; }
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; padding-block: 44px 48px; }
+  .radar-box { justify-self: center; max-width: 400px; }
+}
+
+/* ---------- record strip ---------- */
+.record { background: var(--navy-2); color: var(--on-navy); border-top: 1px solid #1d3550; }
+.record .wrap { padding-block: 34px 38px; display: grid; gap: 22px; }
+.record .head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
+.record .head p { color: var(--on-navy-muted); font-size: 0.95rem; max-width: 46em; }
+.record .docket { font-family: var(--mono); font-size: 0.85rem; color: var(--cyan); }
+.figs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-top: 1px solid #2A4661; }
+.fig { padding: 18px 18px 0 0; border-right: 1px solid #2A4661; display: grid; gap: 6px; align-content: start; }
+.fig + .fig { padding-left: 18px; }
+.fig:last-child { border-right: 0; }
+.fig .n { font-family: var(--display); font-variation-settings: "wdth" 100; font-weight: 750; font-size: clamp(1.7rem, 3.4vw, 2.5rem); color: #FFFFFF; font-variant-numeric: tabular-nums; line-height: 1; }
+.fig .n.alert { color: var(--amber); }
+.fig .l { font-size: 0.92rem; color: var(--on-navy-muted); }
+.record .src { font-size: 0.8rem; color: var(--on-navy-muted); font-family: var(--mono); }
+@media (max-width: 760px) {
+  .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fig { padding: 16px 12px 16px 0; border-right: 0; border-bottom: 1px solid #2A4661; }
+  .fig + .fig { padding-left: 0; }
+  .fig:nth-child(odd) { padding-right: 16px; border-right: 1px solid #2A4661; }
+  .fig:nth-child(even) { padding-left: 16px; }
+}
+
+/* ---------- sections ---------- */
+section.block .wrap { padding-block: 76px; display: grid; gap: 34px; }
+.intro { display: grid; gap: 14px; max-width: 46em; }
+.intro p { color: var(--muted); font-size: 1.05rem; }
+.split { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 48px; align-items: start; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 28px; } }
+.rule-top { border-top: 1px solid var(--rule); }
+
+/* steps: a real sequence, so numbered */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 14px; padding-block: 18px; border-top: 1px solid var(--rule); }
+.steps li:last-child { border-bottom: 1px solid var(--rule); }
+.steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); color: var(--cyan-ink); font-size: 0.9rem; padding-top: 3px; }
+.steps p { color: var(--muted); margin-top: 4px; }
+
+/* sample report */
+.sheet { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 18px 40px -28px rgba(11, 28, 44, 0.45); overflow: hidden; min-width: 0; }
+.sheet-head { background: var(--navy); color: var(--on-navy); padding: 18px 22px; display: grid; gap: 4px; }
+.sheet-head .k { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.12em; color: var(--cyan); text-transform: uppercase; }
+.sheet-head .t { font-family: var(--display); font-variation-settings: "wdth" 106; font-weight: 700; font-size: 1.15rem; color: #FFFFFF; line-height: 1.25; }
+.sheet-head .m { font-family: var(--mono); font-size: 0.78rem; color: var(--on-navy-muted); }
+.sheet-body { padding: 20px 22px 22px; display: grid; gap: 16px; font-size: 0.95rem; }
+.bluf { border-left: 3px solid var(--cyan); padding-left: 14px; }
+.bluf .k, .row .k { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); display: block; margin-bottom: 4px; }
+.finding { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; padding-block: 10px; border-top: 1px dashed var(--rule); }
+.conf { font-family: var(--mono); font-size: 0.72rem; padding: 3px 8px; border-radius: 999px; white-space: nowrap; border: 1px solid var(--rule); color: var(--muted); }
+.conf.high { border-color: var(--cyan-ink); color: var(--cyan-ink); }
+.conf.mod { border-color: var(--amber); color: var(--ink); }
+.likely { display: flex; flex-wrap: wrap; gap: 6px; }
+.likely span { font-family: var(--mono); font-size: 0.72rem; border: 1px solid var(--rule); border-radius: 4px; padding: 3px 7px; color: var(--muted); }
+.likely span.on { background: var(--navy); color: #FFFFFF; border-color: var(--navy); }
+.note { font-size: 0.82rem; color: var(--muted); }
+
+/* reports in production */
+.reports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 900px) { .reports { grid-template-columns: 1fr; } }
+.rep { border-top: 3px solid var(--ink); padding-top: 16px; display: grid; gap: 10px; align-content: start; }
+.rep .status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 0.76rem; letter-spacing: 0.06em; color: var(--muted); }
+.rep .status i { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); display: inline-block; }
+.rep .status.live i { background: var(--cyan); }
+.rep .id { font-family: var(--mono); font-size: 0.8rem; color: var(--cyan-ink); overflow-wrap: anywhere; }
+.rep p { color: var(--muted); font-size: 0.97rem; }
+.rep .for { font-size: 0.9rem; color: var(--ink); }
+
+/* audience */
+.who { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.who div { padding-block: 14px; border-top: 1px solid var(--rule); min-width: 0; }
+.who p { color: var(--muted); font-size: 0.95rem; margin-top: 2px; }
+@media (max-width: 700px) { .who { grid-template-columns: 1fr; } }
+
+/* pricing */
+.price-table { width: 100%; border-collapse: collapse; font-size: 0.98rem; }
+.price-wrap { overflow-x: auto; }
+.price-table th, .price-table td { text-align: left; padding: 14px 12px 14px 0; border-top: 1px solid var(--rule); vertical-align: top; }
+.price-table th { font-family: var(--mono); font-weight: 500; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); border-top: 0; padding-bottom: 8px; }
+.price-table td.p { font-family: var(--display); font-variation-settings: "wdth" 100; font-weight: 750; font-size: 1.35rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.price-table td.p small { font-family: var(--body); font-weight: 400; font-size: 0.85rem; color: var(--muted); }
+.price-table tr.lead td { background: color-mix(in srgb, var(--cyan) 10%, transparent); }
+.price-table tr.lead td:first-child { padding-left: 12px; }
+.price-table td:first-child { font-weight: 600; }
+.price-table td.d { color: var(--muted); }
+
+/* differences */
+.diff { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 40px; }
+.diff div { display: grid; gap: 6px; }
+.diff p { color: var(--muted); }
+@media (max-width: 700px) { .diff { grid-template-columns: 1fr; } }
+
+/* team */
+.team { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.person { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 22px; display: grid; gap: 8px; align-content: start; }
+.person .role { font-family: var(--mono); font-size: 0.78rem; color: var(--cyan-ink); letter-spacing: 0.06em; }
+.person p { color: var(--muted); font-size: 0.97rem; }
+@media (max-width: 700px) { .team { grid-template-columns: 1fr; } }
+
+/* waitlist */
+.cta-band { background: var(--navy); color: var(--on-navy); }
+.cta-band .wrap { padding-block: 64px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; align-items: center; }
+.cta-band h2 { color: #FFFFFF; }
+.cta-band p { color: var(--on-navy-muted); margin-top: 14px; max-width: 38em; }
+.cta-band .ctas { justify-content: flex-end; margin-top: 0; }
+.cta-band .link { font-family: var(--mono); font-size: 0.85rem; color: var(--on-navy-muted); margin-top: 12px; user-select: all; }
+@media (max-width: 760px) { .cta-band .wrap { grid-template-columns: 1fr; } .cta-band .ctas { justify-content: flex-start; } }
+
+footer { background: var(--paper); }
+footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 0.86rem; color: var(--muted); border-top: 1px solid var(--rule); }
+</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="ComtIQ home"><img src="data:image/png;base64,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" alt="" width="56" height="56"><span class="word">Comt<b>IQ</b></span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#reports">First reports</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#team">Team</a>
+      <a class="pill" href="#waitlist">Join the waitlist</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow" style="color: var(--cyan);">Regulatory intelligence from the public record</p>
+        <h1 style="margin-top: 16px;">Know what the comment record says <em>before you act.</em></h1>
+        <p class="lede">Thousands of comments arrive on a major federal rule, and almost nobody reads them all. ComtIQ reads the full record, maps who argued what and which comments came from organized campaigns, and shows you how the agency answered, before you file, litigate or invest. An analyst verifies every key finding.</p>
+        <p class="tag">MONITOR · ANALYZE · ANTICIPATE</p>
+        <div class="ctas">
+          <a class="btn primary" href="#waitlist">Join the waitlist</a>
+          <a class="btn ghost" href="#reports">See the first reports</a>
+        </div>
+      </div>
+      <div class="radar-box">
+        <canvas id="radar" role="img" aria-label="Radar sweeping a docket and marking signals such as a coordinated campaign, a high volume topic and an argument the agency did not answer"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <section class="record" aria-labelledby="record-title">
+    <div class="wrap">
+      <div class="head">
+        <div>
+          <p class="docket">EPA-HQ-OAR-2025-0194</p>
+          <h3 id="record-title" style="color:#FFFFFF; margin-top: 6px;">One docket, measured. The rescission of the 2009 endangerment finding.</h3>
+        </div>
+        <p><b style="color:#FFFFFF;">571,676 comments received. 30,929 visible to the public.</b> A ComtIQ report shows you what that gap means.</p>
+      </div>
+      <div class="figs">
+        <div class="fig"><span class="n">571,676</span><span class="l">comments received, by the government's own counter</span></div>
+        <div class="fig"><span class="n">30,929</span><span class="l">records a visitor can open in the public docket</span></div>
+        <div class="fig"><span class="n alert">482,049</span><span class="l">submissions declared inside 128 of those records</span></div>
+        <div class="fig"><span class="n">64 days</span><span class="l">median wait between receipt and posting</span></div>
+      </div>
+      <p class="src">Sources. Federal Register comment counter; Rulemaking Observatory collection of the full posted docket, July 2026.</p>
+    </div>
+  </section>
+
+  <section class="block" id="how">
+    <div class="wrap split">
+      <div class="intro">
+        <p class="eyebrow">How it works</p>
+        <h2>Every number traces back to a comment you can open.</h2>
+        <p>Each report follows the same seven steps and the same structure, so you know what you will receive. Every finding is checked by an analyst and linked back to the original comment.</p>
+      </div>
+      <ol class="steps">
+        <li><div><h3>Intake</h3><p>Your question, your dockets, your deadline.</p></div></li>
+        <li><div><h3>Collection</h3><p>Every comment and attachment, saved as a dated snapshot.</p></div></li>
+        <li><div><h3>Processing</h3><p>Duplicates removed, campaign letters grouped, organizations identified.</p></div></li>
+        <li><div><h3>Analysis</h3><p>AI sorts stance, topic and arguments. An analyst reads every comment behind a key finding.</p></div></li>
+        <li><div><h3>Quality check</h3><p>A second person checks every number against the snapshot.</p></div></li>
+        <li><div><h3>Delivery</h3><p>The report and its data arrive in your inbox. Nothing new to install or learn.</p></div></li>
+        <li><div><h3>Feedback</h3><p>A short debrief. The next report shows what changed.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="block rule-top" aria-labelledby="sample-title">
+    <div class="wrap split">
+      <div class="intro">
+        <p class="eyebrow">Inside a report</p>
+        <h2 id="sample-title">The bottom line first. The evidence right under it.</h2>
+        <p>Every report opens with two or three sentences you can act on. Key findings carry a confidence level, forecasts use fixed likelihood terms, and an appendix links each cited comment in the docket.</p>
+        <p>At the final rule stage we match each significant argument to the agency's response, and flag the ones it left unanswered or answered thinly. The Administrative Procedure Act requires an answer to significant issues, and agencies now sort comments with AI.</p>
+      </div>
+      <article class="sheet" aria-label="Sample report layout">
+        <div class="sheet-head">
+          <span class="k">Regulatory Intelligence Report · sample layout</span>
+          <span class="t">Section heads and fixed terms of every report</span>
+          <span class="m">Docket · Agency · Stage · Comment period · Data cutoff · Version</span>
+        </div>
+        <div class="sheet-body">
+          <div class="bluf"><span class="k">Bottom line up front</span>The main finding and what it means for your decision, in two or three sentences.</div>
+          <div>
+            <span class="k" style="font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);">Key findings</span>
+            <div class="finding"><span>Share of the record that came from coordinated campaigns, and who sponsored them</span><span class="conf high">High confidence</span></div>
+            <div class="finding"><span>Arguments ranked by how often they appear, and the new ones since the last report</span><span class="conf mod">Moderate</span></div>
+            <div class="finding"><span>Significant issues the final rule preamble did not answer</span><span class="conf">Low · thin sources</span></div>
+          </div>
+          <div class="row">
+            <span class="k">Fixed likelihood terms</span>
+            <div class="likely">
+              <span>Almost no chance</span><span>Very unlikely</span><span>Unlikely</span><span>Roughly even</span><span class="on">Likely 55–80%</span><span>Very likely</span><span>Almost certain</span>
+            </div>
+          </div>
+          <p class="note">Also in every report. The record in numbers, who is commenting (individuals only in aggregate, never by name), scenarios, actions with dates, method and limits. Likelihood terms follow Intelligence Community Directive 203.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="block rule-top" id="reports">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">First reports</p>
+        <h2>Three dockets in production, for three kinds of readers.</h2>
+        <p>Each one goes out free to a different group of readers while we build. We only start a report once the comments are posted. <b style="color: var(--ink);">The first free report goes to waitlist members in mid-November.</b></p>
+      </div>
+      <div class="reports">
+        <div class="rep">
+          <span class="status live"><i></i>In production · mid-November 2026</span>
+          <h3>EPA rescission of the endangerment finding</h3>
+          <span class="id">EPA-HQ-OAR-2025-0194</span>
+          <p>The February 2026 rule that ended the 2009 finding and repealed greenhouse gas standards for cars and trucks, now before the D.C. Circuit. Who spoke, what they argued, and what EPA's Response to Comments answered.</p>
+          <p class="for">For litigants, automaker and supplier associations, health and environmental groups, and anyone commenting on the power plant proposal.</p>
+        </div>
+        <div class="rep">
+          <span class="status"><i></i>Collecting comments</span>
+          <h3>BLM oil and gas leasing</h3>
+          <span class="id">BLM-2025-0037</span>
+          <p>The June 2026 proposal to rewrite the rules for federal onshore oil and gas leasing. The government counts 122,209 comments received.</p>
+          <p class="for">For independent and mid-size producers, producing states, conservation groups and energy law firms.</p>
+        </div>
+        <div class="rep">
+          <span class="status"><i></i>Comments close November 4, 2026</span>
+          <h3>FAA Part 450 launch licensing</h3>
+          <span class="id">FAA-2026-9934 · 9935 · 9936 · 9940 · 9941</span>
+          <p>Five proposals to cut the analysis and paperwork behind a commercial launch or reentry license. In at least one, FAA says it lacks the data to put a number on the savings.</p>
+          <p class="for">For launch operators such as SpaceX and Rocket Lab, new entrants, space investors and launch insurers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block rule-top" aria-labelledby="who-title">
+    <div class="wrap split">
+      <div class="intro">
+        <p class="eyebrow">Who it is for</p>
+        <h2 id="who-title">Anyone with a rule open for comment, a deadline ahead, and more comments than they can read.</h2>
+      </div>
+      <div class="who">
+        <div><h3>Law firms</h3><p>Regulatory and litigation practices preparing comments, petitions and challenges.</p></div>
+        <div><h3>Trade associations</h3><p>Knowing which arguments members and opponents filed before the agency acts.</p></div>
+        <div><h3>Regulated companies</h3><p>Compliance and government affairs teams sizing what a rule will cost.</p></div>
+        <div><h3>Consulting and risk firms</h3><p>Due diligence on a deal or portfolio that faces a pending rule.</p></div>
+        <div><h3>Nonprofits and advocacy groups</h3><p>Groups that today read thousands of comments by hand.</p></div>
+        <div><h3>Journalists and researchers</h3><p>A checkable view of who shaped a rule.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block rule-top" id="pricing">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Planned pricing</p>
+        <h2>One report, written once, read by many.</h2>
+        <p><b style="color: var(--ink);">One report costs less than an hour of outside counsel.</b> We produce each report once and sell the same report to every reader, so the price stays low. These are planned launch prices. We are not taking payment yet.</p>
+      </div>
+      <div class="price-wrap">
+        <table class="price-table">
+          <thead><tr><th scope="col">Product</th><th scope="col">Price</th><th scope="col">What you receive</th></tr></thead>
+          <tbody>
+            <tr class="lead"><td>Regulatory Intelligence Report</td><td class="p">$99 <small>per report</small></td><td class="d">One full report on one docket milestone.</td></tr>
+            <tr><td>Regulatory Monitoring</td><td class="p">$495 <small>per month</small></td><td class="d">A weekly alert digest across the dockets you follow, with a short bottom line for each.</td></tr>
+            <tr><td>Docket Analysis</td><td class="p">$1,450 <small>per month</small></td><td class="d">A full report at each milestone of a docket, from mid comment period to final rule, plus alerts.</td></tr>
+            <tr><td>White label</td><td class="p">$190 <small>per copy</small></td><td class="d">The same report under your consulting firm's brand.</td></tr>
+            <tr><td>Custom research</td><td class="p">from $6,800</td><td class="d">One full report on a question you define, with a briefing call.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="block rule-top" aria-labelledby="diff-title">
+    <div class="wrap split">
+      <div class="intro">
+        <p class="eyebrow">Why ComtIQ</p>
+        <h2 id="diff-title">Tracking tools tell you a rule exists. We read what people said about it.</h2>
+      </div>
+      <div class="diff">
+        <div><h3>Independent</h3><p>We serve any side of a rulemaking. Advocacy projects that analyze one docket are built to defend one position.</p></div>
+        <div><h3>Many dockets, continuously</h3><p>Monitoring follows a docket from proposal to final rule, across agencies and state systems.</p></div>
+        <div><h3>Reads the agency's answer</h3><p>We match each significant argument to the final rule preamble and the Response to Comments.</p></div>
+        <div><h3>Human review</h3><p>An analyst verifies every key finding, and each one links back to the record, ready for legal and due diligence use.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block rule-top" id="team">
+    <div class="wrap">
+      <div class="intro">
+        <p class="eyebrow">Team</p>
+        <h2>Fifteen years of reading regulatory data.</h2>
+        <p>ComtIQ grew out of the Rulemaking Observatory, an open-source instrument that has collected more than 50,000 public comments across five federal dockets.</p>
+      </div>
+      <div class="team">
+        <div class="person">
+          <span class="role">Co-founder · data and analysis</span>
+          <h3>John Panitz</h3>
+          <p>Risk analyst and a pioneer of data research since 2006. He finished a master's on data at 23. Leads the pipeline, the classification and the numbers.</p>
+        </div>
+        <div class="person">
+          <span class="role">Co-founder · legal and product</span>
+          <h3>Vanessa Panitz</h3>
+          <p>Seventeen years as a federal public defender. LL.M. candidate at the University of Wisconsin–Madison Law School, where her research is on regulatory data. Leads the report standard, the agency response analysis and customers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="waitlist">
+    <div class="wrap">
+      <div>
+        <h2>Want the first report?</h2>
+        <p>Join the waitlist and tell us which docket matters to you. The first report on that docket goes to waitlist members first.</p>
+      </div>
+      <div>
+        <div class="ctas">
+          <a class="btn primary" href="https://forms.gle/CzfWDaRUyDeh862Z9" target="_blank" rel="noopener">Join the waitlist</a>
+        </div>
+        <p class="link">forms.gle/CzfWDaRUyDeh862Z9</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span><b style="color: var(--ink);">ComtIQ</b> is in development as part of the Wisconsin Venture Innovation Challenge 2026.</span>
+    <span>Data from Regulations.gov and the Federal Register. Individual commenters are reported only in aggregate.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  const cv = document.getElementById('radar');
+  const ctx = cv.getContext('2d');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const signals = [
+    { a: -1.3, r: 0.6, label: 'Coordinated campaign', color: '#F5B324' },
+    { a: 0.6, r: 0.28, label: 'High volume topic', color: '#00C2FF' },
+    { a: 2.05, r: 0.62, label: 'Unanswered argument', color: '#F5B324', below: true },
+    { a: 3.75, r: 0.5, label: 'New argument', color: '#00C2FF' }
+  ];
+  const dots = [];
+  for (let i = 0; i < 70; i++) dots.push({ a: Math.random() * Math.PI * 2, r: 0.12 + Math.random() * 0.84 });
+  let W = 0, dpr = 1;
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = cv.clientWidth;
+    cv.width = W * dpr; cv.height = W * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function angDiff(a, b) { let d = (a - b) % (Math.PI * 2); if (d < 0) d += Math.PI * 2; return d; }
+  function draw(t) {
+    const c = W / 2, R = W * 0.44;
+    ctx.clearRect(0, 0, W, W);
+    ctx.lineWidth = 1;
+    for (let i = 1; i <= 4; i++) {
+      ctx.beginPath(); ctx.arc(c, c, R * i / 4, 0, Math.PI * 2);
+      ctx.strokeStyle = i === 4 ? '#2E4C68' : '#1d3550'; ctx.stroke();
+    }
+    ctx.beginPath(); ctx.moveTo(c - R, c); ctx.lineTo(c + R, c); ctx.moveTo(c, c - R); ctx.lineTo(c, c + R);
+    ctx.strokeStyle = '#1d3550'; ctx.stroke();
+    const sweep = reduce ? -0.3 : (t / 4200) * Math.PI * 2 % (Math.PI * 2);
+    const g = ctx.createConicGradient ? ctx.createConicGradient(sweep - 0.9, c, c) : null;
+    if (g) {
+      g.addColorStop(0, 'rgba(0,194,255,0)');
+      g.addColorStop(0.143, 'rgba(0,194,255,0.28)');
+      g.addColorStop(0.145, 'rgba(0,194,255,0)');
+      g.addColorStop(1, 'rgba(0,194,255,0)');
+      ctx.beginPath(); ctx.moveTo(c, c); ctx.arc(c, c, R, sweep - 0.9, sweep); ctx.closePath();
+      ctx.fillStyle = g; ctx.fill();
+    }
+    ctx.beginPath(); ctx.moveTo(c, c); ctx.lineTo(c + Math.cos(sweep) * R, c + Math.sin(sweep) * R);
+    ctx.strokeStyle = '#00C2FF'; ctx.lineWidth = 2; ctx.stroke(); ctx.lineWidth = 1;
+    for (const d of dots) {
+      const fade = reduce ? 0.5 : Math.max(0.12, 1 - angDiff(sweep, d.a) / (Math.PI * 1.4));
+      ctx.beginPath(); ctx.arc(c + Math.cos(d.a) * d.r * R, c + Math.sin(d.a) * d.r * R, 1.6, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(159,179,196,' + (fade * 0.8).toFixed(2) + ')'; ctx.fill();
+    }
+    const fs = Math.max(11, Math.round(W / 38));
+    ctx.font = '500 ' + fs + 'px "IBM Plex Mono", Consolas, monospace';
+    for (const s of signals) {
+      const x = c + Math.cos(s.a) * s.r * R, y = c + Math.sin(s.a) * s.r * R;
+      const k = reduce ? 1 : Math.max(0.35, 1 - angDiff(sweep, s.a) / (Math.PI * 2));
+      ctx.beginPath(); ctx.arc(x, y, 10 + 8 * (1 - k), 0, Math.PI * 2);
+      ctx.strokeStyle = s.color; ctx.globalAlpha = 0.35 * k; ctx.stroke(); ctx.globalAlpha = 1;
+      ctx.beginPath(); ctx.arc(x, y, 4.5, 0, Math.PI * 2); ctx.fillStyle = s.color; ctx.fill();
+      const tw = ctx.measureText(s.label).width;
+      let lx = s.below ? x - tw / 2 : (Math.cos(s.a) < 0 ? x - 14 - tw : x + 14), ly = s.below ? y + fs + 16 : y + fs / 3;
+      lx = Math.max(6, Math.min(W - tw - 6, lx));
+      if (ly < fs + 4) ly = y + fs + 12;
+      ctx.fillStyle = 'rgba(11,28,44,0.85)';
+      ctx.fillRect(lx - 6, ly - fs, tw + 12, fs + 8);
+      ctx.fillStyle = '#E8F1F7'; ctx.globalAlpha = 0.6 + 0.4 * k;
+      ctx.fillText(s.label, lx, ly); ctx.globalAlpha = 1;
+    }
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  size();
+  window.addEventListener('resize', () => { size(); if (reduce) draw(0); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { if (reduce) draw(0); });
+  requestAnimationFrame(draw);
+})();
+</script>
+
+</body>
+</html>
