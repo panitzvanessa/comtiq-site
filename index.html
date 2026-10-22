@@ -126,6 +126,8 @@ section.block .wrap { padding-block: 76px; display: grid; gap: 34px; }
 .steps li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); color: var(--cyan-ink); font-size: 0.9rem; padding-top: 3px; }
 .steps p { color: var(--muted); margin-top: 4px; }
 
+.rep .rep-links { font-size: 0.92rem; font-weight: 600; margin-top: 4px; color: var(--ink); }
+.rep .rep-links a { color: var(--cyan-ink); }
 /* sample report */
 .sheet { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 18px 40px -28px rgba(11, 28, 44, 0.45); overflow: hidden; min-width: 0; }
 .sheet-head { background: var(--navy); color: var(--on-navy); padding: 18px 22px; display: grid; gap: 4px; }
@@ -209,7 +211,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
     <nav class="nav" aria-label="Sections">
       <a href="#how">How it works</a>
       <a href="#reports">First reports</a>
-      <a href="#pricing">Pricing</a>
+      <a href="#products">Products</a>
       <a href="#team">Team</a>
       <a class="pill" href="#waitlist">Join the waitlist</a>
     </nav>
@@ -241,7 +243,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
           <p class="docket">EPA-HQ-OAR-2025-0194</p>
           <h3 id="record-title" style="color:#FFFFFF; margin-top: 6px;">One docket, measured. The rescission of the 2009 endangerment finding.</h3>
         </div>
-        <p><b style="color:#FFFFFF;">571,676 comments received. 30,929 visible to the public.</b> A ComtIQ report shows you what that gap means.</p>
+        <p><b style="color:#FFFFFF;">571,676 comments received. 30,929 visible to the public.</b> A ComtIQ report shows you what that gap means. <a href="epa-endangerment-brief.html" style="color: var(--cyan);">Read the one-page brief.</a></p>
       </div>
       <div class="figs">
         <div class="fig"><span class="n">571,676</span><span class="l">comments received, by the government's own counter</span></div>
@@ -311,15 +313,16 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
       <div class="intro">
         <p class="eyebrow">First reports</p>
         <h2>Three dockets in production, for three kinds of readers.</h2>
-        <p>Each one goes out free to a different group of readers while we build. We only start a report once the comments are posted. <b style="color: var(--ink);">The first free report goes to waitlist members in mid-November.</b></p>
+        <p>Each one goes out free to a different group of readers while we build. We only start a report once the comments are posted. <b style="color: var(--ink);">The one-page brief on the EPA docket is out now. Get the full report through the waitlist.</b></p>
       </div>
       <div class="reports">
         <div class="rep">
-          <span class="status live"><i></i>In production · mid-November 2026</span>
+          <span class="status live"><i></i>One-page brief out now</span>
           <h3>EPA rescission of the endangerment finding</h3>
           <span class="id">EPA-HQ-OAR-2025-0194</span>
           <p>The February 2026 rule that ended the 2009 finding and repealed greenhouse gas standards for cars and trucks, now before the D.C. Circuit. Who spoke, what they argued, and what EPA's Response to Comments answered.</p>
           <p class="for">For litigants, automaker and supplier associations, health and environmental groups, and anyone commenting on the power plant proposal.</p>
+          <p class="rep-links"><a href="epa-endangerment-brief.html">Read the one-page brief</a> · <a href="https://forms.gle/mVrsRADEAppke4JLA">Get the full report through the waitlist</a></p>
         </div>
         <div class="rep">
           <span class="status"><i></i>Collecting comments</span>
@@ -356,22 +359,22 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
     </div>
   </section>
 
-  <section class="block rule-top" id="pricing">
+  <section class="block rule-top" id="products">
     <div class="wrap">
       <div class="intro">
-        <p class="eyebrow">Planned pricing</p>
+        <p class="eyebrow">Products</p>
         <h2>One report, written once, read by many.</h2>
-        <p><b style="color: var(--ink);">One report costs less than an hour of outside counsel.</b> We produce each report once and sell the same report to every reader, so the price stays low. These are planned launch prices. We are not taking payment yet.</p>
+        <p>We produce each report once and offer the same report to every reader. Waitlist members receive our first reports free. We are not taking payment yet.</p>
       </div>
       <div class="price-wrap">
         <table class="price-table">
-          <thead><tr><th scope="col">Product</th><th scope="col">Price</th><th scope="col">What you receive</th></tr></thead>
+          <thead><tr><th scope="col">Product</th><th scope="col">What you receive</th></tr></thead>
           <tbody>
-            <tr class="lead"><td>Regulatory Intelligence Report</td><td class="p">$99 <small>per report</small></td><td class="d">One full report on one docket milestone.</td></tr>
-            <tr><td>Regulatory Monitoring</td><td class="p">$495 <small>per month</small></td><td class="d">A weekly alert digest across the dockets you follow, with a short bottom line for each.</td></tr>
-            <tr><td>Docket Analysis</td><td class="p">$1,450 <small>per month</small></td><td class="d">A full report at each milestone of a docket, from mid comment period to final rule, plus alerts.</td></tr>
-            <tr><td>White label</td><td class="p">$190 <small>per copy</small></td><td class="d">The same report under your consulting firm's brand.</td></tr>
-            <tr><td>Custom research</td><td class="p">from $6,800</td><td class="d">One full report on a question you define, with a briefing call.</td></tr>
+            <tr class="lead"><td>Regulatory Intelligence Report</td><td class="d">One full report on one docket milestone.</td></tr>
+            <tr><td>Regulatory Monitoring</td><td class="d">A weekly alert digest across the dockets you follow, with a short bottom line for each.</td></tr>
+            <tr><td>Docket Analysis</td><td class="d">A full report at each milestone of a docket, from mid comment period to final rule, plus alerts.</td></tr>
+            <tr><td>White label</td><td class="d">The same report under your consulting firm's brand.</td></tr>
+            <tr><td>Custom research</td><td class="d">One full report on a question you define, with a briefing call.</td></tr>
           </tbody>
         </table>
       </div>
@@ -404,7 +407,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
         <div class="person">
           <span class="role">Co-founder · data and analysis</span>
           <h3>John Panitz</h3>
-          <p>Risk analyst and a pioneer of data research since 2006. He finished a master's on data at 23. Leads the pipeline, the classification and the numbers.</p>
+          <p>Risk analyst and a pioneer of data research since 2006. He finished a master's on data at 25. Leads the pipeline, the classification and the numbers.</p>
         </div>
         <div class="person">
           <span class="role">Co-founder · legal and product</span>
