@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ComtIQ one-page intelligence brief on the Labor Department independent contractor rule, docket WHD-2026-0001. Where the final rule is headed, who stands where and what each sector should watch.">
+<link rel="canonical" href="https://comtiq.com/independent-contractor-brief.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Independent Contractor Brief · ComtIQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@700&display=swap">
+<style>
+/* One page brief: navy band, the key judgment, three judgments with their evidence, signposts and what each sector should do. */
+:root {
+  --navy: #0A1B2B; --navy-2: #12293D; --cyan: #00C2FF; --accent: #0077A3; --amber: #B7791F;
+  --paper: #F5F7FA; --surface: #FFFFFF; --ink: #0B1C2C; --muted: #586474; --rule: #D6DEE5;
+  --tint: #E8F4FA; --warn-bg: #FBF3E4; --on-navy: #E8F1F7; --on-navy-muted: #9FB3C4;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3;
+    --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; --warn-bg: #2A2416; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3;
+  --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; --warn-bg: #2A2416; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.page { max-width: 880px; margin: 0 auto; background: var(--surface); min-height: 100vh; }
+.pad { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 700px) { .pad { padding-left: 36px; padding-right: 36px; } }
+h1, h2 { font-family: var(--display); font-variation-settings: "wdth" 108; margin: 0; line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; border-radius: 3px; }
+.mono { font-family: var(--mono); font-size: 0.86em; }
+
+.mast { background: var(--navy); color: var(--on-navy); padding-top: 20px; padding-bottom: 20px; display: grid; gap: 12px; }
+.brandline { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 9px; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+.word { font-family: "Montserrat", var(--display); font-weight: 700; font-size: 1.2rem; color: #FFFFFF; line-height: 1; }
+.word b { color: var(--cyan); }
+.kind { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--on-navy-muted); }
+.mast h1 { font-size: clamp(1.4rem, 3.6vw, 1.9rem); font-weight: 800; color: #FFFFFF; }
+.meta { font-family: var(--mono); font-size: 0.74rem; color: var(--on-navy-muted); display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.meta b { color: #FFFFFF; font-weight: 500; }
+
+.k { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; display: block; }
+.block { padding-top: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+.bluf p { font-size: 1.02rem; }
+.bluf p + p { margin-top: 6px; color: var(--muted); font-size: 0.95rem; }
+.bluf strong { font-weight: 600; }
+
+.nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.num { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 2px; align-content: start; min-width: 0; }
+.num .n { font-family: var(--display); font-variation-settings: "wdth" 100; font-weight: 750; font-size: 1.5rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.num .l { font-size: 0.82rem; color: var(--muted); }
+@media (max-width: 620px) { .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.map { display: grid; gap: 8px; }
+.mapbar { display: flex; height: 26px; border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); }
+.mapbar span { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.78rem; font-weight: 500; }
+.m-mer { background: var(--accent); color: #FFFFFF; }
+.m-leg { background: var(--tint); color: var(--ink); }
+.m-oos { background: var(--warn-bg); color: var(--amber); }
+.m-none { background: var(--ink); color: var(--surface); }
+.maplist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; font-size: 0.86rem; }
+.maplist p { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.maplist i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; border: 1px solid var(--rule); }
+.maplist b { font-weight: 600; }
+@media (max-width: 620px) { .maplist { grid-template-columns: 1fr; } }
+
+.acts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 24px; }
+.acts div { display: grid; gap: 2px; min-width: 0; }
+.acts h2 { font-size: 0.95rem; font-weight: 700; }
+.acts p { font-size: 0.88rem; }
+@media (max-width: 620px) { .acts { grid-template-columns: 1fr; } }
+
+.watch { font-size: 0.88rem; display: grid; gap: 3px; }
+.foot { padding-top: 14px; padding-bottom: 20px; font-size: 0.78rem; color: var(--muted); display: grid; gap: 6px; }
+.foot .full { font-size: 0.9rem; color: var(--ink); }
+
+@page { size: letter; margin: 0.45in; }
+@media print {
+  html { font-size: 12px; }
+  body { background: #FFFFFF; font-size: 12px; line-height: 1.4; }
+  .mast { gap: 8px; } .mast h1 { font-size: 1.5rem; }
+  .num .n { font-size: 1.3rem; } .num { padding: 6px 10px 6px 0; }
+  .bluf p { font-size: 1rem; } .k { margin-bottom: 4px; }
+  .mapbar { height: 20px; }
+  .page { max-width: none; min-height: 0; }
+  .pad { padding-left: 0; padding-right: 0; }
+  .mast { padding: 14px 16px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mapbar span, .nums { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .block { padding-top: 8px; padding-bottom: 7px; }
+  .foot { padding-top: 8px; padding-bottom: 0; }
+  .nums { grid-template-columns: repeat(3, 1fr); }
+  .maplist { grid-template-columns: repeat(2, 1fr); } .acts { grid-template-columns: repeat(3, 1fr); }
+}
+
+.judg { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: j; }
+.judg li { counter-increment: j; display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 10px; padding: 9px 0; border-top: 1px solid var(--rule); }
+.judg li:first-child { border-top: 0; padding-top: 2px; }
+.judg li::before { content: counter(j); font-family: var(--display); font-weight: 800; font-size: 1.15rem; color: var(--accent); line-height: 1.2; }
+.judg h2 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.judg p { font-size: 0.9rem; }
+.judg .src { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+.conf { font-family: var(--mono); font-size: 0.66rem; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); white-space: nowrap; margin-left: 6px; vertical-align: 2px; }
+.conf.mod { border-color: var(--amber); color: var(--amber); }
+.split { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px 24px; font-size: 0.86rem; }
+.split p b { font-weight: 600; }
+.sig { display: grid; gap: 4px; font-size: 0.86rem; }
+.sig p { display: grid; grid-template-columns: 8.2rem minmax(0,1fr); gap: 10px; }
+.sig .d { font-family: var(--mono); font-size: 0.74rem; color: var(--accent); padding-top: 1px; }
+@media (max-width: 620px) { .split { grid-template-columns: 1fr; } .sig p { grid-template-columns: 1fr; gap: 0; } }
+@media print { .judg li { padding: 5px 0; } .judg p { font-size: 0.86rem; } .split, .sig { font-size: 0.82rem; } .acts p { font-size: 0.82rem; } .split { grid-template-columns: repeat(2,1fr); } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="mast pad">
+    <div class="brandline">
+      <div class="brand" aria-label="ComtIQ">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00C2FF"/><stop offset="1" stop-color="#0A6BD6"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="#123A5E" stroke-width="5"/><path d="M32 3.5 A28.5 28.5 0 1 1 7.3 46.25" fill="none" stroke="url(#mg)" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="32" r="20" fill="none" stroke="#123A5E" stroke-width="3"/><path d="M52 32 A20 20 0 0 1 22 49.3" fill="none" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="13.5" fill="url(#mg)"/><path d="M24.5 26.5 h15 a3 3 0 0 1 3 3 v5.5 a3 3 0 0 1 -3 3 h-8.2 l-4.3 3.6 v-3.6 h-2.5 a3 3 0 0 1 -3 -3 v-5.5 a3 3 0 0 1 3 -3z" fill="#FFFFFF"/><circle cx="27.8" cy="32.2" r="1.55" fill="#0A6BD6"/><circle cx="32" cy="32.2" r="1.55" fill="#0A6BD6"/><circle cx="36.2" cy="32.2" r="1.55" fill="#0A6BD6"/></svg>
+        <span class="word">Comt<b>IQ</b></span>
+      </div>
+      <span class="kind">Regulatory Intelligence Brief · One page</span>
+    </div>
+    <h1>The independent contractor rule: the fight has moved inside the control factor</h1>
+    <p class="meta"><span>Docket <b>WHD-2026-0001</b></span><span>RIN <b>1235-AA46</b></span><span>Final rule at OIRA since <b>Sep. 28, 2026</b></span><span>Version <b>1.0</b>, Oct. 25, 2026</span></p>
+  </header>
+
+  <section class="block bluf pad" aria-label="Key judgment">
+    <span class="k">Key judgment</span>
+    <p><strong>The final rule will very likely keep the two core factors, control and the opportunity for profit or loss, and extend the test to the FMLA and the MSPA. The open question is what counts as control, and on that point platforms and their workers are contesting the same tools.</strong></p>
+    <p>Instacart and TechNet ask the Department to place matching algorithms, incentives and app notifications outside control. Critical drivers describe acceptance-rate tiers, penalties and hidden pay as the control they work under. The final rule's treatment of algorithmic management may prove more consequential for platform compliance than its choice of core factors.</p>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-j">
+    <span class="k" id="h-j">Three judgments from the record</span>
+    <ol class="judg">
+      <li><div><h2>Algorithmic management is the decisive question.<span class="conf mod">Moderate confidence</span></h2>
+        <p>At least 43 of 115 supporting letters ask for changes, and control is the most common subject. Because the proposal measures control by actual practice, the Department's treatment of app-based work could materially shape how platforms assess their classification risks.</p></div></li>
+      <li><div><h2>The comment count measures mobilization.<span class="conf">High confidence</span></h2>
+        <p>Four forms and templates wrote 95.9% of the 16,363 typed comments, all in support. In a random sample, 28 of 88 unprompted personal comments criticize the rule or platform pay and control (32%, 95% interval 23 to 42%). The high volume reflects concentrated template mobilization and says little about the range of substantive arguments.</p></div></li>
+      <li><div><h2>Federal reclassification will not displace state tests.<span class="conf mod">Moderate confidence</span></h2>
+        <p>The rule changes the federal test only. California, Massachusetts and New Jersey keep their ABC tests, and New Jersey adopted final ABC rules for its wage and unemployment laws on May 5, 2026, operative October 1. Nine supporting letters cite state ABC tests, most as a warning. Multi-state operators will face overlapping classification standards, and 40 of 48 opposing letters frame the stakes through state unemployment insurance and tax revenue.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-side">
+    <span class="k" id="h-side">Who stands where, 170 attached letters</span>
+    <div class="split">
+      <p><b>Support, 115.</b> All platforms, 83 of 87 business and trade groups, the Senate HELP chair, the SBA Office of Advocacy.</p>
+      <p><b>Oppose, 48.</b> Worker advocates, 6 of 7 unions, 7 of 10 government senders, and union-signatory construction contractors. Six letters seek major changes and one takes no position.</p>
+    </div>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-sig">
+    <span class="k" id="h-sig">Signposts</span>
+    <div class="sig">
+      <p><span class="d">Dec. 27, 2026</span><span>OIRA reaches day 90 of its standard review. The period can be extended and no legal deadline applies.</span></p>
+      <p><span class="d">On publication</span><span>The control examples for app work, construction and regulated industries, and how the Department answers the objections to its cost analysis.</span></p>
+      <p><span class="d">After publication</span><span>State legislation on classification, and the pending cases over the 2024 rule. Challenge risk is material if the core-factor weighting stays unchanged.</span></p>
+    </div>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-acts">
+    <span class="k" id="h-acts">What it means for you</span>
+    <div class="acts">
+      <div><h2>App platforms</h2><p>Inventory matching, incentive, acceptance-rate and penalty practices now. On publication, assess them against the control guidance.</p></div>
+      <div><h2>Financial services</h2><p>Check whether the final text separates mandatory securities compliance from control, as your associations asked.</p></div>
+      <div><h2>Trucking</h2><p>Test lease-purchase and speed-limiter arrangements against the final examples, separating required compliance from operational control.</p></div>
+      <div><h2>Construction</h2><p>Map subcontracting and supervision practices to the final examples. If the rule gives the sector no specific treatment, weigh a request for a DOL opinion letter.</p></div>
+      <div><h2>Multi-state employers</h2><p>Plan for overlapping standards. The federal change leaves state ABC tests and state unemployment rules in place.</p></div>
+      <div><h2>Worker groups and states</h2><p>Compile state fiscal estimates and match them to the objections already on file, then judge the final rule by how it answers them.</p></div>
+    </div>
+  </section>
+
+  <footer class="foot pad">
+    <p class="full"><strong>Full report.</strong> Every claim traced to its source, positions and arguments by sector and sender, scenarios with their assumptions, and data files. <a href="https://forms.gle/mVrsRADEAppke4JLA">Get it through the ComtIQ waitlist.</a> <a href="reports/comtiq-whd-independent-contractor-one-page.pdf">Download this page as a PDF.</a> When the final rule publishes, ComtIQ will audit what the Department accepted, rejected or left unanswered.</p>
+    <p><strong>Coverage.</strong> 16,498 public records collected; 16,363 typed comments classified; 170 distinct attached letters reviewed in full; 120 personal comments coded by hand from a random sample.</p>
+    <p>Docket <a href="https://www.regulations.gov/docket/WHD-2026-0001">WHD-2026-0001</a> · Proposed rule <a href="https://www.federalregister.gov/d/2026-03962">91 FR 9932</a> · <a href="https://www.reginfo.gov/public/do/eoDetails?rrid=1545965">OIRA review record</a> · Likelihood terms follow ICD 203. Independent analysis; no party to the rulemaking paid for or reviewed it. Not legal advice. comtiq.com</p>
+  </footer>
+</div>
+
+</body>
+</html>
