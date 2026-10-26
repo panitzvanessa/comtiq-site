@@ -1,0 +1,33 @@
+"""Sender types for FAA-2026-4558. First match wins; falls back to classify.classify."""
+import re
+from classify import classify as base
+
+RULES4558 = [
+    (r"^doordash$", "drone_delivery"),
+    (r"senneca|blueflite|parallel flight|flying lizard", "uas_operator_tech"),
+    (r"correctional leaders|commercial space federation|astrotech", "facility_owner_other"),
+    (r"animal agriculture alliance", "farm_producers"),
+    (r"animal|humane|spca|mercy for|plant peace|pro-animal|new roots|save the dogs|farmstand|human wildlife|inside animal ag|seed: strategies|friends of the earth|public interest coalition", "animal_advocacy"),
+    (r"cattle|pork|poultry|chicken|egg|dairymen|meat institute|farm bureau|rose acre|aquaculture|horse council|star milling|animal agriculture alliance|grimmius|feeders|hts ag", "farm_producers"),
+    (r"nppa|press photographers|news media|broadcasters|photograph|media|productions|lazersharp|kurc|articles in common|catalyst visual|mtnclimberjoe", "press_and_media"),
+    (r"aclu|eff\b|epic|cdt", "civil_society"),
+    (r"smart[- ]?td|smart transportation|teamsters|brotherhood of electrical|transportation trades|smart transportation union|^railroad$", "labor"),
+    (r"nascar|red sox|disney|usga|pga|stadium|venue|iaapa|fairs|outdoor amusement|philharmonic|heritage bank center|resort association|passenger vessel", "venues_and_events"),
+    (r"d-fend|defenduas|echodyne|skysafe|aerodefense|huntrak|primordial defense|tempest|terra vigilis|asylon|vortezon|security industry|hidden level|atlas response|eldaeon|five-alpha|raad|chaos 1|brightai|volckmann|longbow|marivin|concept solutions|pierce aerospace", "security_tech"),
+    (r"awwa|water|wastewater|cleanwater|cnppid|great river hydro", "water"),
+    (r"chemistry|chemical|chlorine|fertilizer|socma|petrochemical|refinery|valero|midstream|gas association|natural gas|lng|liquid terminals|ocean industries|essential minerals|williams companies|dt midstream", "chemical_energy"),
+    (r"edison|electric|power|eei|nationalgrid|florida power|pjm|southern company|nuclear energy|state energy officials", "infrastructure"),
+    (r"railroad|railway|csx|cn railway|port authorities|maritime|bridge, tunnel|public transportation", "transport_infra"),
+    (r"data center|markley|oracle|bank policy|itic|information technology industry|ccia|ncta|ctia|telecommunications industry|gsk|texas biomedical|organ sharing|wm$", "facility_owner_other"),
+]
+
+
+def classify4558(org: str) -> str:
+    k = (org or "").strip().lower()
+    if not k:
+        return "individual"
+    for pat, cat in RULES4558:
+        if re.search(pat, k):
+            return cat
+    c = base(org)
+    return c

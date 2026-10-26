@@ -1,0 +1,18 @@
+{
+ "food_ag_74_90": "food and agricultur|74\\.90|\\bfarm|animal|livestock|slaughter|poultry|cafo",
+ "press_newsgathering": "journalis|newsgather|press|first amendment|media",
+ "transit_74_250": "74\\.250|shortest (amount of )?time|transit",
+ "notification_74_255": "74\\.255|notif|whitelist",
+ "remote_id": "remote id|remote identification",
+ "eligibility_74_54": "74\\.54|eligib|criteria",
+ "lateral_boundary": "boundar|perimeter|property line|lateral",
+ "ceiling_400": "400 ?(feet|ft)|ceiling|altitude",
+ "special_uafr": "special uafr|special unmanned aircraft flight restriction|74\\.6\\b|99\\.7",
+ "public_notice_review": "30[- ]day|public notice|comment period|renew|expir|review",
+ "counter_uas": "counter[- ]?uas|mitigat|jamm|c-uas",
+ "confidentiality": "confidential|sensitive security|ssi\\b|disclos",
+ "costs_ria": "cost|burden|regulatory impact",
+ "inspection_ops": "inspect|survey|mapping",
+ "delivery": "deliver",
+ "part108_link": "part 108|bvlos|beyond visual"
+}

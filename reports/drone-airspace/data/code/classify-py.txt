@@ -1,0 +1,137 @@
+"""Sender-type classification for FAA-2025-1908 (and later FAA-2026-4558).
+Rules match the organization field. Order matters: first match wins."""
+import re
+
+EXACT = {
+    "modalai, inc.": "uas_tech", "red cat holdings": "uas_tech", "sunflower labs inc.": "uas_tech",
+    "summer agro services, llc": "uas_operator_tech", "farm eagle llc": "uas_operator_tech", "agribugs": "uas_operator_tech",
+    "remnant technology inc": "uas_operator_tech", "hot air expeditions": "manned_sport",
+    "nebraska aviation trades association": "manned_ga", "safe": "manned_ga",
+    # delivery operators
+    "amazon prime air": "drone_delivery", "wing aviation llc": "drone_delivery",
+    "zipline international": "drone_delivery", "zipline international inc.": "drone_delivery",
+    "ups flight forward inc": "drone_delivery", "walmart inc.": "drone_delivery",
+    "doordash, inc.": "drone_delivery", "droneup llc": "drone_delivery", "droneup, llc": "drone_delivery",
+    "drones up l,l,c.": "drone_delivery", "manna air delivery, inc.": "drone_delivery",
+    "arrive ai": "drone_delivery", "skyports drone services inc.": "drone_delivery",
+    "skyports inc.": "drone_delivery", "wingcopter gmbh": "drone_delivery", "float cargo": "drone_delivery",
+    "elroy air": "drone_delivery", "flowco": "drone_delivery",
+    # retail / broad business
+    "u.s. chamber of commerce": "business_assoc", "national association of manufacturers": "business_assoc",
+    "national retail federation": "business_assoc", "retail industry leaders association": "business_assoc",
+    "technet": "business_assoc", "associated builders and contractors": "business_assoc",
+    "associated general contractors of america": "business_assoc",
+    "consumer technology association (cta)": "business_assoc", "telecommunications industry association": "business_assoc",
+    "wireless infrastructure association (wia)": "business_assoc", "ctia": "business_assoc",
+    "alliance for telecommunications industry solutions": "business_assoc", "north texas commission": "business_assoc",
+    "national electrical contractors association": "business_assoc", "stadium managers association": "business_assoc",
+    "american cement association": "business_assoc",
+    # drone trade groups
+    "association for uncrewed vehicle systems international (auvsi)": "drone_trade_assoc",
+    "commercial drone alliance": "drone_trade_assoc", "the commercial drone alliance": "drone_trade_assoc",
+    "drone service providers alliance": "drone_trade_assoc", "small uav coalition": "drone_trade_assoc",
+    "academy of model aeronautics (ama)": "drone_trade_assoc", "fpv freedom coalition": "drone_trade_assoc",
+    "global utm association (gutma)": "drone_trade_assoc", "women and drones llc": "drone_trade_assoc",
+    "cascade auvsi": "drone_trade_assoc", "american spray drone coalition": "drone_trade_assoc",
+    "the agricultural drone initiative": "drone_trade_assoc",
+    "coalition of commercial and recreational uas operators": "drone_trade_assoc",
+    "coalition of heavy-lift cargo uas developers and operators": "drone_trade_assoc",
+    "twelve shared airspace utm service providers and operators": "drone_trade_assoc",
+    "utility inspection & geospatial alliance (uiga)": "drone_trade_assoc", "vets to drones 501c (3)": "drone_trade_assoc",
+    "autonomy institute": "drone_trade_assoc", "unmanned safety institute": "drone_trade_assoc",
+    "unmanned safety institute (usi)": "drone_trade_assoc", "pilot institute": "drone_trade_assoc",
+    # utilities / critical infrastructure
+    "eei, appa, lppc, and nreca": "infrastructure", "eei, appa, nreca, and lppc": "infrastructure",
+    "national rural electric cooperative association (nreca)": "infrastructure",
+    "association of american railroads": "infrastructure", "marcellus shale coalition": "infrastructure",
+    "american fuel and petrochemical manufacturers": "infrastructure", "the petroleum alliance of oklahoma": "infrastructure",
+    "freeport-mcmoran": "infrastructure", "weyerhaeuser": "infrastructure", "cargill inc.": "infrastructure",
+    "at&t": "infrastructure", "verizon": "infrastructure",
+    # manned aviation, general and commercial
+    "aopa": "manned_ga", "eaa, aopa": "manned_ga", "experimental aircraft association (eaa)": "manned_ga",
+    "national business aviation association (nbaa)": "manned_ga", "nbaa": "manned_ga",
+    "general aviation manufacturers association": "manned_ga", "the alaska airmen's association": "manned_ga",
+    "antique airplane association": "manned_ga", "vintage aircraft association": "manned_ga",
+    "recreational aviation foundation": "manned_ga", "soaring society of america": "manned_ga",
+    "national air transportation association": "manned_ga", "flight safety foundation": "manned_ga",
+    "air line pilots association, int'l": "manned_airline", "airlines for america": "manned_airline",
+    "southwest airlines pilots association": "manned_airline", "coalition of airline pilots associations": "manned_airline",
+    "netjets association of shared aircraft pilots": "manned_airline",
+    "national air traffic controllers association (natca)": "manned_airline",
+    "transport workers union of america.": "manned_airline", "transportation trades department, afl-cio": "manned_airline",
+    "national association of state aviation officials (nasao)": "government",
+    "american association of state highway and transportation officials": "government",
+    "vertical aviation international (vai)": "manned_rotor", "helicopter safety advisory conference (hsac)": "manned_rotor",
+    "us helicopter safety team - ushst": "manned_rotor", "eastern region helicopter council (erhc)": "manned_rotor",
+    "european helicopter association": "manned_rotor", "tour operators program of safety (tops)": "manned_rotor",
+    "southern california rotorcraft association": "manned_rotor", "robinson helicopter company": "manned_rotor",
+    "association of air medical services": "manned_rotor", "air medical operators association": "manned_rotor",
+    "united aerial firefighters association": "manned_rotor",
+    "national agricultural aviation association": "manned_ag", "air tractor, inc.": "manned_ag",
+    "united states hang gliding and paragliding association": "manned_sport",
+    "united states hang gliding and paragliding association (ushpa)": "manned_sport", "ushpa": "manned_sport",
+    "united states powered paragliding association": "manned_sport", "usppa": "manned_sport",
+    "united states ultralight association (usua)": "manned_sport", "united states parachute association": "manned_sport",
+    "balloon federation of america": "manned_sport",
+    # public safety
+    "international association of fire chiefs": "public_safety", "airborne public safety association": "public_safety",
+    "law enforcement drone association": "public_safety", "droneresponders": "public_safety",
+    "airt and droneresponders": "public_safety", "airt, inc.": "public_safety",
+    # civil society, media
+    "aclu / epic": "civil_society", "ballard spahr llp on behalf of the news media coalition": "media",
+    "motion picture association, inc.": "media", "filmla, inc.": "media", "new york city bar association": "civil_society",
+    "rose law": "other",
+    # research
+    "mit lincoln laboratory": "research", "monterey bay aquarium research institute": "research", "aiaa": "research",
+    "astm international": "research",
+    # manufacturers and tech
+    "dji technology, inc.": "uas_tech", "skydio, inc.": "uas_tech", "the boeing company": "uas_tech",
+    "airbus": "uas_tech", "lockheed martin": "uas_tech", "aerospace industries association": "uas_tech",
+    "garmin intl.": "uas_tech", "qualcomm incorporated": "uas_tech", "iridium communications inc.": "uas_tech",
+    "viasat": "uas_tech", "thales usa, inc.": "uas_tech", "toyota motor north america, inc.": "business_assoc",
+    "hartzell propeller": "manned_ga", "standardaero": "manned_ga", "flightsafety international, inc.": "manned_ga",
+}
+
+RULES = [
+    (r"quiet|noise|residents|citizens|neighbors|save our sk|fair skies|threatened skies|airport (solutions|congestion|working)|"
+     r"impacted communities|round table|plane sense|people matter|heights citizens|mcqsc|scana", "community"),
+    (r"electric|energy|power|gas|utilit|grid|edison|southern company|quanta|eversource|m\. j\. electric|"
+     r"pacific gas|consumers energy|national grid|demco|edm international|blue ridge", "infrastructure"),
+    (r"university|institute of tech|test site|research|laborator|nuair|virginia tech|notre dame|liberty university", "research"),
+    (r"farm bureau|agri-business|agricultural retailers|mosquito|central life|nippon kayaku", "agriculture"),
+    (r"agricultural aviation|ag aviation|flying service|ag service|aerial applicator|spraying|agri-tech aviation|"
+     r"helicopter applicators|crop|dusting|chem-air|cavalier air|thisius|probasco|reabe|morten aero|"
+     r"pontiac flying|billings flying|becker flying|jet stream ag|glades ag|dairyland|marginal aviation|"
+     r"r & m flying|morgan's flying|flying illini|katahdin|schwenk", "manned_ag"),
+    (r"balloon|aerostat|paraglid|hang glid|paramotor|ultralight|parachute|soaring|ballooning|sky sail|kubicek", "manned_sport"),
+    (r"helicopter|heli|rotor|life ?flight|medflight|air medical|air evac|airmethods|air methods|ems|reach air|"
+     r"med-trans|metro aviation|phi health|mayo clinic air|sanford health|life link|chopper|croman|"
+     r"guardian helicopters|westwind|timberland|timberline|zephyr|raven helicopters", "manned_rotor"),
+    (r"pilots|airmen|flying club|cloudbusters|aviation ranch|eaa|experimental aircarft|aircraft association|"
+     r"bathrick|go aviation|asi jet|alexair|wings air|lee aviation|lou toth|aviation safety advisory|skyways air", "manned_ga"),
+    (r"fire|rescue|sheriff|police|emergency squad|search and rescue|county|state of|city of|department", "public_safety"),
+    (r"news|media coalition|press|photographers|film|motion picture|productions|cinema|subterrafilms|uproarla", "media"),
+    (r"alliance|coalition|association|council|federation|society", "other_assoc"),
+    (r"drone|uas|uav|aerial|unmanned|uncrewed|imaging|photography|photo|survey|inspection|mapping|geospatial|"
+     r"robot|autonom|utm|airspace|radar|detect|avionix|aero|sky|spray|lidar|zeitview|dexa|percepto|resilienx|"
+     r"anra|aloft|censys|hidden level|echodyne|matrixspace|vigilant|seneca|hylio|galaxy unmanned|reflex|"
+     r"high ?lander|alakai|veilglass|kware|peak valley|lipont|flock|brinc|dedrone|acciipiter|ciconia|truweather|"
+     r"hoverfly|wingtra|flyability|cyberhawk|raptor maps|infravision|propeller|airdex|sifly|whisper|pyka|"
+     r"rotor technologies|reliable robotics|merlin|icarus|hermeus|xelevate|verteel|skedflex|tiami|nxgencomm|"
+     r"aura network|qcommunications|guardian rf|spirent|tidcom|riverboat|primal space|pierce aerospace|"
+     r"poseidon|volo|valinor|unisphere|swashplate|k6 labs|ktx|tek|light grey|buzz|birdcall|sm\+|smart td|"
+     r"vitalis|oureon|nelson|meadowlark|amor fati|stratum|titan|centinus|end state|dynamic margins|eupraxis", "uas_operator_tech"),
+]
+
+
+def classify(org: str) -> str:
+    o = (org or "").strip()
+    if not o:
+        return "individual"
+    k = o.lower()
+    if k in EXACT:
+        return EXACT[k]
+    for pat, cat in RULES:
+        if re.search(pat, k):
+            return cat
+    return "other"

@@ -1,0 +1,56 @@
+"""Near-duplicate campaign detection on typed comment text (field), not attachments.
+TF-IDF on word 5-gram shingles, cosine >= THRESH links two comments; clusters are connected components
+with at least MIN_SIZE members. Usage: python3 campaigns.py <docket>"""
+import html, re, sqlite3, sys, json
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.neighbors import NearestNeighbors
+
+THRESH, MIN_SIZE, MIN_CHARS = 0.80, 5, 200
+
+
+def clean(t):
+    t = html.unescape(re.sub(r"<[^>]+>", " ", t or ""))
+    t = re.sub(r"\s+", " ", t).strip().lower()
+    return t
+
+
+def run(db_path, docket_prefix):
+    db = sqlite3.connect(db_path)
+    rows = db.execute("select id, field, att from c where id like ?", (docket_prefix + "%",)).fetchall()
+    ids, texts = [], []
+    for cid, f, a in rows:
+        t = clean(f)
+        if len(t) < MIN_CHARS:  # placeholders and short notes: use attachment text if present
+            t = clean(a)[:4000]
+        if len(t) >= MIN_CHARS:
+            ids.append(cid); texts.append(t[:4000])
+    vec = TfidfVectorizer(analyzer="word", ngram_range=(5, 5), min_df=2, sublinear_tf=True)
+    X = vec.fit_transform(texts)
+    nn = NearestNeighbors(metric="cosine", radius=1 - THRESH).fit(X)
+    dist, ind = nn.radius_neighbors(X)
+    parent = list(range(len(ids)))
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]; x = parent[x]
+        return x
+    for i, nb in enumerate(ind):
+        for j in nb:
+            a, b = find(i), find(j)
+            if a != b: parent[a] = b
+    comp = {}
+    for i in range(len(ids)):
+        comp.setdefault(find(i), []).append(i)
+    clusters = [sorted(ids[k] for k in v) for v in comp.values() if len(v) >= MIN_SIZE]
+    clusters.sort(key=len, reverse=True)
+    return clusters, {ids[i]: texts[i] for i in range(len(ids))}
+
+
+if __name__ == "__main__":
+    cl, tx = run(sys.argv[1], sys.argv[2])
+    out = [{"size": len(c), "ids": c, "sample": tx[c[0]][:300]} for c in cl]
+    json.dump(out, open(sys.argv[3], "w"), indent=1)
+    print(len(cl), "clusters,", sum(len(c) for c in cl), "comments")
+    for c in out[:40]:
+        print(c["size"], "|", c["sample"][:160])

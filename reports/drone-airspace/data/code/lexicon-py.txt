@@ -1,0 +1,25 @@
+import re
+P1908 = {
+ "right_of_way":  r"right[- ]of[- ]way|108\.195|\byield(s|ing)? (to|the right)",
+ "ec_adsb":       r"electronic conspicuity|\bec devices?\b|ads-?b|\b978\b|\b1090\b|transponder|tabs\b",
+ "daa":           r"detect[- ]and[- ]avoid|\bdaa\b|see[- ]and[- ]avoid|non-?cooperative|sense and avoid",
+ "shielded":      r"shielded",
+ "population":    r"population density|operations? over people|over (populated|congested)|landscan|ground risk",
+ "permit_cert":   r"operating permits?|operating certificates?",
+ "airworthiness": r"airworthiness|consensus standards?|1,?320",
+ "personnel":     r"operations supervisor|flight coordinator|ratio of|aircraft per (person|pilot|operator)",
+ "part146_utm":   r"part 146|automated data service|\badsp|\butm\b|strategic deconfliction|conformance monitoring|\buss\b",
+ "security_tsa":  r"\btsa\b|security program|cyber ?security|threat assessment|background check",
+ "noise":         r"\bnoise\b|decibel|\bdba\b|\bquiet",
+ "privacy":       r"privacy|surveillance",
+ "environment":   r"environmental|\bnepa\b|wildlife|\bbirds?\b",
+ "transition":    r"waivers?|exemptions?|44807|transition",
+ "altitude":      r"\b400 ?(feet|ft)|altitude|\bagl\b",
+ "agriculture":   r"part 137|agricultur|spray|crop|aerial applicat",
+ "delivery":      r"deliver(y|ies)|package",
+ "public_safety": r"first responders?|public safety|law enforcement|firefight|search and rescue|\bdfr\b",
+ "medical_ems":   r"air medical|helicopter emergency|\bhems\b|medevac|air ambulance",
+}
+def tags(text, lex=P1908):
+    t = (text or "").lower()
+    return {k for k, p in lex.items() if re.search(p, t)}
