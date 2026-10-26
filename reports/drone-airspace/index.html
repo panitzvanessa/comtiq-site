@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ComtIQ cross-docket regulatory intelligence report on the FAA BVLOS rule (Parts 108 and 146) and the fixed-site drone restriction rule (Part 74): what is likely to reach the final rules and what drone airspace access will cost.">
+<link rel="canonical" href="https://comtiq.com/reports/drone-airspace/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Drone Airspace Access Report · ComtIQ</title>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@700&display=swap">
+<style>
+/* Layout: a navy masthead in the ComtIQ brand, then a report set on a quiet paper column,
+   with docket IDs and counts in mono as the record's own vernacular. */
+:root {
+  --navy: #0A1B2B;
+  --navy-2: #12293D;
+  --cyan: #00C2FF;
+  --accent: #0077A3;
+  --amber: #B7791F;
+  --paper: #F5F7FA;
+  --surface: #FFFFFF;
+  --ink: #0B1C2C;
+  --muted: #586474;
+  --rule: #D6DEE5;
+  --tint: #E8F4FA;
+  --warn-bg: #FBF3E4;
+  --on-navy: #E8F1F7;
+  --on-navy-muted: #9FB3C4;
+  --bar-public: #0077A3;
+  --bar-epa: #0A1B2B;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --wrap: 880px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3;
+    --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; --warn-bg: #2A2416;
+    --bar-public: #3FB9E6; --bar-epa: #C9D6E2; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3;
+  --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; --warn-bg: #2A2416;
+  --bar-public: #3FB9E6; --bar-epa: #C9D6E2; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16.5px; line-height: 1.62; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-variation-settings: "wdth" 110; line-height: 1.12; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h2 { font-size: clamp(1.45rem, 3vw, 1.85rem); font-weight: 750; }
+h3 { font-size: 1.08rem; font-weight: 700; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; border-radius: 3px; }
+.mono { font-family: var(--mono); font-size: 0.88em; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* masthead */
+.mast { background: var(--navy); color: var(--on-navy); }
+.mast .wrap { padding-block: 26px 34px; display: grid; gap: 22px; }
+.brandline { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand svg { width: 38px; height: 38px; flex: none; }
+.word { font-family: "Montserrat", var(--display); font-weight: 700; font-size: 1.45rem; color: #FFFFFF; line-height: 1; }
+.word b { color: var(--cyan); }
+.kind { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--on-navy-muted); }
+.mast h1 { font-size: clamp(1.8rem, 4.6vw, 2.7rem); font-weight: 800; color: #FFFFFF; max-width: 22em; }
+.mast .sub { color: var(--on-navy); font-size: 1.05rem; max-width: 40em; }
+.meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px 24px; border-top: 1px solid #23405C; padding-top: 16px; }
+.meta div { display: grid; gap: 2px; min-width: 0; }
+.meta dt, .meta .k { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-navy-muted); }
+.meta .v { font-size: 0.92rem; color: #FFFFFF; overflow-wrap: anywhere; }
+.question { background: var(--navy-2); border-left: 3px solid var(--cyan); padding: 12px 16px; color: var(--on-navy); font-size: 0.98rem; }
+.question .k { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); display: block; margin-bottom: 2px; }
+
+/* sections */
+main .wrap { padding-block: 8px 56px; }
+section { padding-block: 34px 6px; display: grid; gap: 16px; border-bottom: 1px solid var(--rule); padding-bottom: 30px; }
+section:last-of-type { border-bottom: 0; }
+.sec-k { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.prose { display: grid; gap: 12px; max-width: 42em; }
+.muted { color: var(--muted); }
+.small { font-size: 0.88rem; }
+
+.bluf { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 20px 22px; display: grid; gap: 10px; font-size: 1.06rem; }
+.bluf strong { font-weight: 600; }
+
+/* findings */
+.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: f; }
+.findings li { counter-increment: f; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; padding-block: 16px; border-top: 1px solid var(--rule); }
+.findings li::before { content: counter(f); font-family: var(--display); font-weight: 800; font-size: 1.3rem; color: var(--accent); line-height: 1.2; }
+.findings .body { display: grid; gap: 6px; min-width: 0; }
+.findings .src { font-size: 0.84rem; color: var(--muted); }
+.conf { justify-self: start; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); white-space: nowrap; }
+.conf.mod { border-color: var(--amber); color: var(--amber); }
+.conf.low { border-color: var(--muted); color: var(--muted); }
+
+/* figures */
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.fig { padding: 14px 14px 14px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 4px; align-content: start; min-width: 0; }
+.fig .n { font-family: var(--display); font-variation-settings: "wdth" 100; font-weight: 750; font-size: 1.7rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.fig .l { font-size: 0.86rem; color: var(--muted); }
+
+/* tables */
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--rule); vertical-align: top; }
+thead th { border-top: 0; font-family: var(--mono); font-weight: 500; font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); background: var(--tint); }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td .id { font-family: var(--mono); font-size: 0.82rem; white-space: nowrap; }
+.tag { display: inline-block; font-family: var(--mono); font-size: 0.68rem; padding: 1px 7px; border-radius: 4px; border: 1px solid var(--rule); color: var(--muted); white-space: nowrap; }
+.tag.ans { border-color: var(--accent); color: var(--accent); }
+.tag.oos { border-color: var(--amber); color: var(--amber); background: var(--warn-bg); }
+.tag.none { border-color: var(--ink); color: var(--ink); }
+.tag.leg { border-color: var(--muted); color: var(--ink); background: var(--tint); }
+.rubric { display: grid; gap: 6px; margin: 4px 0 18px; font-size: 0.88rem; color: var(--muted); }
+.rubric p { margin: 0; display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 12px; align-items: baseline; }
+.rubric .tag { justify-self: start; }
+@media (max-width: 640px) { .rubric p { grid-template-columns: 1fr; gap: 2px; } }
+.ladder { margin: 22px 0 6px; display: grid; gap: 8px; }
+.ladder figcaption { font-size: 0.86rem; color: var(--muted); margin-bottom: 4px; }
+.lr { display: grid; grid-template-columns: 6.5rem minmax(60px, 1fr) minmax(0, 1.6fr); gap: 12px; align-items: center; font-size: 0.9rem; }
+.lr-n { font-family: var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+.lr-bar { height: 10px; background: var(--tint); border-radius: 2px; overflow: hidden; }
+.lr-bar i { display: block; height: 100%; background: var(--bar-public); }
+.lr-l { color: var(--muted); }
+@media (max-width: 640px) { .lr { grid-template-columns: 5.2rem 1fr; } .lr-l { grid-column: 1 / -1; padding-left: 0; margin-top: -4px; } }
+
+/* chart */
+.chart { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 18px 18px 12px; display: grid; gap: 12px; }
+.chart svg { width: 100%; height: auto; display: block; }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 0.82rem; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 720px) { .two { grid-template-columns: 1fr; } }
+.col { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.col ul { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; }
+
+.terms { display: flex; flex-wrap: wrap; gap: 6px; }
+.terms span { font-family: var(--mono); font-size: 0.72rem; border: 1px solid var(--rule); border-radius: 4px; padding: 2px 7px; color: var(--muted); }
+
+.actions { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.actions li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 14px; padding-block: 12px; border-top: 1px solid var(--rule); }
+.actions .who { font-family: var(--mono); font-size: 0.76rem; color: var(--accent); letter-spacing: 0.04em; padding-top: 3px; }
+@media (max-width: 560px) { .actions li { grid-template-columns: 1fr; gap: 4px; } }
+
+footer { background: var(--navy); color: var(--on-navy-muted); }
+footer .wrap { padding-block: 22px 30px; font-size: 0.82rem; display: grid; gap: 6px; }
+footer b { color: #FFFFFF; }
+
+/* evidence: every key number opens its source */
+.ev { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-decoration: underline dotted var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; border-radius: 2px; }
+.ev:hover { color: var(--accent); }
+.ev:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.ev[aria-expanded="true"] { background: var(--tint); color: var(--accent); }
+.fig .n .ev { text-decoration-thickness: 2px; }
+.ev-hint { font-size: 0.86rem; color: var(--muted); display: flex; gap: 8px; align-items: baseline; }
+.ev-hint .ev-demo { text-decoration: underline dotted var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; color: var(--ink); }
+.ev-panel { position: fixed; z-index: 20; right: max(16px, env(safe-area-inset-right, 0px)); top: calc(16px + env(safe-area-inset-top, 0px)); width: min(400px, calc(100vw - 32px)); max-height: calc(100vh - 32px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); overflow-y: auto; background: var(--surface); color: var(--ink); border: 1px solid var(--rule); border-top: 3px solid var(--cyan); border-radius: 8px; box-shadow: 0 24px 60px -24px rgba(5, 15, 25, 0.55); }
+.ev-in { padding: 16px 18px 18px; display: grid; gap: 10px; }
+.ev-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.ev-k { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.ev-close { font: inherit; font-size: 0.82rem; background: none; border: 1px solid var(--rule); color: var(--ink); border-radius: 999px; padding: 3px 12px; cursor: pointer; }
+.ev-close:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+.ev-panel blockquote { margin: 0; padding: 10px 12px; background: var(--tint); border-left: 3px solid var(--accent); font-size: 0.95rem; white-space: pre-line; }
+.ev-src { font-size: 0.84rem; }
+.ev-note { font-size: 0.84rem; color: var(--muted); }
+@media (max-width: 640px) { .ev-panel { top: auto; bottom: 0; right: 0; left: 0; width: auto; max-height: 70vh; border-radius: 12px 12px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); padding-left: env(safe-area-inset-left, 0px); padding-right: env(safe-area-inset-right, 0px); } }
+
+/* argument and answer pairs */
+.pairs { display: grid; gap: 14px; }
+.pair { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.pair-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--rule); }
+.pair-b { display: grid; grid-template-columns: 1fr 1fr; }
+.side { padding: 12px 16px 14px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.side.ans { background: var(--tint); border-left: 1px solid var(--rule); }
+.side .who { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.03em; color: var(--muted); overflow-wrap: anywhere; }
+.side.ans .who { color: var(--accent); }
+.side blockquote { margin: 0; font-size: 0.94rem; line-height: 1.5; }
+@media (max-width: 640px) { .pair-b { grid-template-columns: 1fr; } .side.ans { border-left: 0; border-top: 1px solid var(--rule); } .pair-h { flex-direction: column; gap: 6px; } }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<style>
+p.prose { display: block; }
+.hchart { margin: 0; display: grid; gap: 7px; background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; }
+.hchart figcaption { font-size: 0.86rem; color: var(--muted); margin-bottom: 2px; }
+.hb { display: grid; grid-template-columns: 11rem minmax(0,1fr) 3.6rem; gap: 10px; align-items: center; font-size: 0.88rem; }
+.hb-t { height: 12px; background: var(--tint); border-radius: 2px; overflow: hidden; }
+.hb-t i { display: block; height: 100%; background: var(--accent); }
+.hb-t i.alt { background: var(--amber); }
+.hb-n { font-family: var(--mono); font-size: 0.8rem; text-align: right; }
+.risk td:nth-child(2), .risk td:nth-child(3), .risk td:nth-child(4) { white-space: nowrap; }
+.riskx { margin: 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: 0.9rem; max-width: 46em; }
+.lk { font-family: var(--mono); font-size: 0.72rem; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--rule); white-space: nowrap; }
+.lk.hi { border-color: var(--accent); color: var(--accent); }
+.lk.lo { border-color: var(--amber); color: var(--amber); }
+button.ev { text-align: left; }
+td .ev { display: inline; }
+@media (max-width: 560px) { .hb { grid-template-columns: 7.5rem minmax(0,1fr) 3rem; } }
+
+.odds { display: grid; gap: 4px; margin-top: 4px; font-size: 0.92rem; }
+.odds p { display: grid; grid-template-columns: 10.5rem minmax(0,1fr); gap: 10px; align-items: baseline; }
+.odds .lk { justify-self: start; }
+.test { font-size: 0.88rem; color: var(--muted); }
+.test .tk { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-right: 6px; }
+@media (max-width: 560px) { .odds p { grid-template-columns: 1fr; gap: 2px; } }
+.dq { background: var(--surface); border: 1px solid var(--rule); border-left: 3px solid var(--amber); border-radius: 6px; padding: 14px 16px; display: grid; gap: 6px; font-size: 0.95rem; max-width: 46em; }
+.dq .sec-k { color: var(--amber); }
+.calc { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 16px; display: grid; gap: 14px; }
+.calc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px 18px; }
+.calc label { display: grid; gap: 4px; font-size: 0.86rem; color: var(--ink); min-width: 0; }
+.calc input { font: inherit; font-family: var(--mono); font-size: 0.95rem; padding: 7px 9px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper); color: var(--ink); width: 100%; }
+.calc input:focus-visible { outline: 3px solid var(--cyan); outline-offset: 1px; }
+.calc .hint { font-size: 0.76rem; color: var(--muted); }
+.calc-out { display: flex; flex-wrap: wrap; gap: 10px 32px; border-top: 1px solid var(--rule); padding-top: 12px; }
+.calc-out p { display: grid; gap: 2px; }
+.calc-out .k { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.calc-out .v { font-family: var(--display); font-weight: 750; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <div class="brandline">
+      <div class="brand" aria-label="ComtIQ">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00C2FF"/><stop offset="1" stop-color="#0A6BD6"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="#123A5E" stroke-width="5"/><path d="M32 3.5 A28.5 28.5 0 1 1 7.3 46.25" fill="none" stroke="url(#mg)" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="32" r="20" fill="none" stroke="#123A5E" stroke-width="3"/><path d="M52 32 A20 20 0 0 1 22 49.3" fill="none" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="13.5" fill="url(#mg)"/><path d="M24.5 26.5 h15 a3 3 0 0 1 3 3 v5.5 a3 3 0 0 1 -3 3 h-8.2 l-4.3 3.6 v-3.6 h-2.5 a3 3 0 0 1 -3 -3 v-5.5 a3 3 0 0 1 3 -3z" fill="#FFFFFF"/><circle cx="27.8" cy="32.2" r="1.55" fill="#0A6BD6"/><circle cx="32" cy="32.2" r="1.55" fill="#0A6BD6"/><circle cx="36.2" cy="32.2" r="1.55" fill="#0A6BD6"/></svg>
+        <span class="word">Comt<b>IQ</b></span>
+      </div>
+      <span class="kind">Cross-docket regulatory intelligence · Two rules, one airspace</span>
+    </div>
+    <h1>Part 108 decides who may fly beyond sight, and Part 74 decides where they can reach</h1>
+    <p class="sub">The FAA's BVLOS rule and its fixed-site drone restriction rule, read together through both comment records, the proposed text and the agency's own cost analysis.</p>
+    <div class="meta">
+      <div><span class="k">Dockets</span><span class="v mono">FAA-2025-1908 · FAA-2026-4558</span></div>
+      <div><span class="k">Agencies</span><span class="v">FAA; TSA for the Part 108 security program</span></div>
+      <div><span class="k">Part 108 and 146</span><span class="v">90 FR 38212, Aug. 7, 2025, RIN 2120-AL82 and 1652-AA80. Final rule at OIRA since July 10, 2026</span></div>
+      <div><span class="k">Part 74</span><span class="v">91 FR 24650, May 6, 2026, RIN 2120-AL33. Comments closed Aug. 5, 2026. No final rule</span></div>
+      <div><span class="k">Comment windows</span><span class="v">Aug. 7 to Oct. 6, 2025, reopened Jan. 28 to Feb. 11, 2026 (108). May 6 to Aug. 5, 2026 (74)</span></div>
+      <div><span class="k">Version</span><span class="v">1.1, October 26, 2026. Data cutoff Oct. 26, 2026</span></div>
+    </div>
+    <p class="question"><span class="k">Question this report answers</span>Once Part 108 is final, where can a commercial operator fly at scale, and which open choices in Parts 108, 146 and 74 decide what that access costs?</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section aria-label="Bottom line up front">
+      <p class="sec-k">Bottom line up front</p>
+      <div class="bluf">
+        <p><strong>The two rules are written to depend on each other. Under <button type="button" class="ev" data-ev="s108220">§ 108.220</button>, a Part 108 flight inside a UAFR follows Part 74, and Part 74 lets it cross a standard UAFR only with <button type="button" class="ev" data-ev="s74250">Remote ID, a fast transit</button> and a notice to the site manager before each flight. A special UAFR stays closed to outside operators without the <button type="button" class="ev" data-ev="s74251">approval of the using agency and the FAA</button>.</strong></p>
+        <p>The per-flight notice in § 74.255 is the provision most likely to change in practice, because the FAA itself floated a <button type="button" class="ev" data-ev="whitelist">list of approved operators</button> and the delivery companies and drone trade groups that filed in both dockets, joined by Florida Power &amp; Light, say a flight-by-flight notice cannot keep up with <button type="button" class="ev" data-ev="fpl4558">hundreds of flights a day</button>. We expect the duty to stay in the rule text. Whether the FAA names an automated way to meet it is a roughly even chance, and either path helps operators less than an exemption would. The open risk sits where the FAA has put no price, as Disney, IAAPA and the electric utility associations ask to remove or condition commercial access to their sites, <button type="button" class="ev" data-ev="agsnames">ten state attorneys general</button> ask the FAA to say Part 74 does not preempt state laws on drones near critical sites, and the cost analysis states the FAA <button type="button" class="ev" data-ev="riaavoid">has no data</button> on what detours cost operators.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-find">
+      <p class="sec-k">Key judgments</p>
+      <p class="ev-hint">Every <span class="ev-demo">underlined item</span> opens the passage it comes from. Likelihood words follow ICD 203 and are analyst judgments. Each judgment names the outcome we forecast and what would confirm or refute it, so it can be scored when the final rules publish.</p>
+      <h2 id="s-find">Five judgments</h2>
+      <ol class="findings">
+        <li><div class="body">
+          <h3>The final Part 74 will likely keep a per-flight notice duty in its text. Whether the FAA names an automated way to meet it is a roughly even chance.</h3>
+          <p>Section 74.255 asks for eight items before each flight and sends them to the site manager <button type="button" class="ev" data-ev="s74255">"in a form and manner acceptable to the Administrator."</button> That phrase lets the FAA automate the notice without new rule text, though a one-time list alone would not supply the date, time and area each notice must carry. The preamble already describes a <button type="button" class="ev" data-ev="whitelist">one-time submission</button> of certificate and Remote ID numbers. Operators give the scale. Florida Power &amp; Light flies about <button type="button" class="ev" data-ev="fpl4558">500 flights a day</button>, Zipline says the notice is <button type="button" class="ev" data-ev="zip4558">"unachievable for operations at scale"</button> and asks to exempt Part 135 and Part 108 holders, and DoorDash proposes an FAA <button type="button" class="ev" data-ev="dd4558">database of qualified operators</button> in place of notice. Facility owners split. The American Chemistry Council asks for <button type="button" class="ev" data-ev="acc">standing notifications</button> for flights the facility owns or authorizes, and the railroads ask for written notice <button type="button" class="ev" data-ev="aar">no later than 7 days</button> before transit.</p>
+          <div class="odds">
+            <p><span class="lk">Roughly even chance</span> Text keeps the per-flight duty, and the FAA says it will accept an automated or system-generated notice.</p>
+            <p><span class="lk">Unlikely</span> Text exempts Part 135 and Part 108 holders, or replaces the notice with an FAA list.</p>
+            <p><span class="lk">Very unlikely</span> Text keeps the per-flight duty and the FAA names no automated path.</p>
+          </div>
+          <p class="test"><span class="tk">Confirmed if</span> the final § 74.255 still requires notice of each operation. The automation forecast is confirmed if the preamble, advisory circular or UAFR Module accepts automated submission. <span class="tk">Refuted if</span> the final text exempts certificated operators or drops per-operation notice.</p>
+          <span class="conf mod">Moderate confidence</span>
+          <p class="src">91 FR 24678, 24690; comments 1531, 1527, 1684, 1630, 1636, 1660, 1639, 1681.</p>
+        </div></li>
+        <li><div class="body">
+          <h3>Part 107, Part 108 and Part 135 transit through standard UAFRs will likely survive in § 74.250.</h3>
+          <p>This judgment covers standard UAFRs only. The preamble says nothing in the rule gives site managers power to <button type="button" class="ev" data-ev="noauth">"approve, disapprove, restrict, or prohibit operations."</button> Airline pilots back that line, asking that facility operators <button type="button" class="ev" data-ev="alpa">not "control navigable airspace."</button> Against it, Disney asks the FAA to strike routine Part 107 flights and commercial <button type="button" class="ev" data-ev="disney">Part 108, Part 135 and Part 137</button> flights from § 74.250, met senior FAA officials on <button type="button" class="ev" data-ev="disneymemo">September 2, 2026</button>, four weeks after comments closed, and IAAPA asks at minimum for the <button type="button" class="ev" data-ev="iaapa">park operator's advance consent</button>. The electric utility associations want commercial flights over defense-critical electric and nuclear sites <button type="button" class="ev" data-ev="eei4558">"categorically prohibited"</button>, and air medical operators want UA <button type="button" class="ev" data-ev="amoa">excludable from sites their flights serve</button>. Amazon asks the FAA to open special UAFRs at private sites with an FAA-run access path, which would move some sites into the closed regime.</p>
+          <div class="odds">
+            <p><span class="lk hi">Likely</span> § 74.250(c) to (e) keep Part 107, 108 and 135 operations as allowed in standard UAFRs.</p>
+            <p><span class="lk lo">Unlikely</span> The final rule adds a consent requirement, an advance-notice period or a category removal for venues, hospitals or electric sites.</p>
+          </div>
+          <p class="test"><span class="tk">Confirmed if</span> final § 74.250(c), (d) and (e) carry these categories with no sector exception. <span class="tk">Refuted if</span> any of them is removed, or made subject to facility consent, for any sector.</p>
+          <span class="conf low">Low confidence</span>
+          <p class="src">91 FR 24678, 24690; comments 1638, 1627, 1644, 1616, 1559, 1663; memo FAA-2026-4558-1691.</p>
+        </div></li>
+        <li><div class="body">
+          <h3>Roughly even chance that the final Part 74 stops citing TSA threat assessments as part of its basis for letting Part 108 operators in.</h3>
+          <p>The Part 74 summary rests allowed operations on two grounds, <button type="button" class="ev" data-ev="sta4558">"rigorous FAA safety requirements and Transportation Security Administration (TSA) security threat assessments where applicable."</button> The safety ground does not depend on TSA. The security ground does, and the drone industry asked TSA to drop it from Part 108. Amazon asked TSA to <button type="button" class="ev" data-ev="amz108tsa">withdraw from the Part 108 rulemaking</button>, and Wing <button type="button" class="ev" data-ev="wing108sta">strongly opposed</button> the security threat assessment in § 108.335. In the Part 74 docket Wing calls the tie between access and those assessments <button type="button" class="ev" data-ev="wingsta">unnecessary</button>, while the refiners warn that Part 108 <button type="button" class="ev" data-ev="afpm">"has not been finalized"</button> and should not justify access. TSA says its roundtables on the security program will meet <button type="button" class="ev" data-ev="tsa">after both final rules publish</button>. If the final Part 108 narrows or delays the TSA layer, the FAA can still rest § 74.250(d) on safety, and facility owners already asking to remove Part 108 access will point to the missing security ground.</p>
+          <p class="test"><span class="tk">Confirmed if</span> the final Part 74 preamble drops the TSA assessment from its stated basis for Part 108 access. <span class="tk">Refuted if</span> it keeps the TSA ground of 91 FR 24652. A separate security condition for Part 108 operators would be a related change, scored on its own.</p>
+          <span class="conf low">Low confidence</span>
+          <p class="src">91 FR 24652, 24676; comments FAA-2025-1908-2872, -2986; FAA-2026-4558-1645, -1665; TSA notice FR Doc. 2026-18124.</p>
+        </div></li>
+        <li><div class="body">
+          <h3>Food and agriculture will likely stay without criteria in the final Part 74.</h3>
+          <p>The FAA left § 74.90 <button type="button" class="ev" data-ev="fas">reserved</button> after it could not find a farm or food site that another sector did not already cover or that would reach a national-level debilitating impact. The largest public response in either docket answers that question. In a random sample of the 1,439 comments that name no organization, <button type="button" class="ev" data-ev="samp4558">59.2%</button> oppose UAFRs for food and agriculture. That share describes the sample's population, not all 1,669 records. Friends of the Earth filed one comment carrying <button type="button" class="ev" data-ev="foe">15,815 signatures</button> by its attachment's count, 16,434 by its cover note. Pork, cattle, poultry and meat groups ask for eligibility, the Pork Producers for farms, feed mills and plants <button type="button" class="ev" data-ev="nppc">"to quickly and easily seek UAFRs."</button> Volume does not decide this. The FAA's own finding does, and the farm letters we read argue from biosecurity, harassment and the food supply, which the FAA would have to fit to its national-impact test.</p>
+          <p class="test"><span class="tk">Confirmed if</span> final § 74.90 reads "[Reserved]" or the FAA says it will propose criteria separately. <span class="tk">Refuted if</span> the final rule sets criteria that farms, feedlots or processing plants can meet.</p>
+          <span class="conf mod">Moderate confidence</span>
+          <p class="src">91 FR 24669, 24688; sample of 120 (seed 20261026); comments 1666, 0565, 1669, 1672.</p>
+        </div></li>
+        <li><div class="body">
+          <h3>The final Part 74 will likely say nothing new on preemption, leaving operators and states to fight over state drone laws site by site.</h3>
+          <p>The preamble already states that state rules on aviation safety and airspace efficiency <button type="button" class="ev" data-ev="fedpre">are preempted</button>, and the federalism section finds the rule has <button type="button" class="ev" data-ev="fed13132">no federalism implications</button>. Both sides asked for more. Amazon wants an <button type="button" class="ev" data-ev="amzpre">express preemption provision</button> and names Nevada and Texas laws that could expose an FAA-compliant Part 135 operator to criminal charges, and CTIA, NRF, the U.S. Chamber and the Small UAV Coalition ask for the same. Ten state attorneys general ask the FAA to say the rule <button type="button" class="ev" data-ev="ags">would not preempt</button> state laws on drones near state-defined critical infrastructure. Writing either answer into the rule would draw a challenge from the other side, and the FAA has an existing preemption position it can repeat. For a delivery operator, the practical exposure is the gap between a route the FAA allows and a state statute that criminalizes the same overflight.</p>
+          <div class="odds">
+            <p><span class="lk hi">Likely</span> No express preemption clause in the final regulatory text.</p>
+            <p><span class="lk hi">Likely</span> The FAA keeps its finding of no federalism implications, though the AG letter is the comment that most directly tests it.</p>
+          </div>
+          <p class="test"><span class="tk">Confirmed if</span> the final Part 74 text has no preemption section and the E.O. 13132 statement is unchanged in substance. <span class="tk">Refuted if</span> the text adds a preemption or savings clause, or the FAA finds federalism implications.</p>
+          <span class="conf low">Low confidence</span>
+          <p class="src">91 FR 24656, 24683; comments 1663, 1596, 1628, 1622, 1633, 1659.</p>
+        </div></li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="s-num">
+      <p class="sec-k">The record in numbers</p>
+      <h2 id="s-num">What each docket holds</h2>
+      <div class="figs">
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="census1908">3,929</button></span><span class="l">posted records, BVLOS docket</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="camp1908">799</button></span><span class="l">of them in 26 near-duplicate campaigns, 20.3%</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="census4558">1,669</button></span><span class="l">posted records, Part 74 docket</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="camp4558">371</button></span><span class="l">of them in 9 campaigns, 22.2%</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="att">1,279</button></span><span class="l">attachment files read in full, both dockets</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="both">62</button></span><span class="l">organizations that filed in both dockets</span></div>
+      </div>
+      <aside class="dq" aria-labelledby="dq-h">
+        <p class="sec-k" id="dq-h">Data quality finding</p>
+        <p>The Federal Register counter overstated participation three times across these two dockets. The counter is a property of each commentable document. For the BVLOS proposal it read 1,025,014 while the FAA stated <button type="button" class="ev" data-ev="reopen3100">"approximately 3,100 comments"</button>, and for the reopening it read 900,842 against 827 posted. For Part 74 it read 901,744 while the FAA reported <button type="button" class="ev" data-ev="dronelife">488 received as of July 3, 2026</button>. Our census finds <button type="button" class="ev" data-ev="census1908">3,929</button> posted records for the BVLOS docket and <button type="button" class="ev" data-ev="census4558">1,669</button> for Part 74. Counting each Friends of the Earth signature separately would put Part 74 between about 17,500 and 18,100 voices. We use the posted census throughout and set the counter aside. High confidence.</p>
+      </aside>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Window</th><th class="r">Posted</th><th class="r">In campaigns</th><th class="r">Share</th><th>What the window asked</th></tr></thead>
+          <tbody>
+            <tr><td>BVLOS proposal, Aug. 7 to Oct. 6, 2025 <span class="id">-0023</span></td><td class="r">3,101</td><td class="r">568</td><td class="r">18.3%</td><td>The full Part 108 and 146 proposal and the TSA security program</td></tr>
+            <tr><td>Reopening, Jan. 28 to Feb. 11, 2026 <span class="id">-3135</span></td><td class="r">827</td><td class="r">231</td><td class="r">27.9%</td><td>Seven questions on alternate EC devices under § 108.195(a)(2)(ii)</td></tr>
+            <tr><td>Denial of further extension <span class="id">-3488</span></td><td class="r">1</td><td class="r">0</td><td class="r">0%</td><td>A July 9, 2026 letter from twelve manned aviation groups on detect-and-avoid</td></tr>
+            <tr><td>Part 74 proposal, May 6 to Aug. 5, 2026 <span class="id">-0001</span></td><td class="r">1,669</td><td class="r">371</td><td class="r">22.2%</td><td>Eligibility in 16 sectors, access, notification, the cost analysis</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <p>The reopening drew people back for a narrow question. By exact organization name, 52 organizations filed in both BVLOS windows and 73 filed only in the reopening. The largest single block in the reopening is a 126-copy answer to the device questions from the powered paragliding community, which says no compliant EC device is on the U.S. market. That claim is contested inside the record. The Drone Service Providers Alliance names <button type="button" class="ev" data-ev="dspa">two devices available today</button>, and Wing finds no marketed device that both fully meets it and fits the low-cost, portable design the FAA had in mind.</p>
+        <p>The Part 74 extension tripled the record. Of the 1,669 posted comments, 560 arrived by the original July 6 deadline and 1,109 came in the 30 days the FAA added at the New York Attorney General's request. The campaign count understates organized opposition to food and agriculture UAFRs. Thirty-four of the 71 sampled comments opposing those UAFRs sit outside the nine detected clusters, written in people's own words around the same talking points. None of the 22 sampled rail workers fall in a cluster at all.</p>
+        <p class="small muted">Comments that name no organization are not all individuals. Seven of the 120 sampled Part 74 comments came from state transportation agencies, a city utility, a police department, a spaceport authority and a state emergency office that left the organization field blank, and two more came from small private firms. Utilities use "right of way" for their land corridors, so lexicon counts of right-of-way mentions in the BVLOS docket run high for the infrastructure sector.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-who">
+      <p class="sec-k">Who is commenting</p>
+      <h2 id="s-who">Pilots fill one record, farm critics and rail workers the other</h2>
+      <div class="two">
+        <figure class="hchart" aria-labelledby="hc1">
+          <figcaption id="hc1">BVLOS docket, selected organization types (683 of 3,929 records name one)</figcaption>
+          <div class="hb"><span>UAS operators and tech</span><span class="hb-t"><i style="width:100%"></i></span><span class="hb-n">226</span></div>
+          <div class="hb"><span>Helicopter operators</span><span class="hb-t"><i class="alt" style="width:33%"></i></span><span class="hb-n">75</span></div>
+          <div class="hb"><span>General aviation</span><span class="hb-t"><i class="alt" style="width:17%"></i></span><span class="hb-n">38</span></div>
+          <div class="hb"><span>Agricultural aviation</span><span class="hb-t"><i class="alt" style="width:16%"></i></span><span class="hb-n">36</span></div>
+          <div class="hb"><span>Sport aviation</span><span class="hb-t"><i class="alt" style="width:15%"></i></span><span class="hb-n">35</span></div>
+          <div class="hb"><span>Infrastructure owners</span><span class="hb-t"><i style="width:15%"></i></span><span class="hb-n">34</span></div>
+          <div class="hb"><span>Drone trade groups</span><span class="hb-t"><i style="width:12%"></i></span><span class="hb-n">27</span></div>
+          <div class="hb"><span>Drone delivery</span><span class="hb-t"><i style="width:10%"></i></span><span class="hb-n">23</span></div>
+        </figure>
+        <figure class="hchart" aria-labelledby="hc2">
+          <figcaption id="hc2">Part 74 docket, selected organization types (230 of 1,669 records name one)</figcaption>
+          <div class="hb"><span>UAS operators and tech</span><span class="hb-t"><i style="width:100%"></i></span><span class="hb-n">25</span></div>
+          <div class="hb"><span>Counter-UAS and security tech</span><span class="hb-t"><i style="width:100%"></i></span><span class="hb-n">25</span></div>
+          <div class="hb"><span>Farm producers</span><span class="hb-t"><i class="alt" style="width:72%"></i></span><span class="hb-n">18</span></div>
+          <div class="hb"><span>Chemical and energy</span><span class="hb-t"><i class="alt" style="width:72%"></i></span><span class="hb-n">18</span></div>
+          <div class="hb"><span>Animal advocacy</span><span class="hb-t"><i class="alt" style="width:64%"></i></span><span class="hb-n">16</span></div>
+          <div class="hb"><span>Labor, mostly rail</span><span class="hb-t"><i class="alt" style="width:56%"></i></span><span class="hb-n">14</span></div>
+          <div class="hb"><span>Press and media</span><span class="hb-t"><i class="alt" style="width:52%"></i></span><span class="hb-n">13</span></div>
+          <div class="hb"><span>Venues and events</span><span class="hb-t"><i class="alt" style="width:52%"></i></span><span class="hb-n">13</span></div>
+        </figure>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Part 74 random sample, 120 of 1,439 comments naming no organization</th><th class="r">n</th><th class="r">Share</th><th class="r">Wilson 95%</th></tr></thead>
+          <tbody>
+            <tr><td>Opposes UAFRs for food and agriculture facilities</td><td class="r">71</td><td class="r"><button type="button" class="ev" data-ev="samp4558">59.2%</button></td><td class="r">50.2 to 67.5</td></tr>
+            <tr><td>Rail worker asking limits on management drones over yards</td><td class="r">22</td><td class="r"><button type="button" class="ev" data-ev="samprail">18.3%</button></td><td class="r">12.4 to 26.2</td></tr>
+            <tr><td>Opposes the rule or asks narrower restrictions or more access</td><td class="r">14</td><td class="r">11.7%</td><td class="r">7.1 to 18.6</td></tr>
+            <tr><td>Supports the rule or broader restrictions, other sectors</td><td class="r">8</td><td class="r">6.7%</td><td class="r">3.4 to 12.6</td></tr>
+            <tr><td>No position in the text, or mixed</td><td class="r">5</td><td class="r">4.2%</td><td class="r">1.8 to 9.4</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <p>The rail workers are the record's sleeper. They write one at a time, none of them in a campaign, and they describe managers flying drones over switching crews to run operating tests. They ask for limits on drones in rail yards, and the Teamsters Rail Conference says a UAFR <button type="button" class="ev" data-ev="trc">should not give railroads unrestricted authority</button> to fly over occupied work areas. Part 74 sets the same access rules for every drone in a UAFR and says nothing about why an owner flies, so the workers' complaint sits outside what the proposal addresses. Southern California Edison and the American Chemistry Council push the other way and ask for an exemption for the owner's own flights.</p>
+        <p>In the BVLOS docket the manned aviation side keeps its priority claim. In a random sample of 120 of the 1,958 comments that mentioned right of way when we drew it, <button type="button" class="ev" data-ev="row">72.5%</button> want manned aircraft to keep priority (Wilson 63.9 to 79.7), and among the 95 that take a position the share is 91.6%.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-arg">
+      <p class="sec-k">Arguments requiring the strongest agency response</p>
+      <h2 id="s-arg">Strongest first, with the side that pushes back</h2>
+      <p class="prose small muted">Ranked by how much each comment demands of the FAA's written response, the duty under 5 U.S.C. 553(c) to answer significant comments and explain its choices. Comments that bring operating data, cite the FAA's own findings or come from a party aligned with the FAA on the rest of the rule rank higher, and splits inside a camp rank highest. This ranking is not a forecast of how a court would rule. Our judgments on judicial review sit in the risk register and are analyst judgments, not legal opinions.</p>
+      <div class="pairs">
+        <article class="pair">
+          <div class="pair-h"><h3>§ 74.255 notice before every flight</h3><span class="tag leg">Operating data · FAA's own alternative</span></div>
+          <div class="pair-b">
+            <div class="side"><span class="who">Zipline, DoorDash, AUVSI, Skydio, CDA, FPL</span><blockquote>Zipline calls the notice "burdensome but achievable for an individual operation" and unachievable at scale, and asks to exempt Part 135 and Part 108 holders. DoorDash cites <button type="button" class="ev" data-ev="dd4558">more than 1,000,000 operations</button> in 2026. Skydio estimates <button type="button" class="ev" data-ev="skydio">"thousands of manual notifications a week."</button> AUVSI asks to <button type="button" class="ev" data-ev="auvsi">codify that notice is situational awareness only</button>. The burden lands on compliant flyers, and the FAA concedes a UAFR <button type="button" class="ev" data-ev="nodeter">"would not necessarily deter"</button> those who ignore the rules.</blockquote></div>
+            <div class="side ans"><span class="who">Railroads, helicopter operators, the FAA's own text</span><blockquote>AAR wants written notice <button type="button" class="ev" data-ev="aar">7 days ahead</button>. VAI says notification alone does not ensure coordination. The FAA already offered the <button type="button" class="ev" data-ev="whitelist">whitelist</button>, which weakens any defense of the per-flight design.</blockquote></div>
+          </div>
+        </article>
+        <article class="pair">
+          <div class="pair-h"><h3>§ 74.250(a)(2) transit "in the shortest amount of time practicable"</h3><span class="tag leg">Split inside the drone camp</span></div>
+          <div class="pair-b">
+            <div class="side"><span class="who">Amazon, AUVSI, Skyports, NAB, News Media Coalition, Georgia DOT, ALDF</span><blockquote>Amazon asks that <button type="button" class="ev" data-ev="amz4558">normal delivery and inspection maneuvers</button> count as compliant. The News Media Coalition asks that news drones face <button type="button" class="ev" data-ev="nmc">no time limit</button>. Utilities and state DOTs need dwell time for inspection.</blockquote></div>
+            <div class="side ans"><span class="who">DroneUp, facility owners</span><blockquote>DroneUp <button type="button" class="ev" data-ev="droneup4558">supports the transit limit</button> as a security measure and asks the FAA to explain it. The FAA itself weighed bans on hovering and landing before choosing the time standard.</blockquote></div>
+          </div>
+        </article>
+        <article class="pair">
+          <div class="pair-h"><h3>Preemption of state drone laws</h3><span class="tag oos">Not in the proposed text</span></div>
+          <div class="pair-b">
+            <div class="side"><span class="who">Amazon, Small UAV Coalition, CTIA, NRF, U.S. Chamber</span><blockquote>Amazon wants an <button type="button" class="ev" data-ev="amzpre">express preemption provision</button> and names Nevada and Texas laws that would expose an FAA-compliant Part 135 operator to criminal charges. CTIA asks the FAA to <button type="button" class="ev" data-ev="ctia">expressly preempt</button> state laws over critical infrastructure.</blockquote></div>
+            <div class="side ans"><span class="who">Attorneys General of NY, AZ, CA, CO, DE, IL, MN, NJ, NC, VT</span><blockquote>The AGs ask the FAA to say the rule <button type="button" class="ev" data-ev="ags">would not preempt</button> state laws on drones near state-defined critical infrastructure. The preamble says state rules on aviation safety and airspace efficiency <button type="button" class="ev" data-ev="fedpre">are preempted</button>, and the federalism section finds <button type="button" class="ev" data-ev="fed13132">no federalism implications</button>. The AG letter is the comment that most directly tests that finding.</blockquote></div>
+          </div>
+        </article>
+        <article class="pair">
+          <div class="pair-h"><h3>Who may enter a standard UAFR, § 74.250(b) to (f)</h3><span class="tag leg">Split inside the security camp</span></div>
+          <div class="pair-b">
+            <div class="side"><span class="who">Disney, IAAPA, EEI and the public power groups, AMOA</span><blockquote>Disney would <button type="button" class="ev" data-ev="disney">remove routine Part 107 flights</button> and commercial Part 108, 135 and 137 flights. EEI wants commercial overflight of defense-critical electric sites <button type="button" class="ev" data-ev="eei4558">prohibited or approved by the facility</button>.</blockquote></div>
+            <div class="side ans"><span class="who">ALPA, AUVSI, the FAA preamble</span><blockquote>ALPA, a manned aviation voice, says facility operators <button type="button" class="ev" data-ev="alpa">should not control navigable airspace</button>. The preamble says site managers get <button type="button" class="ev" data-ev="noauth">no power to approve or deny</button>.</blockquote></div>
+          </div>
+        </article>
+        <article class="pair">
+          <div class="pair-h"><h3>The cost analysis leaves operators out</h3><span class="tag leg">FAA's own finding</span></div>
+          <div class="pair-b">
+            <div class="side"><span class="who">The regulatory impact analysis</span><blockquote>The FAA <button type="button" class="ev" data-ev="riaavoid">"does not have data on any incremental costs associated with this avoidance."</button> It expects small detours to cost little and <button type="button" class="ev" data-ev="riadetour">waterways or railroads</button> to cost more. Its example of operators kept out names "part 107 operators, permitted operators under part 108," which appears inconsistent with § 74.250(c) and (d) for standard UAFRs.</blockquote></div>
+            <div class="side ans"><span class="who">What an answer would need</span><blockquote>A reasoned response would reconcile the example with the text and give some measure of route exposure. No commenter we read supplied a national detour figure, which leaves the FAA room to answer qualitatively.</blockquote></div>
+          </div>
+        </article>
+        <article class="pair">
+          <div class="pair-h"><h3>§ 108.195 low-altitude right of way</h3><span class="tag leg">Split inside the drone camp</span></div>
+          <div class="pair-b">
+            <div class="side"><span class="who">AOPA, EAA, NAAA, ALPA, VAI, GAMA</span><blockquote>AOPA is <button type="button" class="ev" data-ev="aopa">"vehemently opposed"</button> to EC as the sole test of right of way. GAMA asks that the change align with <button type="button" class="ev" data-ev="gama">49 U.S.C. 44807(c)(4)(A)</button>, which binds only the 44807 authority. DroneUp, a delivery operator, asks the FAA to <button type="button" class="ev" data-ev="droneup108">reject</button> giving drones priority over unequipped aircraft in Class G.</blockquote></div>
+            <div class="side ans"><span class="who">Wing, Zipline, Amazon, Small UAV Coalition, NBAA</span><blockquote>The drone side asks for EC on all manned aircraft below 500 ft. NBAA, a manned aviation group, backs <button type="button" class="ev" data-ev="nbaa">EC for all aircraft</button> with drones yielding to everyone below 500 ft. We read the FAA's choice to reopen only on devices as a sign it means to keep an EC-based structure.</blockquote></div>
+          </div>
+        </article>
+        <article class="pair">
+          <div class="pair-h"><h3>TSA security program and Part 146</h3><span class="tag leg">APA procedure</span></div>
+          <div class="pair-b">
+            <div class="side"><span class="who">Amazon, Wing, NRF, Boeing</span><blockquote>Amazon says TSA should <button type="button" class="ev" data-ev="amz108tsa">withdraw or issue a separate proposal</button> and that Part 146 <button type="button" class="ev" data-ev="amz146">lacks the specificity</button> for meaningful comment under 5 U.S.C. 553.</blockquote></div>
+            <div class="side ans"><span class="who">Twelve UTM providers and operators</span><blockquote>They are <button type="button" class="ev" data-ev="utm12">"strongly supportive"</button> of strategic deconfliction and the Part 146 path.</blockquote></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-meet">
+      <p class="sec-k">Where the two rules meet</p>
+      <h2 id="s-meet">The cross-docket findings</h2>
+      <div class="prose">
+        <p><strong>The text ties the rules together.</strong> Proposed <button type="button" class="ev" data-ev="s108220">§ 108.220</button> bars Part 108 flights inside a UAFR <em>"unless allowed pursuant to part 74,"</em> and the BVLOS preamble promises to <button type="button" class="ev" data-ev="s108220pre">change § 108.220</button> if Part 74 comments change the requirement. Part 74 expects delivery now flown under Part 135 to <button type="button" class="ev" data-ev="p108transit">move to Part 108</button> on the BVLOS rule's compliance dates. The Small UAV Coalition called § 108.220 <button type="button" class="ev" data-ev="suavc108">"a placeholder"</button> for a rule it expected to finish alongside Part 108. Part 108 reached OIRA on July 10, 2026. Part 74 has not.</p>
+        <p><strong>Role changes position.</strong> The electric utility associations wrote to the BVLOS docket as operators and asked for <button type="button" class="ev" data-ev="eei1908">200 feet of shielded airspace</button> around infrastructure. In Part 74 they write as site owners and ask that outside commercial flights over their most critical sites be <button type="button" class="ev" data-ev="eei4558">prohibited or approved by the facility</button>. Florida Power &amp; Light stays on the access side in both, asking the FAA to <button type="button" class="ev" data-ev="fpl1908">drop owner permission</button> from § 108.205(a) and to automate Part 74 notice.</p>
+        <p><strong>The operators carried their Part 108 case into Part 74.</strong> Wing, Zipline, DoorDash, Skyports, AUVSI, the CDA, the Small UAV Coalition and the Drone Service Providers Alliance filed in both dockets, and each asked Part 74 for automated, listed or standing notice. Amazon pressed transit and preemption. DroneUp is the exception. It rejects drone priority over unequipped aircraft in Part 108 and supports the Part 74 transit limit.</p>
+        <p><strong>Part 146 as the notice channel.</strong> The Commercial Drone Alliance proposes certifying <button type="button" class="ev" data-ev="cda146">Part 146 data service providers</button> to carry automated UAFR notices. Wing asks for <button type="button" class="ev" data-ev="wing4558">machine-to-machine</button> exchange, AUVSI and the CDA ask to extend LAANC, and South Dakota's DOT asks for a <button type="button" class="ev" data-ev="sddot">real-time LAANC-like system</button> if FAA approval is required.</p>
+        <p><strong>Avoidance against fast transit.</strong> Skydio asks for a safe harbor so that <button type="button" class="ev" data-ev="skydio2">detect-and-avoid maneuvers</button>, weather avoidance and lost-link procedures inside a UAFR do not count as violations of § 74.250 or § 74.255. The Nevada UAS Test Site asks that the notice accept <button type="button" class="ev" data-ev="nvts">EC equipment meeting § 108.195(a)(2)(ii)</button>. The agricultural aviators raise the overlap the other way. A substation could be both a Part 108 shielded area and a UAFR, which they say would let drones fly there <button type="button" class="ev" data-ev="naaa4558">without detecting or avoiding manned aircraft</button>, and they ask the FAA to keep UAFRs out of shielded-area eligibility. Helicopter operators ask that a final Part 108 come first, since without it they cannot test <button type="button" class="ev" data-ev="vai4558">"completeness and cohesiveness."</button></p>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Scale a commenter gives</th><th>Source</th><th>Notice model that commenter proposes</th></tr></thead>
+          <tbody>
+            <tr><td>About 80 flights a day, one utility (14,697 in the first half of 2026)</td><td><button type="button" class="ev" data-ev="sce">Southern California Edison</button></td><td>Standing access for owners and their contractors without per-mission notice</td></tr>
+            <tr><td>About 500 flights a day, one utility</td><td><button type="button" class="ev" data-ev="fpl4558">Florida Power &amp; Light</button></td><td>Automated, streamlined notice</td></tr>
+            <tr><td>Thousands of orders a day, one delivery operator</td><td><button type="button" class="ev" data-ev="zip4558">Zipline</button></td><td>Exempt Part 135 and 108 holders, or network Remote ID as compliance</td></tr>
+            <tr><td>More than 1,000,000 delivery operations in 2026, nationwide</td><td><button type="button" class="ev" data-ev="dd4558">DoorDash</button></td><td>FAA database of qualified operators in place of notice</td></tr>
+            <tr><td>About 30,000 public safety flights a day, nationwide estimate</td><td><button type="button" class="ev" data-ev="dr">DRONERESPONDERS</button></td><td>Unencumbered access for public safety</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="prose small muted">Commenters place the breaking point above a single flight, which Zipline calls manageable, and at or below hundreds a day, without naming a threshold. The Southern California Edison rate is our division of its half-year total by 181 days.</p>
+    </section>
+
+    <section aria-labelledby="s-risk">
+      <p class="sec-k">Risk register</p>
+      <h2 id="s-risk">Contested provisions, by likelihood of change</h2>
+      <p class="prose small muted">Likelihood and confidence are separate analyst judgments under ICD 203. "Survives unchanged" means the final rule text keeps the proposal's substance, and a change made only through guidance or systems counts as unchanged. A blank cell means the record does not support a judgment.</p>
+      <div class="tbl-wrap">
+        <table class="risk">
+          <thead><tr><th>Provision</th><th>Survives unchanged</th><th>Survives review if challenged</th><th>Confidence</th><th>Strongest argument against, impact if it changes</th></tr></thead>
+          <tbody>
+            <tr><td>§ 74.255 per-flight notice to site manager</td><td><span class="lk hi">Likely</span></td><td></td><td>Moderate</td><td>Operators' scale data and the FAA's own whitelist. We expect the duty to stay and automation to arrive through guidance or the UAFR Module. An exemption in the text, which we judge unlikely, would cut operator overhead at every site.</td></tr>
+            <tr><td>§ 74.250(a)(2) shortest-time transit</td><td><span class="lk lo">Unlikely</span></td><td></td><td>Moderate</td><td>Inspection, delivery and news need dwell time. A change opens inspection contracts inside UAFRs.</td></tr>
+            <tr><td>§ 74.250(c) to (e), Part 107, 108 and 135 transit</td><td><span class="lk hi">Likely</span></td><td><span class="lk hi">Likely</span></td><td>Low</td><td>Disney, IAAPA, EEI and AMOA seek removal or consent. A change would close routes over venues, hospitals or grid sites.</td></tr>
+            <tr><td>Access justified by TSA threat assessments, 91 FR 24652</td><td>Roughly even chance</td><td></td><td>Low</td><td>The basis depends on a TSA layer the industry asked to drop. Loss of it invites narrower access for Part 108.</td></tr>
+            <tr><td>Silence on preemption; no federalism implications</td><td><span class="lk hi">Likely</span></td><td></td><td>Low</td><td>Industry wants express preemption, ten AGs want the reverse. Either answer sets the legal exposure of an FAA-compliant flight over a state-listed site.</td></tr>
+            <tr><td>§ 74.90 food and agriculture reserved</td><td><span class="lk hi">Likely</span></td><td></td><td>Moderate</td><td>Farm groups seek eligibility. A change would put CAFOs and plants behind UAFRs and draw press and animal welfare challenges.</td></tr>
+            <tr><td>Cost analysis without operator costs</td><td><span class="lk hi">Likely</span></td><td></td><td>Moderate</td><td>The FAA says it has no data on avoidance cost, and its example appears inconsistent with § 74.250. A fuller analysis would not by itself change the text.</td></tr>
+            <tr><td>§ 108.195 EC-based right of way</td><td><span class="lk lo">Unlikely</span></td><td><span class="lk hi">Likely</span></td><td>Low</td><td>Manned groups, GAMA and DroneUp. We judge the EC-based structure likely to survive with changed exceptions. A move toward manned priority would raise detect-and-avoid cost for every BVLOS operator.</td></tr>
+            <tr><td>§ 108.205 shielded areas at 50 ft with owner permission</td><td><span class="lk lo">Unlikely</span></td><td></td><td>Low</td><td>Utilities want 200 ft, FPL wants no permission, NAAA calls it its <button type="button" class="ev" data-ev="naaa108">"Highest Concern"</button>.</td></tr>
+            <tr><td>§ 108.335 TSA threat assessment and § 108.565(f) security program</td><td><span class="lk lo">Unlikely</span></td><td></td><td>Low</td><td>Amazon, Wing, NRF and Boeing. TSA's roundtables after the final rules point to more detail later.</td></tr>
+            <tr><td>Part 146 data service providers</td><td>Roughly even chance</td><td></td><td>Low</td><td>Amazon's 5 U.S.C. 553 argument. Added detail in a final rule beyond the proposal invites a logical-outgrowth claim.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-cost">
+      <p class="sec-k">What it costs, by sector</p>
+      <h2 id="s-cost">The FAA prices the sites and leaves the operators blank</h2>
+      <div class="figs">
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="riatotal">$21.4 to $30.6M</button></span><span class="l">Part 74, annualized cost to applicants and government at 7%, 2024 dollars</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="riafac">9,159</button></span><span class="l">facilities the FAA assumes apply, of 52,121 eligible</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="riaunit">$5,000 to $10,000</button></span><span class="l">assumed cost of one application</span></div>
+        <div class="fig"><span class="n"><button type="button" class="ev" data-ev="ria108a">Not quantified</button></span><span class="l">Part 108 benefits, per the FAA</span></div>
+      </div>
+      <div class="prose">
+        <p>The Part 74 numbers cover what facilities and the FAA spend. Each applicant pays an assumed $5,000 to $10,000 to apply, $2,800 for a Remote ID receiver and $1,000 a year to run it, and the FAA spends about <button type="button" class="ev" data-ev="riagov">$1,000</button> per review. Over five years the present value runs $87.8 to $125.3 million at a 7% discount rate and $98.7 to $140.6 million at 3%. The FAA says the program covers "over 9,000" facilities in its scenario and warns that the breadth of the sectors <button type="button" class="ev" data-ev="millions">"could lead to millions of eligible facilities."</button> A narrower alternative of six sectors and 6,536 facilities would cost $7.2 to $13.7 million a year at 7%. Notification work is set aside as <button type="button" class="ev" data-ev="riafn11">"likely highly variable and relatively small"</button>, and operator detours carry no number at all.</p>
+        <p>Part 108 has no total. The FAA calls the benefits "significant" and unquantified, expects "few incremental costs," and says the cost to unequipped Part 91 operators of losing right of way is <button type="button" class="ev" data-ev="ria108b">"very difficult to estimate."</button> Those are projections, and they leave the largest money question in both rules, what scaled access is worth and what it costs manned operators, without a federal estimate.</p>
+        <p>The operator exposure model below names its parameters. We fill only the ones a commenter or the FAA gives. Notices a day equal flights a day (F) times the share of flights that cross a standard UAFR (s) times UAFRs crossed per flight (k). The record gives F for several operators and nothing for s or k. If every FPL flight crossed one UAFR, FPL would send 500 notices a day, and that ceiling is all the record supports. Minutes per notice, added route length, energy per detour and lost service area have no value in either docket. The calculator lets a reader enter its own values. It starts from Florida Power &amp; Light's reported volume and leaves every other field empty, because the record supplies nothing for them.</p>
+      </div>
+      <form class="calc" id="calc" aria-labelledby="calc-h" novalidate>
+        <p class="sec-k" id="calc-h">Notice workload calculator, your own values</p>
+        <div class="calc-grid">
+          <label for="c-f">Flights a day (F)<input id="c-f" type="number" min="0" step="1" value="500" inputmode="decimal"><span class="hint">Preset to FPL's reported 500 a day. Replace with your own.</span></label>
+          <label for="c-s">Share of flights crossing a standard UAFR (s), %<input id="c-s" type="number" min="0" max="100" step="1" inputmode="decimal" placeholder="no value in the record"></label>
+          <label for="c-k">UAFRs crossed per affected flight (k)<input id="c-k" type="number" min="0" step="0.1" inputmode="decimal" placeholder="no value in the record"></label>
+          <label for="c-t">Minutes of staff time per manual notice (t)<input id="c-t" type="number" min="0" step="0.5" inputmode="decimal" placeholder="no value in the record"></label>
+        </div>
+        <div class="calc-out" aria-live="polite">
+          <p><span class="k">Notices a day</span><span class="v" id="c-n">enter s and k</span></p>
+          <p><span class="k">Staff hours a day</span><span class="v" id="c-h">enter s, k and t</span></p>
+        </div>
+        <p class="small muted">One notice per UAFR crossed, as proposed § 74.255 reads. These are your assumptions, not figures from the FAA, the record or ComtIQ. An automated feed would cut t, not the number of notices.</p>
+      </form>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Sector</th><th>What the record shows</th><th>What is priced</th></tr></thead>
+          <tbody>
+            <tr><td>Delivery and logistics</td><td>Notice volume, transit time limits, state criminal laws on overflight, TSA vetting of staff</td><td>Nothing for operators</td></tr>
+            <tr><td>Medical delivery</td><td>Air medical groups want UA kept off hospital helipads unless the hospital authorizes them; one drone operator supports hospital UAFRs</td><td>Nothing</td></tr>
+            <tr><td>Electric utilities</td><td>Buyers of inspection in Part 108, owners asking for control in Part 74</td><td>Application and receiver costs</td></tr>
+            <tr><td>Oil, gas and chemical sites</td><td>Want own and contracted flights carved out, standing lists, confidentiality</td><td>Application and receiver costs</td></tr>
+            <tr><td>Railroads</td><td>Want permission or 7-day notice; workers object to management drones; RIA flags rail detours as harder</td><td>Transport counted at 3,285 facilities, rail secure areas excluded</td></tr>
+            <tr><td>Water and wastewater</td><td>No criteria proposed; the Small UAV Coalition asks for a supplemental proposal for more than 100,000 possible sites</td><td>"To be determined" in the RIA</td></tr>
+            <tr><td>Data centers and IT</td><td>Ask for eligibility and confidentiality</td><td>100 assumed applicants in IT</td></tr>
+            <tr><td>Agricultural operators</td><td>Aerial applicators oppose shielded areas and want DAA inside UAFRs; farm groups want UAFRs over farms</td><td>Food and agriculture counted as zero eligible facilities</td></tr>
+            <tr><td>Manned aviation</td><td>Right-of-way loss without EC; detect-and-avoid; hospital approaches</td><td>"Very difficult to estimate"</td></tr>
+            <tr><td>Manufacturers and UTM providers</td><td>Part 146 detail; automated notice as a new service line</td><td>Small Part 108 manufacturer costs only</td></tr>
+            <tr><td>State and local agencies</td><td>Carve-outs for government flights; single prison application; preemption</td><td>Applicant costs for 800 emergency services sites, plus federal review</td></tr>
+            <tr><td>Press</td><td>Dwell time for news drones; public notice of every UAFR</td><td>Nothing</td></tr>
+            <tr><td>Insurers and investors</td><td>No filing from either group in what we read</td><td>Nothing</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-scen">
+      <p class="sec-k">Scenarios and signposts</p>
+      <h2 id="s-scen">Where this goes next</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Scenario for Part 74 access</th><th>Likelihood</th><th>Signposts</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Same text, automation later.</strong> § 74.255 stays; the FAA uses "form and manner" to move to a portal or list after the rule</td><td>Roughly even chance</td><td>Final preamble points to the UAFR Module or an advisory circular for notice; no new rule text on lists</td><td>Per-flight duty stays in law; operators depend on FAA systems arriving on time</td></tr>
+            <tr><td><strong>Lists in the rule.</strong> Part 135 and 108 holders exempted from per-flight notice or listed once with the FAA</td><td>Unlikely</td><td>Final § 74.255 names a list, Remote ID serials or network Remote ID</td><td>Scaled delivery and inspection cross UAFRs at near-zero marginal cost</td></tr>
+            <tr><td><strong>Facility control creeps in.</strong> Consent, advance-notice periods or removal of commercial categories for some site types</td><td>Unlikely, and can occur alongside either of the others</td><td>More post-close ex parte meetings with venue, utility or hospital groups; preamble language on "meaningful control"</td><td>Route planning around venues, grid sites and hospitals; higher cost for urban delivery</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="prose">
+        <p>For Part 108 we judge it likely (55 to 80%) that the final rule keeps an EC-based right-of-way structure in some form and unlikely that it returns full priority to unequipped manned aircraft, with low confidence. The signposts with dates follow.</p>
+      </div>
+      <ul class="actions">
+        <li><span class="who">Any day</span><span>OIRA concludes review of 2120-AL82, received July 10, 2026. The FAA has said it hopes to publish by year end.</span></li>
+        <li><span class="who">About Dec. 7, 2026</span><span>Statutory deadline for the final BVLOS rule, 16 months after the proposal under <button type="button" class="ev" data-ev="s44811">49 U.S.C. 44811(c)</button>. The EO 14307 target of Feb. 1, 2026 has passed.</span></li>
+        <li><span class="who">At publication</span><span>The final text of § 108.195, the EC standard adopted, § 108.220 and the TSA security sections.</span></li>
+        <li><span class="who">After publication</span><span>TSA's closed technical roundtables on the security program, which meet <button type="button" class="ev" data-ev="tsa">after both final rules</button>.</span></li>
+        <li><span class="who">Not yet scheduled</span><span>OIRA receipt of a final Part 74 rule, the final text of §§ 74.250 and 74.255, and the first UAFR public notices.</span></li>
+        <li><span class="who">Watch</span><span>Any petition for review in the D.C. Circuit, and state laws taking effect on drones near critical sites, such as New York's, effective Aug. 25, 2026 per the New York Attorney General.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="s-act">
+      <p class="sec-k">Recommended actions</p>
+      <h2 id="s-act">What readers could do, and when</h2>
+      <ul class="actions">
+        <li><span class="who">Delivery operators</span><span>While Part 108 sits at OIRA, request an EO 12866 meeting on § 108.220 and the TSA layer, since Part 74 access leans on both. Map routes against candidate UAFR sectors in the RIA, rail terminals, substations, chemical sites, prisons and parks first.</span></li>
+        <li><span class="who">Utilities and energy</span><span>Decide which role leads. A request for facility consent in Part 74 cuts against the access your own inspection contractors need. Design a standing-authorization list for recurring inspection now.</span></li>
+        <li><span class="who">Venues and hospitals</span><span>Expect the FAA to hold that site managers cannot approve or deny. Plan on detection, Remote ID logging and Special UAFR requests where a federal partner exists.</span></li>
+        <li><span class="who">Manned operators</span><span>Plan EC equipage below 500 ft before the final § 108.195 text. Helicopter and agricultural operators should track whether UAFRs and shielded areas can overlap.</span></li>
+        <li><span class="who">UTM and data providers</span><span>Build to the CDA proposal, an ADSP-carried UAFR notice. It fits the FAA's "form and manner" language without new rule text.</span></li>
+        <li><span class="who">State agencies</span><span>Prepare for the preemption answer either way, and file one statewide prison application if the FAA allows it.</span></li>
+        <li><span class="who">Press</span><span>Watch § 74.250(a)(2) and public notice of each UAFR. Food and agriculture criteria, if the FAA writes them later, would need a new proposal.</span></li>
+      </ul>
+    </section>
+
+    <section aria-labelledby="s-matrix">
+      <p class="sec-k">Agency response matrix</p>
+      <h2 id="s-matrix">What to check in each final preamble</h2>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Issue</th><th>Strongest comment</th><th>Check the preamble for</th></tr></thead>
+          <tbody>
+            <tr><td>Part 108 right of way, § 108.195</td><td>AOPA reopening; GAMA on 44807(c)(4)(A); DroneUp</td><td>Why EC sets priority; how 44807 approvals fit; what unequipped operators pay</td></tr>
+            <tr><td>EC device availability</td><td>DSPA versus Wing and the 126-copy template</td><td>Which devices meet § 108.195(a)(2)(ii) and from when</td></tr>
+            <tr><td>Shielded areas, § 108.205</td><td>NAAA; EEI coalition; FPL</td><td>Distance, permission, and any UAFR overlap</td></tr>
+            <tr><td>TSA program, §§ 108.335 and 108.565(f)</td><td>Amazon; Wing</td><td>Scope of staff vetting; whether TSA proposes separately</td></tr>
+            <tr><td>Part 146</td><td>Amazon on 5 U.S.C. 553</td><td>Detail added beyond the proposal</td></tr>
+            <tr><td>Part 74 notice, § 74.255</td><td>Zipline; DoorDash; AUVSI; AAR</td><td>List, feed or exemption; timing of notice</td></tr>
+            <tr><td>Transit time, § 74.250(a)(2)</td><td>Amazon; NMC; NAB; GDOT</td><td>Non-transitory access for inspection and news</td></tr>
+            <tr><td>Allowed categories, § 74.250(b) to (f)</td><td>Disney; IAAPA; EEI; AMOA</td><td>Sector limits; the TSA rationale after the final Part 108</td></tr>
+            <tr><td>Preemption and federalism</td><td>Ten state AGs; Amazon; CTIA</td><td>Whether the FAA revisits its E.O. 13132 finding</td></tr>
+            <tr><td>Food and agriculture, § 74.90</td><td>NPPC; Mercy For Animals; Friends of the Earth</td><td>Reserved, criteria, or a new proposal</td></tr>
+            <tr><td>Cost analysis</td><td>The RIA's own avoidance gap</td><td>Any operator cost estimate; the Part 107 and 108 example fixed</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-meth">
+      <p class="sec-k">Method, sources and limits</p>
+      <h2 id="s-meth">How we built this report</h2>
+      <div class="prose small">
+        <p><strong>Collection.</strong> The Rulemaking Observatory pulled every posted record in both dockets through the Regulations.gov API, with detail and text, and we downloaded attachments for every "see attached" record, every organization and every record whose text points to an attachment. We read 1,008 files from 889 BVLOS comments and 271 files from 257 Part 74 comments, using text extraction and OCR. Three of those BVLOS comments yielded no extractable text. Four BVLOS placeholders and one Part 74 placeholder had no downloadable file. One Part 74 record has no receive date and is counted by its posting date.</p>
+        <p><strong>Coding.</strong> Provision tags come from regular-expression lexicons per docket, published with the data. Campaigns are connected groups of five or more comments of at least 200 characters, linked when their word 5-gram TF-IDF vectors meet cosine 0.80. Moving the threshold from 0.75 to 0.90 shifts the BVLOS campaign count from 815 to 745 comments and the Part 74 count from 397 to 330, so the shares in this report sit inside a band of a few points. Single-link grouping can chain unlike texts together, so we checked the mean pairwise similarity inside every cluster. None falls below 0.79. The lowest single pair, 0.55, sits in a 35-copy BVLOS cluster. Hand-coded random samples of 120 use seed 20261026, with Wilson 95% intervals. One analyst coded each sample, and we report no inter-coder agreement measure. Samples estimate shares of their stated populations only, never of every participant in a docket. We name organizations only after reading their filing, and report individuals only in aggregate.</p>
+        <p><strong>Status checks.</strong> The FAA filed the final Part 108 rule with OIRA on July 10, 2026, as <a href="https://verticalavi.org/vai-daily/part-108-final-rule-sent-to-oira-for-review/" target="_blank" rel="noopener">VAI Daily</a> reported on July 15, and an external reviewer of this report confirmed the July 10 receipt on reginfo.gov. Our own tools could not open the RegInfo review page for the final rule on Oct. 26. No final rule for either docket appeared in the Federal Register as of our cutoff.</p>
+        <p><strong>Limits.</strong> Posting dates are day-level and say nothing about when the agency read a comment. Lexicon counts mark mentions, not positions. The posted record cannot speak for anything the FAA received and did not post. We read the draft Part 74 advisory circular only where commenters cite it. Counter-UAS rules from DHS and DOJ are context only, and Part 74 grants no mitigation authority, as the FAA states <button type="button" class="ev" data-ev="nocuas">in the preamble</button>.</p>
+        <p class="small"><strong>Data files.</strong> <a href="data/campaigns-1908.csv">BVLOS campaigns</a>, <a href="data/campaigns-4558.csv">Part 74 campaigns</a>, <a href="data/provision-mentions-1908.csv">BVLOS provision mentions</a>, <a href="data/provision-mentions-4558.csv">Part 74 provision mentions</a>, <a href="data/senders-1908.csv">BVLOS senders</a>, <a href="data/senders-4558.csv">Part 74 senders</a>, <a href="data/sample-120-right-of-way-1908.csv">BVLOS right-of-way sample</a>, <a href="data/sample-120-4558.csv">Part 74 sample</a>, <a href="data/letters-read-1908.csv">BVLOS letters read</a>, <a href="data/letters-read-4558.csv">Part 74 letters read</a>, <a href="data/orgs-in-both-dockets.csv">organizations in both dockets</a>. Sample IDs are withheld for individuals, and names in campaign opening texts are redacted. <a href="data/campaign-threshold-sensitivity.csv">Campaign threshold sensitivity</a>. The code and lexicons as run on Oct. 26, 2026 are the <a href="data/code/lexicon-py.txt">BVLOS lexicon</a>, <a href="data/code/lexicon4558.json">Part 74 lexicon</a>, <a href="data/code/classify-py.txt">sender rules</a>, <a href="data/code/classify4558-py.txt">Part 74 sender rules</a>, <a href="data/code/campaigns-py.txt">campaign detection</a>. All files are snapshots of the Oct. 26, 2026 database; the Observatory code that collected them is open source under AGPL-3.0.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-app">
+      <p class="sec-k">Appendix</p>
+      <h2 id="s-app">Documents cited</h2>
+      <div class="prose small">
+        <p><strong>Federal Register.</strong> <a href="https://www.federalregister.gov/d/2025-14992" target="_blank" rel="noopener">90 FR 38212</a>, Aug. 7, 2025. <a href="https://www.federalregister.gov/d/2026-01644" target="_blank" rel="noopener">91 FR 3695</a>, Jan. 28, 2026. <a href="https://www.federalregister.gov/d/2026-02649" target="_blank" rel="noopener">FR Doc. 2026-02649</a>. <a href="https://www.federalregister.gov/d/2026-08943" target="_blank" rel="noopener">91 FR 24650</a>, May 6, 2026. <a href="https://www.federalregister.gov/d/2026-13126" target="_blank" rel="noopener">FR Doc. 2026-13126</a>. TSA notice <a href="https://public-inspection.federalregister.gov/2026-18124.pdf" target="_blank" rel="noopener">FR Doc. 2026-18124</a>.</p>
+        <p><strong>Agency analysis.</strong> <a href="https://www.regulations.gov/document/FAA-2026-4558-0004" target="_blank" rel="noopener">Part 74 Regulatory Impact Analysis</a>. <a href="https://www.regulations.gov/document/FAA-2026-4558-1691" target="_blank" rel="noopener">Memorandum on the Disney meeting</a>.</p>
+        <p><strong>BVLOS comments.</strong> FAA-2025-1908 <a href="https://www.regulations.gov/comment/FAA-2025-1908-2872" target="_blank" rel="noopener">2872</a> Amazon, <a href="https://www.regulations.gov/comment/FAA-2025-1908-2986" target="_blank" rel="noopener">2986</a> Wing, <a href="https://www.regulations.gov/comment/FAA-2025-1908-2616" target="_blank" rel="noopener">2616</a> DroneUp, <a href="https://www.regulations.gov/comment/FAA-2025-1908-1886" target="_blank" rel="noopener">1886</a> NBAA, <a href="https://www.regulations.gov/comment/FAA-2025-1908-3482" target="_blank" rel="noopener">3482</a> AOPA, <a href="https://www.regulations.gov/comment/FAA-2025-1908-2940" target="_blank" rel="noopener">2940</a> GAMA, <a href="https://www.regulations.gov/comment/FAA-2025-1908-1842" target="_blank" rel="noopener">1842</a> NAAA, <a href="https://www.regulations.gov/comment/FAA-2025-1908-3434" target="_blank" rel="noopener">3434</a> DSPA, <a href="https://www.regulations.gov/comment/FAA-2025-1908-3960" target="_blank" rel="noopener">3960</a> EEI coalition, <a href="https://www.regulations.gov/comment/FAA-2025-1908-2682" target="_blank" rel="noopener">2682</a> FPL, <a href="https://www.regulations.gov/comment/FAA-2025-1908-2892" target="_blank" rel="noopener">2892</a> Small UAV Coalition, <a href="https://www.regulations.gov/comment/FAA-2025-1908-2544" target="_blank" rel="noopener">2544</a> UTM providers, <a href="https://www.regulations.gov/comment/FAA-2025-1908-3964" target="_blank" rel="noopener">3964</a> manned aviation groups.</p>
+        <p><strong>Part 74 comments.</strong> FAA-2026-4558 <a href="https://www.regulations.gov/comment/FAA-2026-4558-1663" target="_blank" rel="noopener">1663</a> Amazon, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1645" target="_blank" rel="noopener">1645</a> Wing, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1527" target="_blank" rel="noopener">1527</a> Zipline, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1684" target="_blank" rel="noopener">1684</a> DoorDash, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1676" target="_blank" rel="noopener">1676</a> DroneUp, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1660" target="_blank" rel="noopener">1660</a> AUVSI, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1639" target="_blank" rel="noopener">1639</a> CDA, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1681" target="_blank" rel="noopener">1681</a> Skydio, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1627" target="_blank" rel="noopener">1627</a> Disney, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1644" target="_blank" rel="noopener">1644</a> IAAPA, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1616" target="_blank" rel="noopener">1616</a> EEI coalition, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1531" target="_blank" rel="noopener">1531</a> FPL, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1636" target="_blank" rel="noopener">1636</a> AAR, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1630" target="_blank" rel="noopener">1630</a> ACC, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1665" target="_blank" rel="noopener">1665</a> AFPM, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1559" target="_blank" rel="noopener">1559</a> AMOA, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1515" target="_blank" rel="noopener">1515</a> VAI, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1566" target="_blank" rel="noopener">1566</a> NAAA, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1638" target="_blank" rel="noopener">1638</a> ALPA, <a href="https://www.regulations.gov/comment/FAA-2026-4558-0565" target="_blank" rel="noopener">0565</a> NPPC, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1669" target="_blank" rel="noopener">1669</a> Mercy For Animals, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1666" target="_blank" rel="noopener">1666</a> Friends of the Earth, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1643" target="_blank" rel="noopener">1643</a> News Media Coalition, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1626" target="_blank" rel="noopener">1626</a> NAB, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1596" target="_blank" rel="noopener">1596</a> CTIA, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1659" target="_blank" rel="noopener">1659</a> state AGs, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1624" target="_blank" rel="noopener">1624</a> Teamsters Rail Conference, <a href="https://www.regulations.gov/comment/FAA-2026-4558-0218" target="_blank" rel="noopener">0218</a> Nevada UAS Test Site, <a href="https://www.regulations.gov/comment/FAA-2026-4558-0471" target="_blank" rel="noopener">0471</a> South Dakota DOT, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1599" target="_blank" rel="noopener">1599</a> SCE, <a href="https://www.regulations.gov/comment/FAA-2026-4558-1564" target="_blank" rel="noopener">1564</a> DRONERESPONDERS.</p>
+        <p><strong>Other.</strong> <a href="https://www.law.cornell.edu/uscode/text/49/44811" target="_blank" rel="noopener">49 U.S.C. 44811</a>; <a href="https://www.law.cornell.edu/uscode/text/49/44807" target="_blank" rel="noopener">49 U.S.C. 44807</a>; <a href="https://dronelife.com/2026/07/01/faa-section-2209-rule-comment-period/" target="_blank" rel="noopener">DroneLife correction</a>, July 1, 2026; <a href="https://verticalavi.org/vai-daily/part-108-final-rule-sent-to-oira-for-review/" target="_blank" rel="noopener">VAI Daily</a>, July 15, 2026.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="s-about">
+      <p class="sec-k">About this report</p>
+      <h2 id="s-about">Who made it, and how to correct it</h2>
+      <div class="prose small">
+        <p><strong>Authors.</strong> Vanessa Panitz and John Panitz, ComtIQ. The collection runs on the Rulemaking Observatory, open-source code published under AGPL-3.0.</p>
+        <p><strong>Independence.</strong> No client, funder or party to either rulemaking paid for or reviewed this report. ComtIQ takes no side between drone operators, manned aviation, facility owners or the press.</p>
+        <p><strong>Corrections.</strong> If a number or quote is wrong, tell us through comtiq.com. We fix errors in a new version and list each change.</p>
+        <p><strong>Version history.</strong> 1.0, October 26, 2026, first release. 1.1, October 26, 2026, after external review. Judgments restated as testable outcomes with confirm and refute conditions, and rule-text change separated from automation; standard and special UAFRs distinguished in the summary; the counter finding moved to the record section and replaced by a judgment on preemption; argument ranking renamed and separated from judicial review; campaign threshold sensitivity, code and lexicons published; a notice workload calculator added; print layout and links fixed.</p>
+      </div>
+    </section>
+
+  </div>
+</main>
+<footer>
+  <div class="wrap">
+    <span><b>ComtIQ</b> · Monitor · Analyze · Anticipate</span>
+    <span>Demonstration report prepared during the Wisconsin Venture Innovation Challenge 2026. comtiq.com</span>
+  </div>
+</footer>
+<aside id="ev-panel" class="ev-panel" hidden aria-labelledby="ev-title" role="dialog" aria-modal="false">
+  <div class="ev-in">
+    <div class="ev-top"><span class="ev-k">Source</span><button type="button" id="ev-close" class="ev-close" aria-label="Close source panel">Close</button></div>
+    <h3 id="ev-title"></h3>
+    <blockquote id="ev-quote"></blockquote>
+    <p id="ev-src" class="ev-src"></p>
+    <p id="ev-note" class="ev-note"></p>
+  </div>
+</aside>
+
+<script>
+(function () {
+  const E = {
+    "s108220": {t: "Part 108 defers to Part 74", q: "§ 108.220 Unmanned aircraft flight restriction. No operator may operate an unmanned aircraft under this part within an unmanned aircraft flight restriction established in accordance with part 74 of this chapter, unless allowed pursuant to part 74, as appropriate.", s: ["Proposed 14 CFR 108.220, 90 FR 38370", "https://www.federalregister.gov/d/2025-14992"], n: ""},
+    "s108220pre": {t: "The BVLOS preamble on Part 74", q: "FAA anticipates that the NPRM for part 74, while separate, will be issued at, or near, the same time as this preamble and proposes these changes to remain consistent with that proposal. If the NPRM for part 74 receives comments that lead to changes that affect this requirement, appropriate changes will be made to this section as well.", s: ["BVLOS NPRM preamble, 90 FR 38250", "https://www.federalregister.gov/d/2025-14992"], n: ""},
+    "p108transit": {t: "Delivery moves from Part 135 to Part 108", q: "FAA anticipates that package delivery operations currently conducted under 14 CFR part 135 in UAFR airspace would transition to operations under part 108 in accordance with compliance dates set forth in the Normalizing Unmanned Aircraft Systems Beyond Visual Line of Sight Operations final rule.", s: ["Part 74 NPRM preamble, 91 FR 24676", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "s74255": {t: "The notice requirement", q: "to the fixed site facility site manager in a form and manner acceptable to the Administrator. (b) Contents. The notice must include: (1) Name, mailing address, email address, and phone number of the person providing notice;", s: ["Proposed 14 CFR 74.255(a) and (b), 91 FR 24690", "https://www.federalregister.gov/d/2026-08943"], n: "The notice lists eight items, including Remote ID serial numbers, registration numbers, the site and the date, time and area of the flight."},
+    "s74250": {t: "Allowed operations", q: "(1) The unmanned aircraft broadcasts remote identification in accordance with 14 CFR part 89. (2) The unmanned aircraft transitions the UAFR in the shortest amount of time practicable.", s: ["Proposed 14 CFR 74.250(a), 91 FR 24690", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "s74251": {t: "Special UAFRs need approval", q: "§ 74.251 Access procedures for a special unmanned aircraft flight restriction. (a) General. Unless otherwise authorized by the Administrator, unmanned aircraft may only operate within a special unmanned aircraft flight restriction established under § 74.6 if the unmanned aircraft meets the following requirements: (1) The unmanned aircraft has the approval of the using agency; and (2) If the aircraft is not operated by the using agency, the unmanned aircraft must have the approval of the Administrator in a form and manner acceptable to the Administrator.", s: ["Proposed 14 CFR 74.251(a), 91 FR 24690", "https://www.federalregister.gov/d/2026-08943"], n: "Standard UAFRs use the transit and notice rules of §§ 74.250 and 74.255. Special UAFRs, for sites such as federal facilities, require approval instead. The using agency itself needs no FAA approval to fly there (91 FR 24676)."},
+    "whitelist": {t: "The FAA floats a whitelist", q: "FAA is considering other solutions that may involve one-time submission to the FAA of airman certificate number(s) and remote ID serial number(s) associated with the intended allowed operations, that could be included on a developed ‘‘whitelist’’ of remote ID serial numbers to be made available to fixed site facilities. FAA seeks comment on the feasibility of remote ID technologies for providing a more automated notification procedure to support future scaled UAS operations and from fixed site operators on their ability to handle whitelisted operators.", s: ["Part 74 NPRM preamble, 91 FR 24678", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "noauth": {t: "No authority for site managers", q: "Individuals should not infer that FAA is delegating this airspace authority to private entities. The purpose of notification is to provide situational awareness to operators and proprietors of lawfully operating unmanned aircraft close to their facilities. Nothing in this proposed rule would confer authority on site managers to approve, disapprove, restrict, or prohibit operations.", s: ["Part 74 NPRM preamble, 91 FR 24678", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "sta4558": {t: "Why allowed operations may enter", q: "Allowed operations include those conducted under Parts 91, 107, 108, 135, and 137, which have met rigorous FAA safety requirements and Transportation Security Administration (TSA) security threat assessments where applicable.", s: ["Part 74 NPRM summary, 91 FR 24652", "https://www.federalregister.gov/d/2026-08943"], n: "The preamble repeats the point for Part 107 at 91 FR 24676."},
+    "nodeter": {t: "Limits the FAA concedes", q: "There are limitations to the effectiveness of this proposed rule because a UAFR would not necessarily deter operators who willfully disregard their responsibilities and obligations for operating in the NAS from operating in close proximity to the fixed site facilities in question.", s: ["Part 74 NPRM preamble, 91 FR 24656", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "nocuas": {t: "No counter-UAS authority", q: "The UAFR does not authorize the use of detection or mitigation technologies to interfere with unmanned aircraft; such activities remain subject to existing federal laws, including Title 18 and Title 49 U.S.C.", s: ["Part 74 NPRM preamble, 91 FR 24656", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "fas": {t: "Food and agriculture left reserved", q: "FAA, in consultation with the SRMAs, could not identify a facility in this sector that was not already captured by another sector or would rise to the level of national level debilitating impact.", s: ["Part 74 NPRM preamble, 91 FR 24669; § 74.90(a) reads \"[Reserved]\" at 91 FR 24688", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "millions": {t: "Millions of eligible sites", q: "FAA and SRMAs recognize that each of the sectors cover a variety of different assets and facility types which could lead to millions of eligible facilities for flight restrictions in the NAS.", s: ["Part 74 NPRM preamble, 91 FR 24661", "https://www.federalregister.gov/d/2026-08943"], n: "The RIA counts 52,121 eligible facilities in sectors with criteria and assumes 9,159 apply. SRMAs identified about 125,000 high-priority sites (91 FR 24679)."},
+    "fedpre": {t: "The FAA on preemption", q: "Attempts by State and local governments to regulate in the fields of aviation safety and the efficient use of the airspace by aircraft are preempted.", s: ["Part 74 NPRM preamble, 91 FR 24656", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "fed13132": {t: "The federalism finding", q: "FAA has determined that this action would not have a substantial direct effect on the States, or the relationship between the Federal Government and the States, or on the distribution of power and responsibilities among the various levels of government, and, therefore, would not have federalism implications.", s: ["Part 74 NPRM, E.O. 13132 determination, 91 FR 24683", "https://www.federalregister.gov/d/2026-08943"], n: ""},
+    "riaavoid": {t: "No data on operator detours", q: "UAFRs also could potentially have some negative impacts on some UAS operators, such as reducing the airspace accessible by operators not authorized to fly within the UAFR (e.g., part 107 operators, permitted operators under part 108). The commercial drone flight path would automatically be configured to avoid a UFAR. FAA does not have data on any incremental costs associated with this avoidance.", s: ["Part 74 Regulatory Impact Analysis, p. 26", "https://www.regulations.gov/document/FAA-2026-4558-0004"], n: "§ 74.250(c) and (d) of the proposal allow Part 107 operations and permitted or certificated Part 108 operations to enter a standard UAFR."},
+    "riadetour": {t: "Detours over waterways and railroads", q: "FAA expects the cost to circumnavigate a small volume of airspace would be minimal but larger expanses (e.g., waterways or railroads) could represent greater challenges.", s: ["Part 74 Regulatory Impact Analysis, Table 16, p. 26", "https://www.regulations.gov/document/FAA-2026-4558-0004"], n: ""},
+    "riafn11": {t: "Notification costs set aside", q: "Additional cost components may include updating and renewing UAFRs, processing notification requests, and reporting unauthorized UAS activity within the UAFR, but these are likely highly variable and relatively small.", s: ["Part 74 Regulatory Impact Analysis, footnote 11, p. 22", "https://www.regulations.gov/document/FAA-2026-4558-0004"], n: ""},
+    "riaunit": {t: "Unit costs", q: "Therefore, FAA estimated the unit cost to obtain a UAFR based on available estimates of the cost of exemptions (between $5,000 and $10,000). FAA is developing a web-based portal (the UAFR Module) through which applicants can submit all required information. Applicants must also have security monitoring that includes the capability to receive, log, and retain broadcast remote identification messages from unmanned aircraft operating within or in proximity to the UAFR. FAA estimated the unit cost based on an example system ($2,800 onetime and $1,000 annually).", s: ["Part 74 Regulatory Impact Analysis, p. 5", "https://www.regulations.gov/document/FAA-2026-4558-0004"], n: ""},
+    "riagov": {t: "Government review cost", q: "Preliminarily, FAA estimates the government review costs per application in the range of approximately $1,000.", s: ["Part 74 Regulatory Impact Analysis, p. 5", "https://www.regulations.gov/document/FAA-2026-4558-0004"], n: ""},
+    "riatotal": {t: "Summary of costs", q: "", s: ["Part 74 Regulatory Impact Analysis, Table 1, p. 6", "https://www.regulations.gov/document/FAA-2026-4558-0004"], n: "Annualized, in millions of 2024 dollars. At 3% applicants cost $19.7 to $28.8 and government $1.9, for $21.5 to $30.7 in total. At 7% applicants cost $19.5 to $28.7 and government $1.9, for $21.4 to $30.6. Present value over five years is $98.7 to $140.6 at 3% and $87.8 to $125.3 at 7%."},
+    "riafac": {t: "Facilities in the scenario", q: "", s: ["Part 74 Regulatory Impact Analysis, Table 12, pp. 24 and 25", "https://www.regulations.gov/document/FAA-2026-4558-0004"], n: "Eligible facilities in sectors with criteria total 52,121, and the FAA assumes 9,159 apply, 10% to 100% by sector. Defense industrial base, government services and water are \"TBD\". Food and agriculture shows 0. The alternative limited to six sectors counts 6,536 facilities (p. 30)."},
+    "ria108a": {t: "Part 108 benefits and costs", q: "FAA is unable to quantify the benefits of the proposed rule. However, existing studies are indicative of the types and potential magnitude of benefits. When considered in the context of the myriad of potential applications and locations nationwide, FAA anticipates that the benefits from scaled BVLOS are significant. To the extent risks of scaled operations are successfully mitigated, and the scale or pace of scaling could not occur under the existing framework, benefits are attributable to the proposed rule. Given that the proposed rule includes requirements that mirror current BVLOS exemptions, while also proposing new requirements to mitigate risks inherent in expanded BVLOS operations, there are few incremental costs, and FAA anticipates that the benefits would likely exceed costs.", s: ["BVLOS NPRM, Regulatory Impact Analysis, 90 FR 38352", "https://www.federalregister.gov/d/2025-14992"], n: ""},
+    "ria108b": {t: "Cost to unequipped manned operators", q: "Finally, there is uncertainty with respect to the impact on part 91 operators not equipped with ADS–B or EC equipment. These operators may incur costs to add equipment or as a result of loss of right-of-way. However, right-of-way impacts would be very site and situation specific and thus very difficult to estimate.", s: ["BVLOS NPRM, Regulatory Impact Analysis, 90 FR 38352", "https://www.federalregister.gov/d/2025-14992"], n: ""},
+    "reopen3100": {t: "The FAA counts its own comments", q: "More than half of the approximately 3,100 comments received to the NPRM discussed the right-of-way proposal in some capacity.", s: ["Reopening notice, 91 FR 3695, Jan. 28, 2026", "https://www.federalregister.gov/d/2026-01644"], n: "The Federal Register counter for the proposal read 1,025,014, and for the reopening 900,842."},
+    "dronelife": {t: "The FAA count for Part 74", q: "", s: ["DroneLife, correction to July 1, 2026 story", "https://dronelife.com/2026/07/01/faa-section-2209-rule-comment-period/"], n: "The correction says the earlier version \"incorrectly stated that the FAA had received almost 1 million comments\" and that \"as of July 3, it had received 488 comments.\" The Federal Register counter read 901,744. The Observatory finds 518 posted records with a receive date on or before July 3."},
+    "census1908": {t: "BVLOS census", q: "", s: ["Rulemaking Observatory census of every posted record through the Regulations.gov API, Oct. 26, 2026.", "https://www.regulations.gov/docket/FAA-2025-1908"], n: "3,101 records on the proposal (FAA-2025-1908-0023), 827 on the reopening (-3135) and 1 on the denial of extension (-3488). 683 name an organization, 572 distinct names. 553 are \"see attached\" placeholders. Median receive-to-post lag 1 day."},
+    "census4558": {t: "Part 74 census", q: "", s: ["Rulemaking Observatory census of every posted record through the Regulations.gov API, Oct. 26, 2026.", "https://www.regulations.gov/docket/FAA-2026-4558"], n: "All 1,669 posted on the proposal (FAA-2026-4558-0001). 230 name an organization, 222 distinct names. 163 placeholders. 560 received by July 6, 1,109 during the extension to Aug. 5. Median lag 0 days, 90th percentile 2 days. One record lacks a receive date."},
+    "camp1908": {t: "BVLOS campaigns", q: "", s: ["Observatory near-duplicate detection, word 5-gram TF-IDF, cosine 0.80, five or more copies", ""], n: "26 clusters. The largest are a USHPA member letter (178), a reopening answer to the device questions from the powered paragliding community (126), a low-altitude GA pilot letter (91), and three groups of VAI comments filed by member operators. Campaigns hold 568 of 3,101 proposal-window records and 231 of 827 reopening records."},
+    "camp4558": {t: "Part 74 campaigns", q: "", s: ["Observatory near-duplicate detection, same settings", ""], n: "Nine clusters, all opposing UAFRs for food and agriculture facilities in the name of drone photojournalism and animal welfare. The largest holds 205 copies. The Friends of the Earth petition is a single comment and sits outside the clusters."},
+    "att": {t: "Attachments read", q: "", s: ["Rulemaking Observatory census of every posted record through the Regulations.gov API, Oct. 26, 2026.", ""], n: "1,008 files from 889 BVLOS comments and 271 files from 257 Part 74 comments, extracted with pdftotext, pandoc and OCR. Four BVLOS placeholders and one Part 74 placeholder had no downloadable file."},
+    "both": {t: "Organizations in both dockets", q: "", s: ["Observatory name matching, checked by hand", ""], n: "Matches include Amazon Prime Air, Wing, Zipline, DoorDash, DroneUp, Skyports, Skydio, AUVSI, the Commercial Drone Alliance, the Small UAV Coalition, the EEI coalition, Florida Power & Light, Southern Company, AAR, AFPM, ALPA, A4A, VAI, NAAA, AMOA, AAMS, the U.S. Chamber, NRF and CTIA. The list is in the data files."},
+    "samp4558": {t: "Part 74 sample", q: "", s: ["Hand coding of 120 records drawn at random (seed 20261026) from the 1,439 Part 74 comments that name no organization", ""], n: "71 of 120 oppose UAFRs for food and agriculture, 59.2% (Wilson 95% 50.2 to 67.5). Among the 115 that take a position, 61.7%. 37 of the 71 fall inside a detected campaign."},
+    "samprail": {t: "Rail workers in the sample", q: "", s: ["Same sample of 120", ""], n: "22 of 120, 18.3% (Wilson 12.4 to 26.2). None fall inside a detected campaign."},
+    "row": {t: "BVLOS right-of-way sample", q: "", s: ["Hand coding of 120 records drawn at random (seed 20261026) from the 1,958 BVLOS comments that mentioned right of way at the time of the draw", ""], n: "87 keep manned priority, 72.5% (Wilson 63.9 to 79.7). 4 support the EC-based framework, 4 are mixed, 25 take no position. Among the 95 with a position, 91.6% (84.3 to 95.7). After 122 late-downloaded attachments the frame is 2,005 comments."},
+    "foe": {t: "One comment, 15,815 signatures", q: "Attached, please find the signatures of 15,815 Friends of the Earth supporters", s: ["Friends of the Earth U.S., FAA-2026-4558-1666", "https://www.regulations.gov/comment/FAA-2026-4558-1666"], n: "The petition asks the FAA to exclude CAFOs and slaughterhouses from eligibility. The typed cover note says the comment is signed by 16,434 members; the attachment says 15,815."},
+    "tsa": {t: "TSA roundtables wait for the final rules", q: "", s: ["TSA notice, FR Doc. 2026-18124, Sept. 4, 2026", "https://public-inspection.federalregister.gov/2026-18124.pdf"], n: "The notice reads \"These meetings will be held after publication of the FAA and TSA final rules.\""},
+    "s44811": {t: "Statutory deadline", q: "", s: ["49 U.S.C. 44811", "https://www.law.cornell.edu/uscode/text/49/44811"], n: "Subsection (c) sets the final rule at 16 months after the proposed rule. The proposal published Aug. 7, 2025, which puts the deadline near Dec. 7, 2026."},
+    "dspa": {t: "Devices available today, says DSPA", q: "uAvionix currently produces electronic conspicuity (EC) devices capable of satisfying the proposed requirements of §108.195(a)(2)(ii). Specifically, the skyEcho and ping2020i are available today and are already in use in multiple jurisdictions and operational contexts.", s: ["Drone Service Providers Alliance, FAA-2025-1908-3434", "https://www.regulations.gov/comment/FAA-2025-1908-3434"], n: "Font ligatures in the PDF text restored. Wing (FAA-2025-1908-3908) finds no marketed unit that both fully meets the requirement and fits a low-cost, portable design, and says one could be adapted in months. The 126-copy paragliding template says no compliant device is on the US market."},
+    "amz108tsa": {t: "Amazon on the TSA layer", q: "TSA should withdraw from the Part 108 rulemaking and, if it proceeds, issue a separate, strategically scoped NPRM or SNPRM that proposes a performance-based regulatory framework tailored to the unique characteristics and risks of drone operations.", s: ["Amazon Prime Air, FAA-2025-1908-2872", "https://www.regulations.gov/comment/FAA-2025-1908-2872"], n: ""},
+    "amz146": {t: "Amazon on Part 146", q: "Part 146 lacks the specificity and clarity necessary to support implementation or meaningful comments under 5 U.S.C. § 553 (“Administrative Procedure Act” or “APA”).", s: ["Amazon Prime Air, FAA-2025-1908-2872", "https://www.regulations.gov/comment/FAA-2025-1908-2872"], n: ""},
+    "wing108sta": {t: "Wing on the threat assessment", q: "Wing strongly opposes the introduction of a Security Threat Assessment (STA) which is not proportionate to the security risk posed by BVLOS operations or their personnel (14 CFR 108.335), especially ancillary personnel such as retail staff and package loaders.", s: ["Wing Aviation, FAA-2025-1908-2986", "https://www.regulations.gov/comment/FAA-2025-1908-2986"], n: ""},
+    "naaa108": {t: "NAAA on shielded areas", q: "NAAA’s Highest Concern – Proposed Part 108 Shielded Areas Must Not Be Codified", s: ["National Agricultural Aviation Association, FAA-2025-1908-1842", "https://www.regulations.gov/comment/FAA-2025-1908-1842"], n: ""},
+    "gama": {t: "GAMA on the statute", q: "The FAA should ensure that its proposal to amend 91.113, if retained, and introducing 108.195 are aligned with 49 U.S.C. §44807(c)(4)(A).", s: ["GAMA, FAA-2025-1908-2940", "https://www.regulations.gov/comment/FAA-2025-1908-2940"], n: "49 U.S.C. 44807(c)(4)(A) is a rule of construction. Nothing in that subsection may be read to give an unmanned aircraft operating under it the right of way over a manned aircraft. Part 108 would be a separate rule."},
+    "droneup108": {t: "A delivery operator against UA priority", q: "Reject proposed §91.113 amendments granting right-of-way to UA over unequipped manned aircraft in Class G airspace. Maintain traditional right-of-way priorities to ensure broad stakeholder support. Call for endorsing a mandate for electronic conspicuity (EC) for all crewed aircraft operating below 500 FT AGL.", s: ["DroneUp, FAA-2025-1908-2616", "https://www.regulations.gov/comment/FAA-2025-1908-2616"], n: ""},
+    "nbaa": {t: "A manned aviation group for EC", q: "If electronic conspicuity is required of all aircraft and coupled with the detect-and-avoid features of unmanned aircraft, the current Part 91 right of way rules would only need a minor revision, stating that unmanned aircraft yield right-of-way to all other aircraft below 500 feet above ground level (AGL).", s: ["NBAA, FAA-2025-1908-1886", "https://www.regulations.gov/comment/FAA-2025-1908-1886"], n: ""},
+    "aopa": {t: "AOPA in the reopening", q: "we remain vehemently opposed to EC devices being used as the sole determining factor as to whether an aircraft has right-of-way or not.", s: ["AOPA, FAA-2025-1908-3482", "https://www.regulations.gov/comment/FAA-2025-1908-3482"], n: ""},
+    "eei1908": {t: "Utilities as operators", q: "codifies shielded operations and utility corridors by defining shielded airspace 200 feet around critical infrastructure and clarifying right-of-way expectations.", s: ["EEI, APPA, LPPC and NRECA, FAA-2025-1908-3960", "https://www.regulations.gov/comment/FAA-2025-1908-3960"], n: ""},
+    "fpl1908": {t: "FPL on owner permission", q: "the FAA should nonetheless remove the proposed “permission” aspect of the shielding definition in § 108.205(a). It is vital to protect the safety and security of critical infrastructure; however, the need to obtain permission from the infrastructure owner is impractical and challenging for a number of reasons. It is our understanding that the section 2209 rule will address this issue, and we look forward to providing comments on this rule when the proposed rule is published.", s: ["Florida Power & Light, FAA-2025-1908-2682", "https://www.regulations.gov/comment/FAA-2025-1908-2682"], n: ""},
+    "suavc108": {t: "A placeholder for Part 74", q: "This section is a placeholder for the Section 2209 final rule, as that rulemaking is expected to be completed contemporaneously with a part 108 final rule.", s: ["Small UAV Coalition, FAA-2025-1908-2892", "https://www.regulations.gov/comment/FAA-2025-1908-2892"], n: ""},
+    "utm12": {t: "UTM providers", q: "We are strongly supportive of FAA’s proposed requirements to use strategic deconfliction (specifically, strategic conflict detection and aggregate conformance monitoring) as a means to effectively manage ground risk", s: ["Twelve UTM providers and operators, FAA-2025-1908-2544", "https://www.regulations.gov/comment/FAA-2025-1908-2544"], n: ""},
+    "amz4558": {t: "Amazon on transit time", q: "The FAA should additionally clarify that normal operational maneuvers inherent to delivery, inspection, and other missions conducted by vetted operators authorized to transit UAFRs satisfy the “shortest amount of time practicable” standard in proposed § 74.250(a)(2).", s: ["Amazon Prime Air, FAA-2026-4558-1663", "https://www.regulations.gov/comment/FAA-2026-4558-1663"], n: "Font ligatures in the PDF text restored."},
+    "amzpre": {t: "Amazon on preemption", q: "Our position: To address this gap, the FAA must include an express federal preemption provision in the final rule.", s: ["Amazon Prime Air, FAA-2026-4558-1663", "https://www.regulations.gov/comment/FAA-2026-4558-1663"], n: "Font ligatures in the PDF text restored. Amazon cites NRS 493.109 and Texas Penal Code 38.115."},
+    "wing4558": {t: "Wing on notice", q: "A Final Rule should replace the proposed manual, web-form advance notification requirement with an automated, machine-to-machine system.", s: ["Wing Aviation, FAA-2026-4558-1645", "https://www.regulations.gov/comment/FAA-2026-4558-1645"], n: ""},
+    "wingsta": {t: "Wing on the TSA tie", q: "Sophisticated operations under part 135 or proposed part 108, such as Wing’s UAS package delivery operations, present little to no security risk for fixed site facilities. Allowed operations are unnecessarily connected to TSA Security Threat Assessments in the preamble of the Proposed Rule.", s: ["Wing Aviation, FAA-2026-4558-1645", "https://www.regulations.gov/comment/FAA-2026-4558-1645"], n: ""},
+    "zip4558": {t: "Zipline on notice at scale", q: "This is burdensome but achievable for an individual operation, but it is burdensome and unachievable for operations at scale, even today. To give a sense of the burden this requirement would place on our operations, Zipline currently delivers thousands of orders a day and is growing. Our drones plan their routes autonomously and flights are overseen by fleet commanders who monitor many flights simultaneously-as approved by the FAA. Our drones also move between locations; they might move between Chargers in one metro on a day-to-day basis or even be assigned to different locations. As we scale to more metros and operate more flights this burden scales accordingly. To remedy this situation, the FAA should amend proposed § 74.250 to make the notice requirement inapplicable to Part 135 and Part 108 certificate holders.", s: ["Zipline, FAA-2026-4558-1527", "https://www.regulations.gov/comment/FAA-2026-4558-1527"], n: ""},
+    "dd4558": {t: "DoorDash proposes a whitelist", q: "Given that many drone delivery operators currently conduct hundreds or thousands of flights per day, this notification construct is unlikely to hold up under current operational demand across the United States (totalling more than 1,000,000 operations nationwide in calendar year 2026), much less the expected increase in drone operations under FAA proposed Part 108. Therefore, DoorDash proposes that in lieu of the notification requirements in § 74.255, the FAA keep and publish a machine-readable, online database of all operators qualified under § 74.250(b) through (f). This means that any UAFR site proprietor could simply consult a single authoritative FAA source to see all approved Part 91 PAO, Part 107, Part 108, Part 135 and Part 137 operators. Put another way, such a database would be a whitelist of approved operators, and no further notification would be needed.", s: ["DoorDash, FAA-2026-4558-1684", "https://www.regulations.gov/comment/FAA-2026-4558-1684"], n: ""},
+    "auvsi": {t: "AUVSI on notice", q: "Codify in the regulatory text of § 74.250 that notification is situational awareness only and that facility managers may not approve, deny, or condition compliant access;", s: ["AUVSI, FAA-2026-4558-1660", "https://www.regulations.gov/comment/FAA-2026-4558-1660"], n: ""},
+    "cda146": {t: "Part 146 as the notice channel", q: "Specifically, the proposed Part 146 framework for certifying Automated Data Service Providers (ADSPs), which will be foundational to enabling scaled operations under the Part 108 rule, could be leveraged to certify surveillance, detection, or network Remote ID service providers offering automated notification services.", s: ["Commercial Drone Alliance, FAA-2026-4558-1639", "https://www.regulations.gov/comment/FAA-2026-4558-1639"], n: ""},
+    "skydio": {t: "Skydio on manual notice", q: "if even a small percentage of the tens of thousands of BVLOS operations that occur each week are required to submit manual UAFR notifications for every flight, that’s thousands of manual notifications a week.", s: ["Skydio, FAA-2026-4558-1681", "https://www.regulations.gov/comment/FAA-2026-4558-1681"], n: ""},
+    "skydio2": {t: "A safe harbor for avoidance", q: "should remain free to execute detect-and-avoid maneuvers, weather avoidance, lost-link contingency procedures, emergency deviations, and other FAA-approved safety procedures without those actions being treated as violations of § 74.250 transit or § 74.255 notification", s: ["Skydio, FAA-2026-4558-1681", "https://www.regulations.gov/comment/FAA-2026-4558-1681"], n: ""},
+    "nvts": {t: "EC equipment in the notice", q: "Replace the phrase \"(4) Remote Identification Serial Number(s) associated with allowed operation\" should be replaced with: \"(4) Remote Identification Serial Number(s) or electronic conspicuity equipment meeting the proposed § 108.195(a)(2)(ii)", s: ["Nevada UAS Test Site, FAA-2026-4558-0218", "https://www.regulations.gov/comment/FAA-2026-4558-0218"], n: ""},
+    "disney": {t: "Disney on allowed operations", q: "§ 74.250 should remove and expressly prohibit the following commercial activities: • § 74.250(c): routine commercial UAS operations conducted under 14 CFR Part 107;", s: ["The Walt Disney Company, FAA-2026-4558-1627", "https://www.regulations.gov/comment/FAA-2026-4558-1627"], n: "Font ligatures in the PDF text restored. The list continues with Part 108 delivery, inspection and agricultural flights, Part 135 delivery or air carrier flights, and Part 137 flights under § 74.250(f)."},
+    "disneymemo": {t: "A meeting after the close", q: "On September 2, 2026, representatives from Disney Worldwide Services, Inc. (Disney) met with the Federal Aviation Administration (FAA) to reiterate topics presented in their public comment posted to Docket ID FAA-2026-4558.", s: ["FAA memorandum to the docket, FAA-2026-4558-1691", "https://www.regulations.gov/document/FAA-2026-4558-1691"], n: "The FAA attendees included the Associate Administrator for Policy and Strategic Engagement, the Executive Director of the Office of Rulemaking and counsel from the Regulations Division. Comments closed Aug. 5, 2026."},
+    "iaapa": {t: "IAAPA on consent", q: "If FAA declines to adopt that prohibition categorically, the final rule should at minimum require that any such operation receive both FAA approval and the facility operator's advance consent before entering or transiting the UAFR.", s: ["IAAPA, FAA-2026-4558-1644", "https://www.regulations.gov/comment/FAA-2026-4558-1644"], n: ""},
+    "eei4558": {t: "Utilities as site owners", q: "Commercial and recreational drone operations over defense critical electric infrastructure, nuclear sites, and other critical elements of the electric infrastructure pose an inherent risk and should be categorically prohibited. • To the extent commercial and recreational UAS operations are permitted over restricted airspace, such flights should require express approval by the relevant facility prior to operating.", s: ["EEI, APPA, LPPC and NRECA, FAA-2026-4558-1616", "https://www.regulations.gov/comment/FAA-2026-4558-1616"], n: ""},
+    "aar": {t: "Railroads on notice timing", q: "Specifically, notification should be made as soon as possible but not later than 7 days prior to transiting the UAFR, absent extraordinary circumstances.", s: ["Association of American Railroads, FAA-2026-4558-1636", "https://www.regulations.gov/comment/FAA-2026-4558-1636"], n: "AAR prefers permission-only access and offers this as the alternative."},
+    "acc": {t: "Chemical sites on standing notice", q: "The final rule should expressly accommodate facility-owned and facility-authorized operations through a practical mechanism such as standing notifications or a facility-specific list of authorized operators and aircraft.", s: ["American Chemistry Council, FAA-2026-4558-1630", "https://www.regulations.gov/comment/FAA-2026-4558-1630"], n: ""},
+    "afpm": {t: "Refiners on Part 108", q: "FAA’s 2025 proposed rule incorporates security checks and balances, but the rule has not been finalized and therefore should not be cited as definitive justification. Additionally, the recent reopening of the comment period highlighted continuing uncertainty regarding the ability of current electronic conspicuity (EC) devices to comply with detect-and-avoid (DAA) requirements.", s: ["American Fuel & Petrochemical Manufacturers, FAA-2026-4558-1665", "https://www.regulations.gov/comment/FAA-2026-4558-1665"], n: ""},
+    "amoa": {t: "Air medical operators", q: "the Final Rule should permit UA to be excluded from fixed sites to which air medical flights operate.", s: ["Air Medical Operators Association, FAA-2026-4558-1559", "https://www.regulations.gov/comment/FAA-2026-4558-1559"], n: ""},
+    "vai4558": {t: "Helicopter operators want Part 108 first", q: "Further, to provide fully informed comments to this NPRM, a final Part 108 rulemaking would be required to evaluate this NPRM for completeness and cohesiveness.", s: ["Vertical Aviation International, FAA-2026-4558-1515", "https://www.regulations.gov/comment/FAA-2026-4558-1515"], n: ""},
+    "naaa4558": {t: "Shielded areas and UAFRs overlap", q: "However, if codified as proposed, energy substations and other areas designated by the Administrator may become both Part 108 shielded areas and Part 74 UAFRs. The result would be Part 108 operations over this critical infrastructure wherein UAS would not be required to detect nor avoid any manned aircraft. While absolutely an existential issue to pilot safety, in the context of the proposed Part 74, this unmitigated midair collision risk would also threaten the same critical infrastructure the proposed rule is intended to protect. Accordingly, NAAA recommends that UAFRs be explicitly excluded for eligibility as shielded areas.", s: ["National Agricultural Aviation Association, FAA-2026-4558-1566", "https://www.regulations.gov/comment/FAA-2026-4558-1566"], n: ""},
+    "alpa": {t: "Airline pilots on control of airspace", q: "Facility operators should be permitted to request restrictions, but they should not effectively control navigable airspace or determine the scope of restrictions.", s: ["ALPA, FAA-2026-4558-1638", "https://www.regulations.gov/comment/FAA-2026-4558-1638"], n: ""},
+    "nppc": {t: "Pork producers ask for eligibility", q: "NPPC urges the FAA not only to make livestock and poultry farms, feed operations, and meat and poultry processing facilities eligible to quickly and easily seek UAFRs", s: ["National Pork Producers Council, FAA-2026-4558-0565", "https://www.regulations.gov/comment/FAA-2026-4558-0565"], n: ""},
+    "nmc": {t: "News drones and time limits", q: "The Coalition encourages the FAA to more explicitly protect First Amendment UAS activities by making clear that UAS operated by news organizations and journalists within a UAFR need not be limited in duration, so long as the UAS is otherwise complying with all applicable rules and regulations.", s: ["News Media Coalition, FAA-2026-4558-1643", "https://www.regulations.gov/comment/FAA-2026-4558-1643"], n: ""},
+    "ctia": {t: "CTIA on preemption", q: "Finally, the FAA should expressly preempt state and local laws that attempt to regulate the airspace above critical infrastructure.", s: ["CTIA, FAA-2026-4558-1596", "https://www.regulations.gov/comment/FAA-2026-4558-1596"], n: ""},
+    "ags": {t: "State AGs on preemption", q: "First, the FAA should clarify that the Rule would not have the effect of preempting current or future state laws or regulations that restrict operation of drones in low-altitude airspace in the proximity of state-defined critical infrastructure sites, even where a State’s definition of “critical infrastructure” in this context includes site categories not covered by the FAA proposal.", s: ["Attorneys General of ten states, FAA-2026-4558-1659", "https://www.regulations.gov/comment/FAA-2026-4558-1659"], n: "An earlier version signed by eight states is FAA-2026-4558-1647."},
+    "agsnames": {t: "Ten state attorneys general", q: "COMMENTS OF OFFICES OF ATTORNEYS GENERAL OF NEW YORK, ARIZONA, CALIFORNIA, COLORADO, DELAWARE, ILLINOIS, MINNESOTA, NEW JERSEY, NORTH CAROLINA, AND VERMONT", s: ["FAA-2026-4558-1659", "https://www.regulations.gov/comment/FAA-2026-4558-1659"], n: "The letter also asks for one Special UAFR application covering all of a state's prisons and for clarity on the July 6, 2026 Safer Skies interim final rule."},
+    "fpl4558": {t: "A utility's daily flights", q: "Currently, FPL is averaging approximately 50+ missions per day, with an average of 15 flights per mission and 500 total flights per day.", s: ["Florida Power & Light, FAA-2026-4558-1531", "https://www.regulations.gov/comment/FAA-2026-4558-1531"], n: ""},
+    "sce": {t: "Another utility's volume", q: "Halfway though 2026 alone, we have conducted 14,697 flights and logged 3,082 flight hours.", s: ["Southern California Edison, FAA-2026-4558-1599", "https://www.regulations.gov/comment/FAA-2026-4558-1599"], n: ""},
+    "dr": {t: "Public safety flights", q: "There are an estimated 30,000 public safety flights per day. At the rate of current DFR program growth, this number could rise to potentially 100,000 flights per day within the next three years.", s: ["DRONERESPONDERS, FAA-2026-4558-1564", "https://www.regulations.gov/comment/FAA-2026-4558-1564"], n: "An estimate by the commenter."},
+    "trc": {t: "Rail labor on owner flights", q: "However, these restrictions must protect the employees working within those facilities and should not provide railroads with unrestricted authority to conduct drone operations over occupied work areas without adequate notice to ensure that a secure environment can be maintained.", s: ["Teamsters Rail Conference, FAA-2026-4558-1624", "https://www.regulations.gov/comment/FAA-2026-4558-1624"], n: ""},
+    "droneup4558": {t: "DroneUp backs the transit limit", q: "We support this security measure, but recommend the FAA explain in the final rule how the transit requirement is tailored to safety and security needs and how the authorization process preserves reasonable access for protected activities, including newsgathering", s: ["DroneUp, FAA-2026-4558-1676", "https://www.regulations.gov/comment/FAA-2026-4558-1676"], n: ""},
+    "sddot": {t: "A state DOT asks for LAANC-like access", q: "If FAA approval is necessary, the agency should establish a streamlined, real-time authorization system similar to the Low Altitude Authorization and Notification Capability (LAANC) program.", s: ["South Dakota Department of Transportation, FAA-2026-4558-0471", "https://www.regulations.gov/comment/FAA-2026-4558-0471"], n: ""},
+  };
+  window.__EV = E;
+  const panel = document.getElementById('ev-panel');
+  const title = document.getElementById('ev-title'), quote = document.getElementById('ev-quote'), src = document.getElementById('ev-src'), note = document.getElementById('ev-note');
+  let opener = null;
+  function open(btn) {
+    const e = E[btn.dataset.ev]; if (!e) return;
+    opener = btn;
+    document.querySelectorAll('.ev[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+    btn.setAttribute('aria-expanded', 'true');
+    title.textContent = e.t;
+    quote.textContent = e.q; quote.hidden = !e.q;
+    src.textContent = '';
+    if (e.s[1]) { const a = document.createElement('a'); a.href = e.s[1]; a.target = '_blank'; a.rel = 'noopener'; a.textContent = e.s[0]; src.appendChild(a); }
+    else src.textContent = e.s[0];
+    note.textContent = e.n; note.hidden = !e.n;
+    panel.hidden = false;
+    document.getElementById('ev-close').focus({ preventScroll: true });
+  }
+  function close() {
+    panel.hidden = true;
+    if (opener) { opener.setAttribute('aria-expanded', 'false'); opener.focus({ preventScroll: true }); opener = null; }
+  }
+  document.querySelectorAll('.ev').forEach(b => { b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'ev-panel'); b.addEventListener('click', () => open(b)); });
+  document.getElementById('ev-close').addEventListener('click', close);
+  document.addEventListener('keydown', ev => { if (ev.key === 'Escape' && !panel.hidden) close(); });
+  (function calc() {
+    const f = document.getElementById('calc'); if (!f) return;
+    f.addEventListener('submit', e => e.preventDefault());
+    const num = id => { const v = document.getElementById(id).value; return v === '' ? null : Number(v); };
+    const fmt = x => x.toLocaleString('en-US', { maximumFractionDigits: 1 });
+    function run() {
+      const F = num('c-f'), s = num('c-s'), k = num('c-k'), t = num('c-t');
+      const n = (F !== null && s !== null && k !== null) ? F * s / 100 * k : null;
+      document.getElementById('c-n').textContent = n === null ? 'enter s and k' : fmt(n);
+      document.getElementById('c-h').textContent = (n === null || t === null) ? 'enter s, k and t' : fmt(n * t / 60);
+    }
+    f.addEventListener('input', run); run();
+  })();
+})();
+</script>
+
+</body>
+</html>
