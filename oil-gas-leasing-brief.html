@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ComtIQ one-page intelligence brief on the BLM onshore oil and gas leasing rule, docket BLM-2025-0037. Which provisions are likely to change in the final rule, the litigation risk in the bond cut and what operators, sureties and investors should do.">
+<link rel="canonical" href="https://comtiq.com/oil-gas-leasing-brief.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Federal Oil and Gas Leasing Brief · ComtIQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@700&display=swap">
+<style>
+/* One page brief: navy band, the key judgment, three judgments with their evidence, signposts and what each sector should do. */
+:root {
+  --navy: #0A1B2B; --navy-2: #12293D; --cyan: #00C2FF; --accent: #0077A3; --amber: #B7791F;
+  --paper: #F5F7FA; --surface: #FFFFFF; --ink: #0B1C2C; --muted: #586474; --rule: #D6DEE5;
+  --tint: #E8F4FA; --warn-bg: #FBF3E4; --on-navy: #E8F1F7; --on-navy-muted: #9FB3C4;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3;
+    --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; --warn-bg: #2A2416; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3;
+  --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; --warn-bg: #2A2416; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.page { max-width: 880px; margin: 0 auto; background: var(--surface); min-height: 100vh; }
+.pad { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+@media (min-width: 700px) { .pad { padding-left: 36px; padding-right: 36px; } }
+h1, h2 { font-family: var(--display); font-variation-settings: "wdth" 108; margin: 0; line-height: 1.12; letter-spacing: -0.01em; text-wrap: balance; }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; border-radius: 3px; }
+.mono { font-family: var(--mono); font-size: 0.86em; }
+
+.mast { background: var(--navy); color: var(--on-navy); padding-top: 20px; padding-bottom: 20px; display: grid; gap: 12px; }
+.brandline { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 9px; }
+.brand svg { width: 30px; height: 30px; flex: none; }
+.word { font-family: "Montserrat", var(--display); font-weight: 700; font-size: 1.2rem; color: #FFFFFF; line-height: 1; }
+.word b { color: var(--cyan); }
+.kind { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--on-navy-muted); }
+.mast h1 { font-size: clamp(1.4rem, 3.6vw, 1.9rem); font-weight: 800; color: #FFFFFF; }
+.meta { font-family: var(--mono); font-size: 0.74rem; color: var(--on-navy-muted); display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.meta b { color: #FFFFFF; font-weight: 500; }
+
+.k { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; display: block; }
+.block { padding-top: 18px; padding-bottom: 16px; border-bottom: 1px solid var(--rule); }
+.bluf p { font-size: 1.02rem; }
+.bluf p + p { margin-top: 6px; color: var(--muted); font-size: 0.95rem; }
+.bluf strong { font-weight: 600; }
+
+.nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ink); }
+.num { padding: 10px 12px 10px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 2px; align-content: start; min-width: 0; }
+.num .n { font-family: var(--display); font-variation-settings: "wdth" 100; font-weight: 750; font-size: 1.5rem; line-height: 1.05; font-variant-numeric: tabular-nums; }
+.num .l { font-size: 0.82rem; color: var(--muted); }
+@media (max-width: 620px) { .nums { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.map { display: grid; gap: 8px; }
+.mapbar { display: flex; height: 26px; border-radius: 4px; overflow: hidden; border: 1px solid var(--rule); }
+.mapbar span { display: flex; align-items: center; justify-content: center; font-family: var(--mono); font-size: 0.78rem; font-weight: 500; }
+.m-mer { background: var(--accent); color: #FFFFFF; }
+.m-leg { background: var(--tint); color: var(--ink); }
+.m-oos { background: var(--warn-bg); color: var(--amber); }
+.m-none { background: var(--ink); color: var(--surface); }
+.maplist { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 24px; font-size: 0.86rem; }
+.maplist p { display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.maplist i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; border: 1px solid var(--rule); }
+.maplist b { font-weight: 600; }
+@media (max-width: 620px) { .maplist { grid-template-columns: 1fr; } }
+
+.acts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 24px; }
+.acts div { display: grid; gap: 2px; min-width: 0; align-content: start; }
+.acts h2 { font-size: 0.95rem; font-weight: 700; }
+.acts p { font-size: 0.88rem; }
+@media (max-width: 620px) { .acts { grid-template-columns: 1fr; } }
+
+.watch { font-size: 0.88rem; display: grid; gap: 3px; }
+.foot { padding-top: 14px; padding-bottom: 20px; font-size: 0.78rem; color: var(--muted); display: grid; gap: 6px; }
+.foot .full { font-size: 0.9rem; color: var(--ink); }
+
+@page { size: letter; margin: 0.38in 0.42in; }
+@media print {
+  html { font-size: 12px; }
+  body { background: #FFFFFF; font-size: 12px; line-height: 1.4; }
+  .mast { gap: 8px; } .mast h1 { font-size: 1.5rem; }
+  .num .n { font-size: 1.3rem; } .num { padding: 6px 10px 6px 0; }
+  .bluf p { font-size: 1rem; } .k { margin-bottom: 4px; }
+  .mapbar { height: 20px; }
+  .page { max-width: none; min-height: 0; }
+  .pad { padding-left: 0; padding-right: 0; }
+  .mast { padding: 14px 16px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .mapbar span, .nums { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .block { padding-top: 8px; padding-bottom: 7px; }
+  .foot { padding-top: 8px; padding-bottom: 0; }
+  .nums { grid-template-columns: repeat(3, 1fr); }
+  .maplist { grid-template-columns: repeat(2, 1fr); } .acts { grid-template-columns: repeat(3, 1fr); }
+}
+
+.judg { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: j; }
+.judg li { counter-increment: j; display: grid; grid-template-columns: 28px minmax(0,1fr); gap: 10px; padding: 9px 0; border-top: 1px solid var(--rule); }
+.judg li:first-child { border-top: 0; padding-top: 2px; }
+.judg li::before { content: counter(j); font-family: var(--display); font-weight: 800; font-size: 1.15rem; color: var(--accent); line-height: 1.2; }
+.judg h2 { font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.judg p { font-size: 0.9rem; }
+.judg .src { font-size: 0.78rem; color: var(--muted); margin-top: 3px; }
+.conf { font-family: var(--mono); font-size: 0.66rem; padding: 1px 7px; border-radius: 999px; border: 1px solid var(--accent); color: var(--accent); white-space: nowrap; margin-left: 6px; vertical-align: 2px; }
+.conf.mod { border-color: var(--amber); color: var(--amber); }
+.split { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px 24px; font-size: 0.86rem; }
+.split p b { font-weight: 600; }
+.sig { display: grid; gap: 4px; font-size: 0.86rem; }
+.sig p { display: grid; grid-template-columns: 8.2rem minmax(0,1fr); gap: 10px; }
+.sig .d { font-family: var(--mono); font-size: 0.74rem; color: var(--accent); padding-top: 1px; }
+@media (max-width: 620px) { .split { grid-template-columns: 1fr; } .sig p { grid-template-columns: 1fr; gap: 0; } }
+@media print { .judg li { padding: 5px 0; } .judg p { font-size: 0.86rem; } .split, .sig { font-size: 0.82rem; } .acts p { font-size: 0.82rem; } .split { grid-template-columns: repeat(2,1fr); } }
+
+.mx { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin-top: 6px; border-top: 2px solid var(--ink); }
+.mx td:nth-child(2) { font-weight: 600; }
+.lead { font-size: 1rem; font-weight: 600; margin: 4px 0 8px; }
+.mx th { text-align: left; font-family: var(--mono, monospace); font-size: 0.66rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); font-weight: 500; padding: 4px 8px 4px 0; border-bottom: 1px solid var(--rule); }
+.mx td { padding: 5px 8px 5px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.mx td:nth-child(2), .mx td:nth-child(3) { white-space: nowrap; }
+.note { font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
+.acts { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+@media (max-width: 640px) { .acts { grid-template-columns: 1fr !important; } }
+
+.rk { padding: 4px 0; } .rk + .rk { border-top: 1px solid var(--rule); }
+.rk h2 { font-size: 1rem; font-weight: 700; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.rk p { font-size: 0.9rem; }
+@media print {
+  html, body { font-size: 13px; }
+  .acts p, .sig, .judg p, .rk p { font-size: 0.9rem; }
+  .mx { font-size: 0.9rem; } .note { font-size: 0.82rem; }
+  .foot { font-size: 0.85rem; } .foot .full { font-size: 0.92rem; }
+  .bluf p + p { font-size: 0.95rem; }
+  html, body { line-height: 1.32; }
+  .block { padding-top: 6px; padding-bottom: 5px; }
+  .acts div { align-content: start; }
+  .mx td { padding: 3px 8px 3px 0; }
+}
+</style>
+<body>
+<div class="page">
+  <header class="mast pad">
+    <div class="brandline">
+      <div class="brand" aria-label="ComtIQ">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00C2FF"/><stop offset="1" stop-color="#0A6BD6"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="#123A5E" stroke-width="5"/><path d="M32 3.5 A28.5 28.5 0 1 1 7.3 46.25" fill="none" stroke="url(#mg)" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="32" r="20" fill="none" stroke="#123A5E" stroke-width="3"/><path d="M52 32 A20 20 0 0 1 22 49.3" fill="none" stroke="#00C2FF" stroke-width="3" stroke-linecap="round"/><circle cx="32" cy="32" r="13.5" fill="url(#mg)"/><path d="M24.5 26.5 h15 a3 3 0 0 1 3 3 v5.5 a3 3 0 0 1 -3 3 h-8.2 l-4.3 3.6 v-3.6 h-2.5 a3 3 0 0 1 -3 -3 v-5.5 a3 3 0 0 1 3 -3z" fill="#FFFFFF"/><circle cx="27.8" cy="32.2" r="1.55" fill="#0A6BD6"/><circle cx="32" cy="32.2" r="1.55" fill="#0A6BD6"/><circle cx="36.2" cy="32.2" r="1.55" fill="#0A6BD6"/></svg>
+        <span class="word">Comt<b>IQ</b></span>
+      </div>
+      <span class="kind">Regulatory Intelligence Brief · One page</span>
+    </div>
+    <h1>Bond cuts likely to survive the rulemaking; public participation provisions face pressure to change</h1>
+    <p class="meta"><span>Docket <b>BLM-2025-0037</b></span><span>RIN <b>1004-AF05</b></span><span>Comments closed <b>Aug. 24, 2026</b></span><span>Version <b>1.2</b>, Oct. 25, 2026</span></p>
+  </header>
+
+  <section class="block bluf pad" aria-label="Key judgment">
+    <span class="k">Key judgment</span>
+    <p><strong>Several major producer associations supporting lower bond requirements oppose eliminating both pre-sale comment periods. They favor retaining one opportunity for public comment and a longer protest window.</strong></p>
+    <p>API and Continental Resources back the full cut, and every industry letter favors lower bonds, so participation is the provision most likely to move.</p>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-m">
+    <span class="k" id="h-m">Expected outcome in the final rule text</span>
+    <table class="mx">
+      <thead><tr><th>Provision</th><th>Likelihood</th><th>Confidence</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Bond minimums cut to $10,000 per lease and $25,000 statewide</td><td>Likely</td><td>Moderate</td><td>Industry, SBA Advocacy and Utah support it. Small operators report surety premiums of 7% or more and substantial collateral requirements</td></tr>
+        <tr><td>Both 30-day comment periods eliminated, as proposed</td><td>Unlikely</td><td>Moderate</td><td>Most producer groups want one period kept; the Ninth Circuit faulted unexplained cuts in 2025</td></tr>
+        <tr><td>Protest window cut from 30 to 10 days, as proposed</td><td>Unlikely</td><td>Moderate</td><td>AXPC asks for 20 days, ranchers 30, retired BLM staff 15</td></tr>
+        <tr><td>Nationwide bonds reinstated at $150,000</td><td>Likely</td><td>Moderate</td><td>AXPC, the joint letter, API and NDPC ask for them</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Likelihood refers to the final rule text only. Royalties, four lease sales a year and noncompetitive leasing already apply under the 2025 statute and BLM guidance.</p>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-r">
+    <span class="k" id="h-r">The risk that remains</span>
+    <p class="lead">Lower bonding requirements may release capital, but reclamation liabilities and surety underwriting risks remain.</p>
+    <div class="rk"><h2>Litigation exposure <span class="conf mod">Moderate confidence</span></h2>
+      <p>Attorneys general of five states have outlined potential grounds for litigation in their comments. If challenged, we assess the likelihood that the lower minimums survive judicial review as roughly even.</p></div>
+    <div class="rk"><h2>Why it matters</h2>
+      <p>The Mineral Leasing Act requires a bond that ensures reclamation. The BLM's own analysis expects the lower minimums to delay orphaned-well reclamation by 1,440 to 2,400 days a year and to add $1.3 million to $3.0 million a year in public liability, against $7.4 million to $15.2 million in operator savings.</p></div>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-sig">
+    <span class="k" id="h-sig">Signposts</span>
+    <div class="sig">
+      <p><span class="d">OIRA receipt</span><span>The final rule reaches White House review. No date is scheduled.</span></p>
+      <p><span class="d">On publication</span><span>The protest window in § 3120.42, any restored comment period and the nationwide bond option chosen.</span></p>
+      <p><span class="d">June 22, 2027</span><span>Existing bonds below the 2024 minimums must meet them unless the new rule takes effect or the deadline moves. New bonds already must.</span></p>
+    </div>
+  </section>
+
+  <section class="block pad" aria-labelledby="h-acts">
+    <span class="k" id="h-acts">What it means for you</span>
+    <div class="acts">
+      <div><h2>Operators</h2><p>Savings may follow, depending on BLM review, surety terms and collateral release. Reclamation costs stay the same. Review bonds and collateral before June 22, 2027.</p></div>
+      <div><h2>Sureties</h2><p>BLM reviews, which require full-liability bonds when over half of an operator's wells sit idle, will set exposure more than the floor. Reprice by idle-well share.</p></div>
+      <div><h2>Investors and acquirers</h2><p>Price two risks into lease diligence, a bond review that raises a bond and a court ruling that reopens the minimums.</p></div>
+      <div><h2>Protesters and states</h2><p>Prepare for a 10-day deadline while watching whether the BLM restores a longer window, and start parcel reviews early. Tribal consultation follows its own process.</p></div>
+    </div>
+  </section>
+
+  <footer class="foot pad">
+    <p class="full"><strong>Full report.</strong> <a href="reports/comtiq-blm-leasing-report.pdf">Read the full report</a>, or <a href="https://forms.gle/mVrsRADEAppke4JLA">join the ComtIQ waitlist</a> for updates and new reports. <a href="reports/comtiq-blm-leasing-one-page.pdf">Download this page as a PDF.</a></p>
+    <p><strong>Coverage.</strong> 15,827 posted comments, 13% of the 122,209 received; 20 campaigns; 94 main letters; a random sample of 120 records, 101 readable; the BLM's impact analysis. <a href="https://www.regulations.gov/docket/BLM-2025-0037">BLM-2025-0037</a> · ICD 203 terms · Not legal advice.</p>
+  </footer>
+</div>
+</body>
+</html>
