@@ -1,0 +1,121 @@
+n,comment_id,sender_type,window,code
+0,withheld,individual,nprm,keeps manned priority
+1,withheld,individual,reopening,keeps manned priority
+2,withheld,individual,nprm,no position
+3,FAA-2025-1908-2897,other,nprm,keeps manned priority
+4,withheld,individual,nprm,keeps manned priority
+5,FAA-2025-1908-3521,manned_rotor,reopening,keeps manned priority
+6,withheld,individual,nprm,keeps manned priority
+7,withheld,individual,nprm,keeps manned priority
+8,FAA-2025-1908-2365,manned_sport,nprm,keeps manned priority
+9,withheld,individual,nprm,no position
+10,withheld,individual,nprm,keeps manned priority
+11,FAA-2025-1908-3556,uas_operator_tech,reopening,supports EC-based framework
+12,withheld,individual,nprm,keeps manned priority
+13,withheld,individual,nprm,keeps manned priority
+14,withheld,individual,nprm,keeps manned priority
+15,FAA-2025-1908-1446,manned_rotor,nprm,keeps manned priority
+16,withheld,individual,nprm,keeps manned priority
+17,withheld,individual,nprm,keeps manned priority
+18,FAA-2025-1908-2796,business_assoc,nprm,supports EC-based framework
+19,withheld,individual,nprm,keeps manned priority
+20,withheld,individual,nprm,keeps manned priority
+21,withheld,individual,nprm,keeps manned priority
+22,FAA-2025-1908-2963,manned_rotor,nprm,keeps manned priority
+23,withheld,individual,reopening,no position
+24,FAA-2025-1908-2924,manned_ga,nprm,keeps manned priority
+25,withheld,individual,reopening,keeps manned priority
+26,withheld,individual,nprm,keeps manned priority
+27,withheld,individual,nprm,no position
+28,withheld,individual,reopening,keeps manned priority
+29,withheld,individual,nprm,keeps manned priority
+30,withheld,individual,nprm,no position
+31,withheld,individual,nprm,keeps manned priority
+32,withheld,individual,nprm,keeps manned priority
+33,withheld,individual,nprm,no position
+34,withheld,individual,reopening,keeps manned priority
+35,withheld,individual,nprm,keeps manned priority
+36,FAA-2025-1908-3320,uas_operator_tech,reopening,no position
+37,withheld,individual,nprm,keeps manned priority
+38,FAA-2025-1908-1789,manned_sport,nprm,keeps manned priority
+39,withheld,individual,reopening,no position
+40,withheld,individual,reopening,keeps manned priority
+41,withheld,individual,nprm,no position
+42,withheld,individual,nprm,keeps manned priority
+43,withheld,individual,reopening,keeps manned priority
+44,withheld,individual,nprm,keeps manned priority
+45,withheld,individual,nprm,keeps manned priority
+46,withheld,individual,nprm,no position
+47,withheld,individual,nprm,keeps manned priority
+48,withheld,individual,nprm,keeps manned priority
+49,withheld,individual,nprm,no position
+50,withheld,individual,nprm,keeps manned priority
+51,withheld,individual,reopening,keeps manned priority
+52,withheld,individual,reopening,keeps manned priority
+53,withheld,individual,reopening,keeps manned priority
+54,withheld,individual,nprm,keeps manned priority
+55,withheld,individual,nprm,keeps manned priority
+56,withheld,individual,nprm,keeps manned priority
+57,withheld,individual,nprm,keeps manned priority
+58,FAA-2025-1908-2538,uas_operator_tech,nprm,mixed or conditional
+59,withheld,individual,reopening,no position
+60,withheld,individual,nprm,keeps manned priority
+61,FAA-2025-1908-3798,drone_delivery,reopening,supports EC-based framework
+62,withheld,individual,reopening,keeps manned priority
+63,FAA-2025-1908-3864,manned_ag,reopening,keeps manned priority
+64,withheld,individual,nprm,no position
+65,withheld,individual,reopening,no position
+66,FAA-2025-1908-1611,manned_sport,nprm,keeps manned priority
+67,withheld,individual,nprm,keeps manned priority
+68,FAA-2025-1908-0852,other,nprm,keeps manned priority
+69,withheld,individual,reopening,keeps manned priority
+70,withheld,individual,nprm,no position
+71,withheld,individual,nprm,keeps manned priority
+72,withheld,individual,nprm,keeps manned priority
+73,withheld,individual,nprm,keeps manned priority
+74,withheld,individual,nprm,keeps manned priority
+75,withheld,individual,nprm,keeps manned priority
+76,FAA-2025-1908-0999,media,nprm,no position
+77,withheld,individual,nprm,keeps manned priority
+78,withheld,individual,nprm,keeps manned priority
+79,withheld,individual,nprm,keeps manned priority
+80,withheld,individual,nprm,no position
+81,withheld,individual,reopening,no position
+82,withheld,individual,nprm,keeps manned priority
+83,withheld,individual,nprm,keeps manned priority
+84,withheld,individual,nprm,keeps manned priority
+85,withheld,individual,nprm,keeps manned priority
+86,withheld,individual,nprm,keeps manned priority
+87,withheld,individual,nprm,no position
+88,FAA-2025-1908-2714,research,nprm,supports EC-based framework
+89,withheld,individual,nprm,keeps manned priority
+90,withheld,individual,nprm,keeps manned priority
+91,FAA-2025-1908-2888,uas_operator_tech,nprm,mixed or conditional
+92,FAA-2025-1908-2215,infrastructure,nprm,mixed or conditional
+93,withheld,individual,reopening,no position
+94,withheld,individual,reopening,no position
+95,withheld,individual,nprm,keeps manned priority
+96,withheld,individual,nprm,no position
+97,FAA-2025-1908-1970,drone_trade_assoc,nprm,keeps manned priority
+98,withheld,individual,nprm,keeps manned priority
+99,withheld,individual,nprm,keeps manned priority
+100,withheld,individual,nprm,keeps manned priority
+101,withheld,individual,nprm,no position
+102,withheld,individual,nprm,keeps manned priority
+103,withheld,individual,reopening,keeps manned priority
+104,withheld,individual,nprm,keeps manned priority
+105,withheld,individual,nprm,keeps manned priority
+106,withheld,individual,reopening,keeps manned priority
+107,FAA-2025-1908-2616,drone_delivery,nprm,keeps manned priority
+108,withheld,individual,nprm,keeps manned priority
+109,withheld,individual,nprm,keeps manned priority
+110,withheld,individual,nprm,keeps manned priority
+111,withheld,individual,nprm,keeps manned priority
+112,withheld,individual,nprm,keeps manned priority
+113,withheld,individual,nprm,keeps manned priority
+114,FAA-2025-1908-3032,manned_ga,nprm,mixed or conditional
+115,withheld,individual,nprm,no position
+116,withheld,individual,nprm,keeps manned priority
+117,withheld,individual,nprm,keeps manned priority
+118,withheld,individual,nprm,keeps manned priority
+119,withheld,individual,reopening,no position

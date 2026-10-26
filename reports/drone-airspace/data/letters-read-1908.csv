@@ -1,0 +1,34 @@
+comment_id,organization,sector,right_of_way_and_EC,noncooperative_DAA,shielded_areas,TSA_security,other_key_ask
+FAA-2025-1908-2872,Amazon Prime Air,drone delivery,Priority by equipage; universal EC below 500 ft,Define a quantitative target level of safety,Not read,TSA should withdraw from the joint rule or propose a separate rule,Part 146 too incomplete for meaningful comment under 5 U.S.C. 553; carry over Part 135 and 44807 approvals
+FAA-2025-1908-2986,Wing Aviation,drone delivery,Modified right of way essential,Opposes noncooperative DAA where risk does not require it,Not read,Strongly opposes STA for ancillary staff and limited security program,Alternative means of compliance for airworthiness
+FAA-2025-1908-3908,Wing Aviation (reopening),drone delivery,Keep UAS yielding to EC-equipped aircraft and qualified UAS priority below 400 ft over noncooperative aircraft,Drop noncooperative DAA in Class B and C,,,No US device meets 108.195(a)(2)(ii) today because US rules bar it
+FAA-2025-1908-3843,Zipline (reopening),drone delivery,Orient right of way toward EC; supports EC requirement for manned aircraft,,,,UAS should not transmit ADS-B Out or EC
+FAA-2025-1908-3798,UPS Flight Forward (reopening),drone delivery,Supports right of way changes that reward EC equipage; baseline on RTCA DO-282C,,,,
+FAA-2025-1908-3047,Walmart,drone delivery,Update right of way; EC for crewed aircraft below 500 ft; UAS yield to conspicuous traffic,Do not mandate unproven noncooperative DAA,,,Streamline hazmat rules for retail delivery
+FAA-2025-1908-2708,DoorDash,drone delivery,Uniform right of way; EC for manned aircraft below 500 ft,Eliminate noncooperative DAA in Class B and C and Category 5,,,
+FAA-2025-1908-2616,DroneUp,drone delivery,Reject 91.113 amendments giving UA right of way over unequipped manned aircraft in Class G; endorse EC mandate below 500 ft,,,,Role separation when operator is also a Part 146 provider
+FAA-2025-1908-3904,Commercial Drone Alliance (reopening),drone trade group,All UAS yield to cooperative aircraft; all manned aircraft below 500 ft conspicuous,,,,Universal EC as foundation for Part 108
+FAA-2025-1908-2892,Small UAV Coalition,drone trade group,Mandate ADS-B Out or EC for crewed aircraft below 500 ft,Category 5 and Class B and C exceptions unsupported by safety data,,,
+FAA-2025-1908-2847,AUVSI,drone trade group,Modernize right of way to reward equipage,Tactical aids optional and not a precondition,,,Acceptance-based airworthiness
+FAA-2025-1908-3434,Drone Service Providers Alliance (reopening),drone trade group,EC a core requirement,,,,Says uAvionix skyEcho and ping2020i can meet 108.195(a)(2)(ii) today
+FAA-2025-1908-3028,Skydio,drone maker,Mandate ADS-B or EC for low-altitude manned aircraft; drones yield to equipped aircraft,Replace DAA requirements,,,Phase in UTM; remove conformance monitoring
+FAA-2025-1908-1921,AOPA,general aviation,Keep right of way by maneuverability; no blanket UAS priority over unequipped aircraft or in shielded areas,BVLOS drones must detect and avoid all aircraft,Opposes UAS priority in shielded areas,,
+FAA-2025-1908-3482,AOPA (reopening),general aviation,Vehemently opposed to EC as the sole factor in right of way,Drones must detect and avoid all manned aircraft in all airspace,,,Pilot alert if right of way is lost
+FAA-2025-1908-2756,EAA,general aviation,Manned aircraft must always keep right of way,Require ADS-B In on BVLOS drones,Extend manned right of way to shielded areas,,Supports a supplemental NPRM
+FAA-2025-1908-1886,NBAA,business aviation,EC for all aircraft; UAS yield to all aircraft below 500 ft,,EC makes extra shielded rules unnecessary,,Portable EC rather than full ADS-B mandate
+FAA-2025-1908-2940,GAMA,aircraft makers,Proposal does not solve midair risk; align with 49 U.S.C. 44807(c)(4)(A),,,,
+FAA-2025-1908-2798,ALPA,airline pilots,UAS must not shift collision avoidance to manned aircraft,No self-declared DAA,,,Safe distance 1000 ft vertical and 1 mile horizontal
+FAA-2025-1908-2686,Airlines for America,airlines,Supports manned priority in Category 5 and Class B and C and near airports; questions the rest,,,,Opposes 107.41 changes for Class B C and D
+FAA-2025-1908-2832,Vertical Aviation International,helicopters,Manned aircraft keep right of way over UAS,,,,Filed in full by 115 member operators and pilots in three campaigns
+FAA-2025-1908-1842,National Agricultural Aviation Association,aerial application,Opposes UAS right of way over manned aircraft,,Highest concern; shielded areas must not be codified,,
+FAA-2025-1908-1881,Balloon Federation of America,balloons,UAS should not have right of way over any manned aircraft,Drones should detect and avoid all aircraft,,,
+FAA-2025-1908-2973,"EEI, APPA, NRECA and LPPC",electric utilities,,Exempt operations in utility corridors from DAA in denser areas,Supports; treat utility corridors as controlled access,,Keep a Part 107 path for manual BVLOS
+FAA-2025-1908-3960,"EEI, APPA, LPPC and NRECA (reopening)",electric utilities,Cooperative EC as the base layer,Sensors only where risk analysis shows need,Codify 200 ft shielded airspace around critical infrastructure,,
+FAA-2025-1908-2781,American Fuel and Petrochemical Manufacturers,refining and pipelines,,,Supports shielded areas with owner permission; asks how the radius is measured,,
+FAA-2025-1908-2917,PG&E,electric utility,EC useful but not enough for helicopter safety,,,,Corridor activations so non-utility UAS cannot enter without permission
+FAA-2025-1908-2885,Law Enforcement Drone Association,public safety,UAS yield to cooperative aircraft; UAS electronically conspicuous,Costly DAA would ground most public safety fleets,Expand shielding to buildings and walls,,
+FAA-2025-1908-2659,National Retail Federation,retail,,,,Remove STA and limited security program; TSA may start a separate rule,Streamline hazmat
+FAA-2025-1908-2746,Boeing,aerospace,,,,Non-concur on the STA text,
+FAA-2025-1908-2544,Twelve UTM providers and operators,UTM,,,,,Strongly support strategic deconfliction and Part 146 certification path
+FAA-2025-1908-3065,ACLU and EPIC,civil liberties,,,,,Privacy and free expression safeguards for scaled BVLOS
+FAA-2025-1908-2729,News Media Coalition,press,,,,,Rules would put BVLOS out of reach for most news media
