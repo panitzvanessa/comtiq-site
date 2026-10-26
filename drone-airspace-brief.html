@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="ComtIQ one-page brief on the FAA BVLOS rule (Parts 108 and 146, FAA-2025-1908) and the fixed-site drone restriction rule (Part 74, FAA-2026-4558). Six forecasts to score, what the record shows and who should act now.">
+<link rel="canonical" href="https://comtiq.com/drone-airspace-brief.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Drone Airspace Access Brief · ComtIQ</title>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@700&display=swap">
+<style>
+/* One sheet: a navy band with the thesis, then a forecast table you can score later, the record, and who should act. */
+:root {
+  --navy: #0A1B2B; --navy-2: #12293D; --cyan: #00C2FF; --accent: #0077A3; --amber: #B7791F;
+  --paper: #F5F7FA; --surface: #FFFFFF; --ink: #0B1C2C; --muted: #586474; --rule: #D6DEE5; --tint: #E8F4FA;
+  --on-navy: #E8F1F7; --on-navy-muted: #9FB3C4;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3; --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; color-scheme: dark; } }
+:root[data-theme="dark"] { --accent: #5CCBF2; --amber: #E8B04B; --paper: #0D1722; --surface: #13212F; --ink: #E6EDF3; --muted: #9AABBB; --rule: #263A4E; --tint: #15303F; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5; }
+.sheet { max-width: 880px; margin: 0 auto; padding-block: 0 32px; }
+.pad { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+p { margin: 0; }
+a { color: var(--accent); }
+a:focus-visible { outline: 3px solid var(--cyan); outline-offset: 2px; }
+h1, h2 { font-family: var(--display); font-variation-settings: "wdth" 110; margin: 0; text-wrap: balance; line-height: 1.12; }
+.mast { background: var(--navy); color: var(--on-navy); }
+.mast .pad { padding-block: 18px 18px; display: grid; gap: 10px; max-width: 880px; margin: 0 auto; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.brand { display: flex; align-items: center; gap: 8px; }
+.brand svg { width: 28px; height: 28px; flex: none; }
+.word { font-family: "Montserrat", var(--display); font-weight: 700; font-size: 1.15rem; color: #FFFFFF; }
+.word b { color: var(--cyan); }
+.kind { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-navy-muted); }
+.mast h1 { font-size: clamp(1.35rem, 3.6vw, 1.75rem); font-weight: 800; color: #FFFFFF; }
+.mast .meta { font-family: var(--mono); font-size: 0.72rem; color: var(--on-navy-muted); }
+.q { border-left: 3px solid var(--cyan); padding: 6px 12px; background: var(--navy-2); font-size: 0.9rem; }
+.q span { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); display: block; }
+main.pad { display: grid; gap: 16px; padding-block: 16px 0; }
+.k { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); }
+.bluf { background: var(--surface); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; display: grid; gap: 6px; }
+.bluf p { font-size: 0.98rem; }
+.blk { display: grid; gap: 6px; }
+.tw { overflow-x: auto; border: 1px solid var(--rule); border-radius: 6px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 0.84rem; }
+th, td { text-align: left; padding: 6px 9px; border-top: 1px solid var(--rule); vertical-align: top; }
+thead th { border-top: 0; font-family: var(--mono); font-weight: 500; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); background: var(--tint); }
+td.n { font-family: var(--display); font-weight: 800; color: var(--accent); width: 1.6em; }
+.lk { font-family: var(--mono); font-size: 0.68rem; white-space: nowrap; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--rule); display: inline-block; }
+.lk.hi { border-color: var(--accent); color: var(--accent); }
+.lk.ev { border-color: var(--muted); color: var(--ink); }
+.lk.lo { border-color: var(--amber); color: var(--amber); }
+.sub { display: block; color: var(--muted); font-size: 0.78rem; margin-top: 2px; }
+.two { display: grid; grid-template-columns: 1fr 1.35fr; gap: 16px; }
+@media (max-width: 680px) { .two { grid-template-columns: 1fr; } }
+.nums { display: grid; gap: 6px; font-size: 0.86rem; margin: 0; padding: 0; list-style: none; }
+.nums li { display: grid; grid-template-columns: 6.2rem minmax(0,1fr); gap: 10px; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 5px; }
+.nums b { font-family: var(--display); font-weight: 750; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+.acts { display: grid; gap: 0; font-size: 0.84rem; margin: 0; padding: 0; list-style: none; }
+.acts li { display: grid; grid-template-columns: 7.4rem minmax(0,1fr); gap: 10px; border-top: 1px solid var(--rule); padding-block: 5px; }
+.acts span:first-child { font-family: var(--mono); font-size: 0.7rem; color: var(--accent); padding-top: 2px; }
+@media (max-width: 480px) { .acts li, .nums li { grid-template-columns: 1fr; gap: 1px; } }
+.dates { font-size: 0.84rem; color: var(--ink); }
+.foot { font-size: 0.74rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 8px; display: grid; gap: 3px; }
+@media print {
+  @page { size: Letter; margin: 9mm 10mm; }
+  html { font-size: 12.2px; }
+  body { font-size: 12.2px; background: #FFFFFF; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sheet { padding-block: 0; }
+  main.pad { gap: 9px; padding-block: 9px 0; }
+  .mast .pad { padding-block: 11px; gap: 6px; }
+  th, td { padding: 4px 7px; }
+  .mast h1 { font-size: 1.55rem; }
+  table { font-size: 0.9rem; }
+  .nums, .acts { font-size: 0.88rem; }
+  .bluf { padding: 8px 12px; }
+  .bluf p { font-size: 0.92rem; }
+  .q { font-size: 0.85rem; padding: 4px 10px; }
+  .nums li, .acts li { padding-top: 3px; padding-bottom: 3px; }
+}
+</style>
+
+</head>
+<body>
+<div class="sheet">
+<header class="mast">
+  <div class="pad">
+    <div class="top">
+      <div class="brand" aria-label="ComtIQ"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#00C2FF"/><stop offset="1" stop-color="#0A6BD6"/></linearGradient></defs><circle cx="32" cy="32" r="28.5" fill="none" stroke="#123A5E" stroke-width="5"/><path d="M32 3.5 A28.5 28.5 0 1 1 7.3 46.25" fill="none" stroke="url(#mg)" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="32" r="13.5" fill="url(#mg)"/><path d="M24.5 26.5 h15 a3 3 0 0 1 3 3 v5.5 a3 3 0 0 1 -3 3 h-8.2 l-4.3 3.6 v-3.6 h-2.5 a3 3 0 0 1 -3 -3 v-5.5 a3 3 0 0 1 3 -3z" fill="#FFFFFF"/></svg><span class="word">Comt<b>IQ</b></span></div>
+      <span class="kind">One-page brief · v1.2 · Oct. 26, 2026</span>
+    </div>
+    <h1>Part 108 decides who may fly beyond sight, and Part 74 decides where they can reach</h1>
+    <p class="meta">FAA-2025-1908 (Parts 108 and 146, final rule at OIRA since July 10, 2026) · FAA-2026-4558 (Part 74, comments closed Aug. 5, 2026)</p>
+    <p class="q"><span>Question</span>Once Part 108 is final, where can a commercial operator fly at scale, and which open choices in Parts 108, 146 and 74 decide what that access costs?</p>
+  </div>
+</header>
+
+<main class="pad">
+  <section class="bluf" aria-label="Bottom line">
+    <p class="k">Bottom line</p>
+    <p><strong>Under § 108.220, a Part 108 flight inside a UAFR follows Part 74, which lets it cross a standard UAFR only with Remote ID, a fast transit and a notice to the site manager before each flight. Special UAFRs stay closed to outside operators without the approval of the using agency and the FAA.</strong> We expect the per-flight notice to stay in the rule, and whether the FAA names an automated way to meet it is a roughly even chance. The unpriced risks sit with facility owners who want commercial flights removed, state laws on drones near critical sites, and detour costs the FAA says it has no data on.</p>
+  </section>
+
+  <section class="blk" aria-labelledby="f-h">
+    <p class="k" id="f-h">Six forecasts to score when the final rules publish</p>
+    <div class="tw"><table>
+      <thead><tr><th>#</th><th>Forecast</th><th>Likelihood</th><th>Confidence</th><th>Confirmed if</th></tr></thead>
+      <tbody>
+        <tr><td class="n">1</td><td>Part 74 keeps a per-flight notice duty in § 74.255</td><td><span class="lk hi">Likely</span></td><td>Moderate</td><td>Notice of each operation stays in the final text. An exemption for Part 135 and 108 holders is unlikely</td></tr>
+        <tr><td class="n">2</td><td>The FAA names an automated way to meet that notice</td><td><span class="lk ev">Roughly even</span></td><td>Moderate</td><td>The preamble, advisory circular or UAFR Module accepts automated submission</td></tr>
+        <tr><td class="n">3</td><td>Part 107, 108 and 135 transit through standard UAFRs survives in § 74.250(c) to (e)</td><td><span class="lk hi">Likely</span></td><td>Low</td><td>The three categories stay with no sector exception. A consent rule for venues, hospitals or grid sites is unlikely</td></tr>
+        <tr><td class="n">4</td><td>Part 108 keeps the duty to yield tied to ADS-B Out or EC broadcast in § 108.195</td><td><span class="lk hi">Likely</span></td><td>Low</td><td>Drones must still yield to broadcasting aircraft and airport traffic, and need not yield to every unequipped aircraft. A full return to manned priority is unlikely</td></tr>
+        <tr><td class="n">5</td><td>Part 74 stops citing TSA threat assessments as part of its basis for Part 108 access</td><td><span class="lk ev">Roughly even</span></td><td>Low</td><td>The final preamble drops the TSA ground of 91 FR 24652</td></tr>
+        <tr><td class="n">6</td><td>No express preemption clause in the final Part 74 text</td><td><span class="lk hi">Likely</span></td><td>Low</td><td>No preemption or savings section, and the E.O. 13132 finding stands</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <div class="two">
+    <section class="blk" aria-labelledby="r-h">
+      <p class="k" id="r-h">What the record shows</p>
+      <ul class="nums">
+        <li><b>62</b><span>organizations filed in both dockets. Electric utilities ask for access as drone operators and for control as site owners.</span></li>
+        <li><b>500</b><span>flights a day at one utility, Florida Power &amp; Light. Delivery firms cite thousands, and say a manual notice per flight cannot keep up.</span></li>
+        <li><b>None</b><span>of the cost of operator detours or notices is in the FAA's estimate, which prices facilities and the FAA at $21.4M to $30.6M a year at 7%.</span></li>
+        <li><b>10</b><span>state attorneys general ask the FAA to leave state drone laws standing. Amazon, CTIA, NRF and the U.S. Chamber ask for express preemption.</span></li>
+        <li><b>5,598</b><span>posted comments read across both dockets, with 1,279 attachments.</span></li>
+      </ul>
+    </section>
+    <section class="blk" aria-labelledby="a-h">
+      <p class="k" id="a-h">Who should act now</p>
+      <ul class="acts">
+        <li><span>Delivery operators</span><span>Ask for an EO 12866 meeting on § 108.220 and the TSA layer while Part 108 sits at OIRA. Check routes against rail terminals, substations, chemical sites, prisons and parks, and against state overflight laws.</span></li>
+        <li><span>Utilities, energy</span><span>Pick the role that leads. Facility consent in Part 74 could slow your own inspection contractors. Draft a standing-access list now.</span></li>
+        <li><span>Venues, hospitals</span><span>Expect no veto for site managers. Plan on detection, Remote ID logging and special UAFRs where a federal partner exists.</span></li>
+        <li><span>Manned operators</span><span>Plan EC equipage for low-altitude flying before the final § 108.195 text.</span></li>
+        <li><span>UTM providers</span><span>Build an automated UAFR notice service that fits the FAA's "form and manner" language.</span></li>
+        <li><span>Investors</span><span>Price delivery networks on routes that clear UAFRs and state laws, not on Part 108 alone.</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <p class="dates"><span class="k">Dates to watch</span> Part 108 pending OIRA review since July 10, 2026, no set date. Statutory deadline about Dec. 7, 2026 (49 U.S.C. 44811(c)). Final Part 74 not yet at OIRA. TSA roundtables only after both final rules.</p>
+
+  <footer class="foot">
+    <p><strong>Full report.</strong> <a href="reports/drone-airspace/">Read the full report online</a>, with a source for every number and the data files, or <a href="reports/comtiq-faa-drone-airspace-report.pdf">download it as a PDF</a>. <a href="reports/comtiq-faa-drone-airspace-one-page.pdf">Download this page as a PDF</a>. <a href="https://forms.gle/mVrsRADEAppke4JLA">Join the ComtIQ waitlist</a> for new reports.</p>
+    <p>Likelihood terms follow ICD 203 and are analyst judgments. Vanessa Panitz and John Panitz, <a href="/">ComtIQ</a>. Demonstration report, Wisconsin Venture Innovation Challenge 2026.</p>
+  </footer>
+</main>
+</div>
+
+</body>
+</html>
