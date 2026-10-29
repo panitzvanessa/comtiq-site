@@ -4,6 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="description" content="ComtIQ reads the full public record of federal rulemakings, finds the arguments that can move the final rule, tells you where it is likely to land and, once a rule is final, shows what it changes for your sector.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ComtIQ">
+<meta property="og:title" content="ComtIQ · Regulatory Intelligence Radar">
+<meta property="og:description" content="ComtIQ reads the full public record of federal rulemakings, finds the arguments that can move the final rule, tells you where it is likely to land and, once a rule is final, shows what it changes for your sector.">
+<meta property="og:url" content="https://comtiq.com/">
+<meta property="og:image" content="https://comtiq.com/og/home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="ComtIQ logo over a radar. Regulatory Intelligence Radar. From public comments to final rules. Four reports out now.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://comtiq.com/">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -11,7 +21,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ComtIQ","url":"https://comtiq.com/","logo":"https://comtiq.com/logo-512.png","description":"ComtIQ reads the full public record of federal rulemakings, finds the arguments that can move the final rule, tells you where it is likely to land and, once a rule is final, shows what it changes for your sector.","sameAs":["https://www.linkedin.com/company/comtiq/","https://www.instagram.com/comtiqreg/"]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"ComtIQ","alternateName":"ComtIQ Regulatory Intelligence","url":"https://comtiq.com/"}</script>
-<title>ComtIQ</title>
+<title>ComtIQ · Regulatory Intelligence Radar</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Montserrat:wght@700&display=swap">
@@ -64,22 +74,23 @@ p { margin: 0; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
 .brand .mark { height: 52px; width: 52px; display: block; flex: none; }
 .lockup { display: grid; gap: 5px; }
-.tagline { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.3em; color: var(--on-navy-muted); white-space: nowrap; }
-@media (max-width: 760px) { .brand .mark { height: 42px; width: 42px; } .word { font-size: 1.5rem; } .tagline { font-size: 0.5rem; letter-spacing: 0.22em; } }
+.tagline { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em; color: var(--on-navy-muted); white-space: nowrap; }
+@media (max-width: 760px) { .brand .mark { height: 42px; width: 42px; } .word { font-size: 1.5rem; } .tagline { font-size: 0.75rem; letter-spacing: 0.08em; } }
 .word { font-family: "Montserrat", var(--display); font-weight: 700; font-size: 2rem; line-height: 1; color: #FFFFFF; letter-spacing: -0.01em; }
 .word b { color: var(--cyan); font-weight: 800; }
 .nav { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 .nav a { color: var(--on-navy-muted); text-decoration: none; font-size: 0.92rem; }
 .nav a:hover { color: #FFFFFF; }
 .nav .pill { color: var(--navy); background: var(--cyan); padding: 7px 14px; border-radius: 999px; font-weight: 600; white-space: nowrap; }
-@media (max-width: 420px) { .nav .pill { padding: 6px 10px; font-size: 0.8rem; } .tagline { letter-spacing: 0.18em; } .nav { gap: 10px; } }
+@media (max-width: 560px) { .tagline { display: none; } }
+@media (max-width: 420px) { .nav .pill { padding: 6px 10px; font-size: 0.8rem; } .nav { gap: 10px; } }
 .nav .pill:hover { color: var(--navy); background: #5AD8FF; }
 @media (max-width: 760px) { .nav a:not(.pill) { display: none; } }
 
 /* ---------- hero ---------- */
 .hero { background: var(--navy); color: var(--on-navy); overflow: hidden; }
 .hero .wrap { display: grid; grid-template-columns: 1.3fr 0.7fr; gap: 40px; align-items: center; padding-block: 64px 72px; }
-.hero h1 { font-size: clamp(1.32rem, 2.64vw, 2.25rem); line-height: 1.08; font-weight: 800; color: #FFFFFF; font-variation-settings: "wdth" 112; }
+.hero h1 { font-size: clamp(1.9rem, 3.9vw, 2.9rem); line-height: 1.08; font-weight: 800; color: #FFFFFF; font-variation-settings: "wdth" 112; }
 .hero h1 em { font-style: normal; color: var(--cyan); }
 .hero .lede { font-size: 1.15rem; color: var(--on-navy); max-width: 34em; margin-top: 22px; }
 .tag { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.32em; color: var(--on-navy-muted); margin-top: 26px; }
@@ -93,7 +104,7 @@ p { margin: 0; }
 #radar { width: 100%; height: 100%; display: block; }
 @media (max-width: 860px) {
   .hero .wrap { grid-template-columns: 1fr; padding-block: 44px 48px; }
-  .radar-box { justify-self: center; max-width: 400px; }
+  .radar-box { justify-self: center; max-width: 280px; }
 }
 
 /* ---------- record strip ---------- */
@@ -206,11 +217,15 @@ section.block .wrap { padding-block: 76px; display: grid; gap: 34px; }
 .cta-band .link { font-family: var(--mono); font-size: 0.85rem; color: var(--on-navy-muted); margin-top: 12px; user-select: all; }
 @media (max-width: 760px) { .cta-band .wrap { grid-template-columns: 1fr; } .cta-band .ctas { justify-content: flex-start; } }
 
+.cta-band .link a { color: var(--cyan); }
 footer { background: var(--paper); }
 footer .social a { color: var(--cyan-ink); font-weight: 600; }
 footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 0.86rem; color: var(--muted); border-top: 1px solid var(--rule); }
 </style>
-<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* screen: no text under 12px */
+@media screen { .record .also, .record .src, .sheet-head .k, .bluf .k, .row .k, .conf, .likely span, .price-table th { font-size: 0.75rem; } }
+</style>
 </head>
 <body>
 
@@ -223,7 +238,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
       <a href="#reports">Reports</a>
       <a href="#products">Products</a>
       <a href="#team">Team</a>
-      <a class="pill" href="#waitlist">Join the waitlist</a>
+      <a class="pill" href="#waitlist">Request a report</a>
     </nav>
   </div>
 </header>
@@ -236,7 +251,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
         <h1 style="margin-top: 16px;">From public comments to final rules, <em>see what's coming and what it means for your operations.</em></h1>
         <p class="lede">We read the full record of a federal rulemaking, find the arguments that can move the final rule, and tell you where it is likely to land. Once a rule is final, we show what it changes for your sector. An analyst checks every key finding.</p>
         <div class="ctas">
-          <a class="btn primary" href="#waitlist">Join the waitlist</a>
+          <a class="btn primary" href="#waitlist">Request a report</a>
           <a class="btn ghost" href="#reports">See the first reports</a>
         </div>
       </div>
@@ -302,7 +317,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
         <div class="sheet-body">
           <div class="bluf"><span class="k">Bottom line up front</span>The main finding and what it means for your decision, in two or three sentences.</div>
           <div>
-            <span class="k" style="font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);">Key findings</span>
+            <span class="k" style="font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);">Key findings</span>
             <div class="finding"><span>Share of the record that came from coordinated campaigns, and who sponsored them</span><span class="conf high">High confidence</span></div>
             <div class="finding"><span>Arguments ranked by how often they appear, and the new ones since the last report</span><span class="conf mod">Moderate</span></div>
             <div class="finding"><span>Significant issues the final rule preamble did not answer</span><span class="conf">Low · thin sources</span></div>
@@ -365,6 +380,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
           <span class="id">FAA-2026-9934 · 9935 · 9936 · 9940 · 9941</span>
           <p>Five proposals to cut the analysis and paperwork behind a commercial launch or reentry license.</p>
           <p class="for">For launch operators such as SpaceX and Rocket Lab, new entrants, space investors and launch insurers.</p>
+          <p class="rep-links"><a href="https://forms.gle/mVrsRADEAppke4JLA" target="_blank" rel="noopener">Request this report</a></p>
         </div>
       </div>
     </div>
@@ -392,7 +408,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
       <div class="intro">
         <p class="eyebrow">Products</p>
         <h2>One report, written once, read by many.</h2>
-        <p>We produce each report once and offer the same report to every reader. Waitlist members receive our first reports free. We are not taking payment yet.</p>
+        <p>We produce each report once and offer the same report to every reader. Our first reports are free while we build. We are not taking payment yet.</p>
       </div>
       <div class="price-wrap">
         <table class="price-table">
@@ -457,6 +473,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
           <a class="btn primary" href="https://forms.gle/mVrsRADEAppke4JLA" target="_blank" rel="noopener">Request a report</a>
         </div>
         <p class="link">forms.gle/mVrsRADEAppke4JLA</p>
+        <p class="link">Or write to <a href="mailto:vpanitz@wisc.edu">vpanitz@wisc.edu</a></p>
       </div>
     </div>
   </section>
@@ -466,6 +483,7 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
   <div class="wrap">
     <span><b style="color: var(--ink);">ComtIQ</b> is in development as part of the Wisconsin Venture Innovation Challenge 2026.</span>
     <span>Data from Regulations.gov and the Federal Register. Individual commenters are reported only in aggregate.</span>
+    <span>Contact <a href="mailto:vpanitz@wisc.edu">vpanitz@wisc.edu</a>. We use your form answers only to reply to you and send new reports. We never sell them.</span>
     <span class="social">Follow ComtIQ on <a href="https://www.linkedin.com/company/comtiq/" rel="me noopener" target="_blank">LinkedIn</a> and <a href="https://www.instagram.com/comtiqreg/" rel="me noopener" target="_blank">Instagram</a></span>
   </div>
 </footer>
