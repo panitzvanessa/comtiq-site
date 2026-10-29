@@ -109,7 +109,7 @@ p { margin: 0; }
 
 /* ---------- record strip ---------- */
 .record { background: var(--navy-2); color: var(--on-navy); border-top: 1px solid #1d3550; }
-.record .wrap { padding-block: 34px 38px; display: grid; gap: 22px; }
+.record .wrap { padding-block: 30px 32px; display: grid; gap: 16px; }
 .record .head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: baseline; }
 .record .head p { color: var(--on-navy-muted); font-size: 0.95rem; max-width: 46em; }
 .record .docket { font-family: var(--mono); font-size: 0.85rem; color: var(--cyan); }
@@ -122,6 +122,32 @@ p { margin: 0; }
 .fig .l { font-size: 0.92rem; color: var(--on-navy-muted); }
 .record .also { margin-top: 14px; padding-top: 14px; border-top: 1px solid #2A4661; color: var(--on-navy-muted); font-size: 0.74rem; line-height: 1.5; }
 .record .also .docket { margin-right: 10px; }
+.strip-h { font-size: 1.05rem; font-weight: 700; color: #FFFFFF; letter-spacing: 0; }
+.quick { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid #2A4661; }
+.q { display: grid; gap: 6px; align-content: start; padding: 18px 18px 4px 0; text-decoration: none; color: var(--on-navy); border-right: 1px solid #2A4661; }
+.q + .q { padding-left: 18px; }
+.q:last-child { border-right: 0; }
+.q b { color: #FFFFFF; font-family: var(--display); font-size: 1.05rem; font-weight: 700; }
+.q .l { font-size: 0.92rem; color: var(--on-navy-muted); line-height: 1.45; }
+.q .go { font-size: 0.88rem; color: var(--cyan); font-weight: 600; }
+.q .docket { font-size: 0.78rem; }
+.q:hover b, .q:focus-visible b { color: var(--cyan); }
+@media (max-width: 900px) {
+  .quick { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .q { padding: 16px 16px 16px 0; border-right: 0; border-bottom: 1px solid #2A4661; }
+  .q + .q { padding-left: 0; }
+  .q:nth-child(odd) { border-right: 1px solid #2A4661; }
+  .q:nth-child(even) { padding-left: 16px; }
+}
+@media (max-width: 560px) {
+  .quick { grid-template-columns: 1fr; }
+  .q, .q:nth-child(odd), .q:nth-child(even) { padding: 14px 0; border-right: 0; }
+  .q:last-child { border-bottom: 0; }
+}
+.record.box { border-radius: 12px; padding: 28px; display: grid; gap: 22px; border-top: 0; }
+@media (max-width: 560px) { .record.box { padding: 22px 18px; } }
+details.src summary { cursor: pointer; color: var(--cyan); font-weight: 500; }
+details.src p { margin-top: 8px; }
 .record .src { font-size: 0.7rem; color: var(--on-navy-muted); font-family: var(--mono); }
 @media (max-width: 760px) {
   .figs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -263,21 +289,13 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
 
   <section class="record" aria-labelledby="record-title">
     <div class="wrap">
-      <div class="head">
-        <div>
-          <p class="docket">EPA-HQ-OAR-2025-0194</p>
-          <h3 id="record-title" style="color:#FFFFFF; margin-top: 6px;">One docket, measured. The rescission of the 2009 endangerment finding.</h3>
-        </div>
-        <p><b style="color:#FFFFFF;">571,676 comments received. 30,929 visible to the public.</b> A ComtIQ report shows you what that gap means. <a href="epa-endangerment-brief.html" style="color: var(--cyan);">Read the one-page brief.</a></p>
+      <h2 class="strip-h" id="record-title">Four reports out now</h2>
+      <div class="quick">
+        <a class="q" href="epa-endangerment-brief.html"><span class="docket">EPA-HQ-OAR-2025-0194</span><b>EPA endangerment finding</b><span class="l">571,676 comments received. 30,929 visible to the public.</span><span class="go">Read the brief →</span></a>
+        <a class="q" href="independent-contractor-brief.html"><span class="docket">WHD-2026-0001</span><b>Independent contractor rule</b><span class="l">Four form letters wrote 95.9% of the comments typed into the form.</span><span class="go">Read the brief →</span></a>
+        <a class="q" href="oil-gas-leasing-brief.html"><span class="docket">BLM-2025-0037</span><b>Oil and gas leasing</b><span class="l">Bond cuts are likely to survive. Ending both comment periods is unlikely.</span><span class="go">Read the brief →</span></a>
+        <a class="q" href="drone-airspace-brief.html"><span class="docket">FAA-2025-1908 · FAA-2026-4558</span><b>Drone airspace</b><span class="l">62 organizations filed in both dockets. Six forecasts to score.</span><span class="go">Read the brief →</span></a>
       </div>
-      <div class="figs">
-        <div class="fig"><span class="n">571,676</span><span class="l">comments received, by the government's own counter</span></div>
-        <div class="fig"><span class="n">30,929</span><span class="l">records a visitor can open in the public docket</span></div>
-        <div class="fig"><span class="n alert">482,049</span><span class="l">submissions declared inside 128 of those records</span></div>
-        <div class="fig"><span class="n">64 days</span><span class="l">median wait between receipt and posting</span></div>
-      </div>
-      <p class="src">Sources. The received count is the Federal Register comment counter. The other figures come from our own download of every record posted in the public docket, made in July 2026 with the open-source Rulemaking Observatory and checked against Regulations.gov in October 2026.</p>
-      <p class="also"><span class="docket">WHD-2026-0001</span> We measured a second docket, the Labor Department's independent contractor rule, whose final version went to the White House for review. The department received 16,522 comments. Of the comments typed into the form, 95.9% came from just four form letters. <a href="independent-contractor-brief.html" style="color: var(--cyan);">Read the one-page brief.</a></p>
     </div>
   </section>
 
@@ -340,6 +358,22 @@ footer .wrap { padding-block: 28px 40px; display: flex; justify-content: space-b
         <p class="eyebrow">First reports</p>
         <h2>Four briefs out now, one docket in production.</h2>
         <p>Each report goes out free to a different group of readers while we build. The EPA brief reads a final rule and the agency's answers. The Labor Department brief reads the record while the final rule is still under White House review. The BLM brief forecasts which provisions of a proposal will change before the agency decides. The FAA drone brief reads two linked proposals together. <b style="color: var(--ink);">All four one-page briefs are out now.</b></p>
+      </div>
+      <div class="record box" aria-labelledby="epa-title">
+        <div class="head">
+          <div>
+            <p class="docket">What one report measured · <span style="white-space: nowrap;">EPA-HQ-OAR-2025-0194</span></p>
+            <h3 id="epa-title" style="color:#FFFFFF; margin-top: 6px;">One docket, measured. The rescission of the 2009 endangerment finding.</h3>
+          </div>
+          <p><b style="color:#FFFFFF;">571,676 comments received. 30,929 visible to the public.</b> A ComtIQ report shows you what that gap means. <a href="epa-endangerment-brief.html" style="color: var(--cyan);">Read the one-page brief.</a></p>
+        </div>
+        <div class="figs">
+          <div class="fig"><span class="n">571,676</span><span class="l">comments received, by the government's own counter</span></div>
+          <div class="fig"><span class="n">30,929</span><span class="l">records a visitor can open in the public docket</span></div>
+          <div class="fig"><span class="n alert">482,049</span><span class="l">submissions declared inside 128 of those records</span></div>
+          <div class="fig"><span class="n">64 days</span><span class="l">median wait between receipt and posting</span></div>
+        </div>
+        <details class="src"><summary>See sources</summary><p>The received count is the Federal Register comment counter. The other figures come from our own download of every record posted in the public docket, made in July 2026 with the open-source Rulemaking Observatory and checked against Regulations.gov in October 2026.</p></details>
       </div>
       <div class="reports">
         <div class="rep">
